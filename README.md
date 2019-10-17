@@ -33,7 +33,7 @@
 * Στο τέλος της χρονιάς θα δωθεί μία λίστα από projects. Τα projects θα είναι ατομικά και διαφερετικά μεταξύ τους. Το project θα μετρήσει για το 50% του βαθμού. 
 
 ### Διαλέξεις 
-* 17 Οκτωβρίου 2019 . Σημείωσεις σε [jupyter notebook](lesson_1.ipynb), [html](lesson_1.html), [pdf](lesson_1.html). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_1_2019.ipynb), [html](lesson_1_2019.html), [pdf](lesson_1_2019.pdf)
+* 17 Οκτωβρίου 2019 . Σημείωσεις σε [jupyter notebook](lesson_1.ipynb), [html](lesson_1.html), [pdf](lesson_1.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_1_2019.ipynb), [html](lesson_1_2019.html), [pdf](lesson_1_2019.pdf)
 
 
 
