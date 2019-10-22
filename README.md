@@ -34,7 +34,7 @@
 
 ### Διαλέξεις 
 * 17 Οκτωβρίου 2019 . Σημείωσεις σε [jupyter notebook](lesson_1.ipynb), [html](lesson_1.html), [pdf](lesson_1.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_1_2019.ipynb), [html](lesson_1_2019.html), [pdf](lesson_1_2019.pdf)
-* 22 Οκτωβρίου 2019. Σημειώσεις [jupyter notebook](lesson_2.ipynn), [html](lesson_2.html), [pdf](lesson_2.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_2_2019.ipynb), [html](lesson_2_2019.html), [pdf](lesson_2_2019.pdf)
+* 22 Οκτωβρίου 2019. Σημειώσεις [jupyter notebook](lesson_2.ipynb), [html](lesson_2.html), [pdf](lesson_2.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_2_2019.ipynb), [html](lesson_2_2019.html), [pdf](lesson_2_2019.pdf)
 
 ### Πως βαθμολογείται μία άσκηση
 Κάθε σειρά ασκήσεων έχει 20 ερωτήσεις/ασκήσεις. Για κάθε μία παίρνετε βαθμό: από 1 μέχρι 10. Όλες οι ερωτήσεις/ασκήσεις θεωρούνται ισοδύναμες. 
