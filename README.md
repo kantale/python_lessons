@@ -22,6 +22,9 @@
 * [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/) Practical programming for total beginners. Written by Al Sweigart. Free to read under a Creative Commons license.
 * [A beginner's python tutorial](https://en.wikibooks.org/wiki/A_Beginner%27s_Python_Tutorial)
 * [EbookFoundation free-programming-books on python](https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books.md#python)
+* [Jupyter notebooks for teaching/learning Python 3](https://github.com/jerry-git/learn-python3)
+* [A Python course that takes beginners seriously](https://github.com/JdeH/LightOn)
+* [Python Computing for Data Science](https://github.com/profjsb/python-seminar)
 * Γιατί jupyter; https://www.nature.com/articles/d41586-018-07196-1 
 * [pythoncheatsheet](https://www.pythoncheatsheet.org/) . Πολύ καλό και "συμπαγές" σημείο αναφοράς. Χρήσιμο όταν έχεις ξεχάσει πως γίνεται κάτι. 
 * [28 Jupyter Notebook tips, tricks and shortcuts - Dataquest](https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/). From Thimo. Thanks!
