@@ -17,6 +17,11 @@
 * Week 13: Object Oriented Programming: Classes, Inheritance, Initializers, member functions, static/class functions.
 
 ### Επιπλέον υλικό:
+* [Beginner's Python Cheat Sheets](https://ehmatthes.github.io/pcc_2e/cheat_sheets/cheat_sheets/)
+* [The official Python Tutorial](https://docs.python.org/3/tutorial/index.html)
+* [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/) Practical programming for total beginners. Written by Al Sweigart. Free to read under a Creative Commons license.
+* [https://en.wikibooks.org/wiki/A_Beginner%27s_Python_Tutorial](https://en.wikibooks.org/wiki/A_Beginner%27s_Python_Tutorial)
+* [EbookFoundation free-programming-books on python](https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books.md#python)
 * Γιατί jupyter; https://www.nature.com/articles/d41586-018-07196-1 
 * [pythoncheatsheet](https://www.pythoncheatsheet.org/) . Πολύ καλό και "συμπαγές" σημείο αναφοράς. Χρήσιμο όταν έχεις ξεχάσει πως γίνεται κάτι. 
 * [28 Jupyter Notebook tips, tricks and shortcuts - Dataquest](https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/). From Thimo. Thanks!
