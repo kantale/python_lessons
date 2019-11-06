@@ -1,5 +1,6 @@
 ### Επικοινωνία
 * [Αλέξανδρος Καντεράκης](https://www.ics.forth.gr/cbml/index_main.php?l=e&c=730). [kantale@ics.forth.gr](kantale@ics.forth.gr)
+* [Chat room](https://gitter.im/CRETE_PYTHON_2019/community)
 
 ### Πρόγραμμα 
 * Week 1: Εισαγωγή στη python, γιατί python; anaconda installation, περιβάλλον ανάπτυξης jupyter, markdown, social coding, primitive data types and operations, strings, boolean logic, slicing
