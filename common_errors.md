@@ -222,3 +222,27 @@ elif x == 3
 else:
    raise Exception('Invalid x value')
 ```
+
+15. Αποφεύφουμε κάνουμε iterate μία λίστα χρηιμοποιώντας τα indexes. Προτιμούμε καλύτερα να κάνουμε iterate τα στοιχεία μιας λίστας:
+
+Λάθος:
+```python
+a = ['Hello', 'world']
+for i in range(0, len(a)):
+   print (a[i])
+```
+
+Σωστό:
+```python
+a = ['Hello', 'world']
+for x in a:
+   print (x)
+
+```
+
+
+
+
+
+
+
