@@ -48,6 +48,7 @@
 * 12 Νοεμβρίου 2019. Σημείωσεις [jupyter notebook](lesson_5.ipynb), [html](lesson_5.html), [pdf](lesson_5.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_5_2019.ipynb), [html](lesson_5_2019.html), [pdf](lesson_5_2019.pdf)
 * 19 Νοεμβρίου 2019. Σημείωσεις [jupyter notebook](lesson_6.ipynb), [html](lesson_6.html), [pdf](lesson_6.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_6_2019.ipynb), [html](lesson_6_2019.html), [pdf](lesson_6_2019.pdf)
 * 26 Νοεμβρίου 2019. Σημείωσεις [jupyter notebook](lesson_7.ipynb), [html](lesson_7.html), [pdf](lesson_7.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_7_2019.ipynb), [html](lesson_7_2019.html), [pdf](lesson_7_2019.pdf)
+* 3 Δεκεμβρίου 2019. Σημείωσεις [jupyter notebook](lesson_8.ipynb), [html](lesson_8.html), [pdf](lesson_8.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_8_2019.ipynb), [html](lesson_8_2019.html), [pdf](lesson_8_2019.pdf)
 
 
 
