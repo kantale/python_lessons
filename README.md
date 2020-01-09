@@ -19,6 +19,7 @@
 
 ### Επιπλέον υλικό:
 * [Beginner's Python Cheat Sheets](https://ehmatthes.github.io/pcc_2e/cheat_sheets/cheat_sheets/)
+* [Non-beginner's python cheat sheet](https://gto76.github.io/python-cheatsheet/)
 * [The official Python Tutorial](https://docs.python.org/3/tutorial/index.html)
 * [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/) Practical programming for total beginners. Written by Al Sweigart. Free to read under a Creative Commons license.
 * [A beginner's python tutorial](https://en.wikibooks.org/wiki/A_Beginner%27s_Python_Tutorial)
@@ -49,8 +50,13 @@
 * 19 Νοεμβρίου 2019. Σημείωσεις [jupyter notebook](lesson_6.ipynb), [html](lesson_6.html), [pdf](lesson_6.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_6_2019.ipynb), [html](lesson_6_2019.html), [pdf](lesson_6_2019.pdf)
 * 26 Νοεμβρίου 2019. Σημείωσεις [jupyter notebook](lesson_7.ipynb), [html](lesson_7.html), [pdf](lesson_7.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_7_2019.ipynb), [html](lesson_7_2019.html), [pdf](lesson_7_2019.pdf)
 * 3 Δεκεμβρίου 2019. Σημείωσεις [jupyter notebook](lesson_8.ipynb), [html](lesson_8.html), [pdf](lesson_8.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_8_2019.ipynb), [html](lesson_8_2019.html), [pdf](lesson_8_2019.pdf)
-* 10 Δεμεβρίου 2019. Σημείωσεις [jupyter notebook](lesson_9.ipynb), [html](lesson_9.html), [pdf](lesson_9.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_9_2019.ipynb), [html](lesson_9_2019.html), [pdf](lesson_9_2019.pdf). Επίσης πολύ χρήσιμο: [pandas cheatsheet](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf)
-
+* 10 Δεκεβρίου 2019. Σημείωσεις [jupyter notebook](lesson_9.ipynb), [html](lesson_9.html), [pdf](lesson_9.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_9_2019.ipynb), [html](lesson_9_2019.html), [pdf](lesson_9_2019.pdf). Επίσης πολύ χρήσιμο: [pandas cheatsheet](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf)
+* 17 Δεκεμβρίου 2019. Σημειώσεις:
+   * matplotlib σε [jupyter notebook](lesson_10_matplotlib.ipynb), [html](lesson_10_matplotlib.html), [pdf](lesson_10_matplotlib.pdf )
+   * [bokeh](https://s3.eu-central-1.amazonaws.com/787773452435kantale24234/lesson_9.html)
+   * Eπίσης καλό είναι να ρίξετε μια ματιά στις βιβλιοθήκες [seaborn](https://seaborn.pydata.org/) και [plot.ly](https://plot.ly/)
+   * Πρόχειρες σημειώσεις σε [jupyter notebook](lesson_10_2019.ipynb), [html](lesson_10_2019.html), [pdf](lesson_10_2019.pdf)
+  
 
 
 ### Πως βαθμολογείται μία άσκηση
@@ -83,6 +89,7 @@
 * **[ΣΕΙΡΑ ΑΣΚΗΣΕΩΝ 1](assignment_1.md)** Παράδοση μέχρι: 12 Νοεμβρίου 2019
 * **[ΣΕΙΡΑ ΑΣΚΗΣΕΩΝ 2](assignment_2.md)** Παράδοση μέχρι: 26 Νοεμβρίου 2019
 * **[ΣΕΙΡΑ ΑΣΚΗΣΕΩΝ 3](assignment_3.md)** Παράδοση μέχρι: 10 Δεκεμβρίου 2019
-* **[ΣΕΙΡΑ ΑΣΚΗΣΕΩΝ 4](assignment_4.md)** Παράδοση μέχρι: 24 Δεκεμβρίου 2019
+* **[ΣΕΙΡΑ ΑΣΚΗΣΕΩΝ 4](assignment_4.md)** Παράδοση μέχρι: 15 Ιανουαρίου 2020
+* **ΣΕΙΡΑ ΑΣΚΗΣΕΩΝ 5** Παράδοση μέχρι: 28 Φεβρουαρίου 2020
 
 
