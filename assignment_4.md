@@ -298,7 +298,7 @@ print (len(p)) # Τυπώνει 10
 Θα πρέπει αν ελέγχει ότι:
 * Τα reference και alternative έχουν μόνο χαρακτήρες ACGT, διαφορετικά θα πετάει exception.
 * To reference δεν μπορεί να είναι το ίδιο με το alternative, διαφορετικά θα πετάει exception.
-* Το μήκος του reference είναι τόσο όσο και το μήκος (len()) του Position, διαφορετικά θα πετάει exception
+<!-- * Το μήκος του reference είναι τόσο όσο και το μήκος (len()) του Position, διαφορετικά θα πετάει exception -->
 
 Επίσης θα έχει τη μέθοδο: type η οποία:
 * Αν το reference έχει μήκος 1 και το alternative έχει μήκος 1 θα επιστρέφει [SNP](https://en.wikipedia.org/wiki/Single-nucleotide_polymorphism)
