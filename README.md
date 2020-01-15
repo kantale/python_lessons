@@ -56,7 +56,7 @@
    * [bokeh](https://s3.eu-central-1.amazonaws.com/787773452435kantale24234/lesson_9.html)
    * Eπίσης καλό είναι να ρίξετε μια ματιά στις βιβλιοθήκες [seaborn](https://seaborn.pydata.org/) και [plot.ly](https://plot.ly/)
    * Πρόχειρες σημειώσεις σε [jupyter notebook](lesson_10_2019.ipynb), [html](lesson_10_2019.html), [pdf](lesson_10_2019.pdf)
-  
+* 14 Ιανουαρίου 2020. Σημειώσεις [jupyter notebook](lesson_11_API.ipynb), [html](lesson_11_API.html), [pdf](lesson_11_API.pdf). Προσοχή, οι σημειώσεις σε pdf φαίνεται να μην έχουν σωθεί σωστά. Μόλις το διορθώσω θα το ξανα-ανεβάσω.
 
 
 ### Πως βαθμολογείται μία άσκηση
