@@ -57,6 +57,7 @@
    * Eπίσης καλό είναι να ρίξετε μια ματιά στις βιβλιοθήκες [seaborn](https://seaborn.pydata.org/) και [plot.ly](https://plot.ly/)
    * Πρόχειρες σημειώσεις σε [jupyter notebook](lesson_10_2019.ipynb), [html](lesson_10_2019.html), [pdf](lesson_10_2019.pdf)
 * 14 Ιανουαρίου 2020. Σημειώσεις [jupyter notebook](lesson_11_API.ipynb), [html](lesson_11_API.html), [pdf](lesson_11_API.pdf). Προσοχή, οι σημειώσεις σε pdf φαίνεται να μην έχουν σωθεί σωστά. Μόλις το διορθώσω θα το ξανα-ανεβάσω.
+* 21 January 2020. Σημείωσεις για στατιστικά τεστ [jupyter notebook](lesson_12.ipynb), [html](lesson_12.html), [pdf](lesson_12.pdf). Σηmειώσεις για APIs και bioython (από το 2018)[jupyter notebook](lesson_12_biopython.ipynb), [html](lesson_12_biopython.html) (η μετατροπή σε pdf απέτυχε..)
 
 
 ### Πως βαθμολογείται μία άσκηση
