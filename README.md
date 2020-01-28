@@ -58,6 +58,8 @@
    * Πρόχειρες σημειώσεις σε [jupyter notebook](lesson_10_2019.ipynb), [html](lesson_10_2019.html), [pdf](lesson_10_2019.pdf)
 * 14 Ιανουαρίου 2020. Σημειώσεις [jupyter notebook](lesson_11_API.ipynb), [html](lesson_11_API.html), [pdf](lesson_11_API.pdf). Προσοχή, οι σημειώσεις σε pdf φαίνεται να μην έχουν σωθεί σωστά. Μόλις το διορθώσω θα το ξανα-ανεβάσω.
 * 21 Ιανουαρίου 2020. Σημείωσεις για στατιστικά τεστ [jupyter notebook](lesson_12.ipynb), [html](lesson_12.html), [pdf](lesson_12.pdf). Σημειώσεις για APIs και bioython (από το 2018) σε [jupyter notebook](lesson_12_biopython.ipynb), [html](lesson_12_biopython.html) (η μετατροπή σε pdf απέτυχε..)
+* 28 Ιανουαρίου 2020. Σημείωσεις για conda και django [jupyter notebook](lesson_13.ipynb), [html](lesson_13.html), [pdf](lesson_13.pdf)
+
 
 
 ### Πως βαθμολογείται μία άσκηση
