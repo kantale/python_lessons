@@ -31,6 +31,7 @@
 * Γιατί jupyter; https://www.nature.com/articles/d41586-018-07196-1 
 * [pythoncheatsheet](https://www.pythoncheatsheet.org/) . Πολύ καλό και "συμπαγές" σημείο αναφοράς. Χρήσιμο όταν έχεις ξεχάσει πως γίνεται κάτι. 
 * [28 Jupyter Notebook tips, tricks and shortcuts - Dataquest](https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/). From Thimo. Thanks!
+* [Paper στο Nature για το scipy](https://www.nature.com/articles/s41592-019-0686-2) published: 3 February 2020
 * Challenges: https://www.hackerrank.com/dashboard
 
 ### Προηγούμενες χρονιές
