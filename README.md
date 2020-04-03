@@ -35,9 +35,9 @@
 * Challenges: https://www.hackerrank.com/dashboard
 
 ### Προηγούμενες χρονιές
-* [διαλέξεις 2016-2017](https://gist.github.com/kantale/c94e9559cc408a986638794ede47f9d5)
-* [διαλέξεις 2017-2018](https://gist.github.com/kantale/7a84e046fca8eba6bf11035b49be00ce)
 * [διαλέξεις 2018-2019](https://gist.github.com/kantale/b726b3ac17fbb00eb21fec8e262967ec)
+* [διαλέξεις 2017-2018](https://gist.github.com/kantale/7a84e046fca8eba6bf11035b49be00ce)
+* [διαλέξεις 2016-2017](https://gist.github.com/kantale/c94e9559cc408a986638794ede47f9d5)
 
 ### Βαθμολογία
 * Θα δωθούν 5 σειρές ασκήσεων, μία κάθε 2 εβδομάδες περίπου. Η κάθε σειρά μετράει στο 10% του βαθμού (συνολικά 50%).
