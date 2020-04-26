@@ -33,6 +33,7 @@
 * [28 Jupyter Notebook tips, tricks and shortcuts - Dataquest](https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/). From Thimo. Thanks!
 * [Paper στο Nature για το scipy](https://www.nature.com/articles/s41592-019-0686-2) published: 3 February 2020
 * Challenges: https://www.hackerrank.com/dashboard
+* [Scientific Python Cheatsheet](https://ipgp.github.io/scientific_python_cheat_sheet/)
 
 ### Προηγούμενες χρονιές
 * [διαλέξεις 2018-2019](https://gist.github.com/kantale/b726b3ac17fbb00eb21fec8e262967ec)
