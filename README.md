@@ -18,6 +18,7 @@
 * Week 13: Object Oriented Programming: Classes, Inheritance, Initializers, member functions, static/class functions.
 
 ### Επιπλέον υλικό:
+* [Practical Python Programming from David Beazley](https://dabeaz-course.github.io/practical-python/)
 * [Beginner's Python Cheat Sheets](https://ehmatthes.github.io/pcc_2e/cheat_sheets/cheat_sheets/)
 * [Non-beginner's python cheat sheet](https://gto76.github.io/python-cheatsheet/)
 * [NumPy: the absolute basics for beginners](https://numpy.org/devdocs/user/absolute_beginners.html)
