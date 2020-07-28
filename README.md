@@ -35,6 +35,7 @@
 * [Paper στο Nature για το scipy](https://www.nature.com/articles/s41592-019-0686-2) published: 3 February 2020
 * Challenges: https://www.hackerrank.com/dashboard
 * [Scientific Python Cheatsheet](https://ipgp.github.io/scientific_python_cheat_sheet/)
+* [Matplotlib Cheatsheet](https://twitter.com/magnumdessert/status/1280543694760710144)
 * [Introduction to Pandas](https://realpython.com/pandas-dataframe/) 
 
 ### Προηγούμενες χρονιές
