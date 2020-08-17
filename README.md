@@ -38,6 +38,9 @@
 * [Matplotlib Cheatsheet](https://twitter.com/magnumdessert/status/1280543694760710144)
 * [Introduction to Pandas](https://realpython.com/pandas-dataframe/) 
 
+### About Data Science 
+* [Data falacies to avoid](https://www.geckoboard.com/uploads/data-fallacies-to-avoid.pdf) [source](https://www.geckoboard.com/best-practice/statistical-fallacies/) [twitter link](https://twitter.com/simongerman600/status/1294764565406855170?s=11)
+
 ### Προηγούμενες χρονιές
 * [διαλέξεις 2018-2019](https://gist.github.com/kantale/b726b3ac17fbb00eb21fec8e262967ec)
 * [διαλέξεις 2017-2018](https://gist.github.com/kantale/7a84e046fca8eba6bf11035b49be00ce)
