@@ -36,7 +36,7 @@
 * Challenges: https://www.hackerrank.com/dashboard
 * [Scientific Python Cheatsheet](https://ipgp.github.io/scientific_python_cheat_sheet/)
 * [Matplotlib Cheatsheet](https://twitter.com/magnumdessert/status/1280543694760710144)
-* [Introduction to Pandas](https://realpython.com/pandas-dataframe/) 
+* [Introduction to Pandas](https://realpython.com/pandas-dataframe/) . [plotting with pandas](https://realpython.com/pandas-plot-python/)
 
 ### About Data Science 
 * [Data falacies to avoid](https://www.geckoboard.com/uploads/data-fallacies-to-avoid.pdf) [source](https://www.geckoboard.com/best-practice/statistical-fallacies/) [twitter link](https://twitter.com/simongerman600/status/1294764565406855170?s=11)
@@ -66,7 +66,7 @@
    * Eπίσης καλό είναι να ρίξετε μια ματιά στις βιβλιοθήκες [seaborn](https://seaborn.pydata.org/) και [plot.ly](https://plot.ly/)
    * Πρόχειρες σημειώσεις σε [jupyter notebook](lesson_10_2019.ipynb), [html](lesson_10_2019.html), [pdf](lesson_10_2019.pdf)
 * 14 Ιανουαρίου 2020. Σημειώσεις [jupyter notebook](lesson_11_API.ipynb), [html](lesson_11_API.html), [pdf](lesson_11_API.pdf). Προσοχή, οι σημειώσεις σε pdf φαίνεται να μην έχουν σωθεί σωστά. Μόλις το διορθώσω θα το ξανα-ανεβάσω.
-* 21 Ιανουαρίου 2020. Σημείωσεις για στατιστικά τεστ [jupyter notebook](lesson_12.ipynb), [html](lesson_12.html), [pdf](lesson_12.pdf). Σημειώσεις για APIs και bioython (από το 2018) σε [jupyter notebook](lesson_12_biopython.ipynb), [html](lesson_12_biopython.html) (η μετατροπή σε pdf απέτυχε..)
+* 21 Ιανουαρίου 2020. Σημείωσεις για στατιστικά τεστ [jupyter notebook](lesson_12.ipynb), [html](lesson_12.html), [pdf](lesson_12.pdf). Σημειώσεις για APIs και biopython (από το 2018) σε [jupyter notebook](lesson_12_biopython.ipynb), [html](lesson_12_biopython.html) (η μετατροπή σε pdf απέτυχε..)
 * 28 Ιανουαρίου 2020. Σημείωσεις για conda και django [jupyter notebook](lesson_13.ipynb), [html](lesson_13.html), [pdf](lesson_13.pdf)
 
 
