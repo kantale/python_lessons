@@ -48,27 +48,10 @@
 * [Διαλέξεις 2016-2017](https://gist.github.com/kantale/c94e9559cc408a986638794ede47f9d5)
 
 ### Βαθμολογία
-* Θα δωθούν 5 σειρές ασκήσεων, μία κάθε 2 εβδομάδες περίπου. Η κάθε σειρά μετράει στο 10% του βαθμού (συνολικά 50%).
+* Θα δωθούν 5 σειρές ασκήσεων, μία κάθε 2 εβδομάδες περίπου. Η κάθε σειρά μετράει στο 20% του βαθμού. Δηλαδή θα δοθούν 100 ασκήσεις, η κάθε άσκηση μετράει στο 1% του βαθμού.
 
 ### Διαλέξεις 
-* 17 Οκτωβρίου 2019 . Σημείωσεις σε [jupyter notebook](notes/lesson_1.ipynb), [html](notes/lesson_1.html), [pdf](notes/lesson_1.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_1_2019.ipynb), [html](lesson_1_2019.html), [pdf](lesson_1_2019.pdf)
-* 22 Οκτωβρίου 2019. Σημειώσεις [jupyter notebook](notes/lesson_2.ipynb), [html](notes/lesson_2.html), [pdf](notes/lesson_2.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_2_2019.ipynb), [html](lesson_2_2019.html), [pdf](lesson_2_2019.pdf)
-* 1 Νοεμβρίου 2019. Σημειώσεις [jupyter notebook](notes/lesson_3.ipynb), [html](notes/lesson_3.html), [pdf](notes/lesson_3.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_3_2019.ipynb), [html](lesson_3_2019.html), [pdf](lesson_3_2019.pdf)
-* 6 Νοεμβρίου 2019. Σημείωσεις [jupyter notebook](notes/lesson_4.ipynb), [html](notes/lesson_4.html), [pdf](notes/lesson_4.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_4_2019.ipynb), [html](lesson_4_2019.html), [pdf](lesson_4_2019.pdf)
-* 12 Νοεμβρίου 2019. Σημείωσεις [jupyter notebook](notes/lesson_5.ipynb), [html](notes/lesson_5.html), [pdf](notes/lesson_5.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_5_2019.ipynb), [html](lesson_5_2019.html), [pdf](lesson_5_2019.pdf)
-* 19 Νοεμβρίου 2019. Σημείωσεις [jupyter notebook](notes/lesson_6.ipynb), [html](notes/lesson_6.html), [pdf](notes/lesson_6.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_6_2019.ipynb), [html](lesson_6_2019.html), [pdf](lesson_6_2019.pdf)
-* 26 Νοεμβρίου 2019. Σημείωσεις [jupyter notebook](notes/lesson_7.ipynb), [html](notes/lesson_7.html), [pdf](notes/lesson_7.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_7_2019.ipynb), [html](lesson_7_2019.html), [pdf](lesson_7_2019.pdf)
-* 3 Δεκεμβρίου 2019. Σημείωσεις [jupyter notebook](notes/lesson_8.ipynb), [html](notes/lesson_8.html), [pdf](notes/lesson_8.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_8_2019.ipynb), [html](lesson_8_2019.html), [pdf](lesson_8_2019.pdf)
-* 10 Δεκεβρίου 2019. Σημείωσεις [jupyter notebook](notes/lesson_9.ipynb), [html](notes/lesson_9.html), [pdf](notes/lesson_9.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_9_2019.ipynb), [html](lesson_9_2019.html), [pdf](lesson_9_2019.pdf). Επίσης πολύ χρήσιμο: [pandas cheatsheet](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf)
-* 17 Δεκεμβρίου 2019. Σημειώσεις:
-   * matplotlib σε [jupyter notebook](notes/lesson_10_matplotlib.ipynb), [html](notes/lesson_10_matplotlib.html), [pdf](notes/lesson_10_matplotlib.pdf)
-   * [bokeh](https://s3.eu-central-1.amazonaws.com/787773452435kantale24234/lesson_9.html)
-   * Eπίσης καλό είναι να ρίξετε μια ματιά στις βιβλιοθήκες [seaborn](https://seaborn.pydata.org/) και [plot.ly](https://plot.ly/)
-   * Πρόχειρες σημειώσεις σε [jupyter notebook](lesson_10_2019.ipynb), [html](lesson_10_2019.html), [pdf](lesson_10_2019.pdf)
-* 14 Ιανουαρίου 2020. Σημειώσεις [jupyter notebook](notes/lesson_11_API.ipynb), [html](notes/lesson_11_API.html), [pdf](notes/lesson_11_API.pdf). Προσοχή, οι σημειώσεις σε pdf φαίνεται να μην έχουν σωθεί σωστά. Μόλις το διορθώσω θα το ξανα-ανεβάσω.
-* 21 Ιανουαρίου 2020. Σημείωσεις για στατιστικά τεστ [jupyter notebook](notes/lesson_12.ipynb), [html](notes/lesson_12.html), [pdf](notes/lesson_12.pdf). Σημειώσεις για APIs και biopython (από το 2018) σε [jupyter notebook](notes/lesson_12_biopython.ipynb), [html](notes/lesson_12_biopython.html) (η μετατροπή σε pdf απέτυχε..)
-* 28 Ιανουαρίου 2020. Σημείωσεις για conda και django [jupyter notebook](notes/lesson_13.ipynb), [html](notes/lesson_13.html), [pdf](notes/lesson_13.pdf)
-
+* 12 Οκτωβρίου 2019 . Σημείωσεις σε [jupyter notebook](notes/lesson_1.ipynb), [html](notes/lesson_1.html), [pdf](notes/lesson_1.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_1_2020.ipynb), [html](2020_2021/lesson_1_2020.html), [pdf](2020_2021/lesson_1_2020.pdf)
 
 
 ### Πως βαθμολογείται μία άσκηση
@@ -97,13 +80,7 @@
 
 ### Λίστα με τις ασκήσεις
 * **ΠΡΟΣΟΧΗ!** Πριν κάνετε κάποια άσκηση (και πριν τη παραδόσετε), διαβάστε λίγο [αυτή τη λίστα με κοινά λάθη που κάνουν οι νέοι προγραμματιστές κυρίως στη python](common_errors.md). 
-* Επίσης καλό θα ήταν να ρίξετε μια ματιά στις [λύσεις των ασκήσεων 2018, σειρά 1η, 2η, 3η και 4η](solutions_2018.ipynb)
-* **[ΣΕΙΡΑ ΑΣΚΗΣΕΩΝ 1](assignment_1.md)** Παράδοση μέχρι: 12 Νοεμβρίου 2019
-* **[ΣΕΙΡΑ ΑΣΚΗΣΕΩΝ 2](assignment_2.md)** Παράδοση μέχρι: 26 Νοεμβρίου 2019
-* **[ΣΕΙΡΑ ΑΣΚΗΣΕΩΝ 3](assignment_3.md)** Παράδοση μέχρι: 10 Δεκεμβρίου 2019
-* **[ΣΕΙΡΑ ΑΣΚΗΣΕΩΝ 4](assignment_4.md)** Παράδοση μέχρι: 15 Ιανουαρίου 2020
-* **[ΣΕΙΡΑ ΑΣΚΗΣΕΩΝ 5](assignment_5.ipynb)** Παράδοση μέχρι: ~~28 Φεβρουαρίου 2020~~ Κυριακή 8 Μαρτίου 2020 
-* **[Λύσεις στις (περισσότερες) ασκήσεις](solutions_2019.ipynb)**
+* Επίσης καλό θα ήταν να ρίξετε μια ματιά στις [λύσεις των ασκήσεων 2018, σειρά 1η, 2η, 3η και 4η](solutions_2018.ipynb) και στις [λύσεις των ασκήσεων 2019](solutions_2019.ipynb)
 
 
 
