@@ -51,7 +51,7 @@
 * Στο τέλος της χρονιάς θα δωθεί μία λίστα από projects. Τα projects θα είναι ατομικά και διαφoρετικά μεταξύ τους. Το project θα μετρήσει για το 50% του βαθμού. 
 
 ### Διαλέξεις 
-* 17 Οκτωβρίου 2019 . Σημείωσεις σε [jupyter notebook](notes/lesson_1.ipynb), [html](notes/lesson_1.html), [pdf](notes/lesson_1.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_1_2019.ipynb), [html](lesson_1_2019.html), [pdf](lesson_1_2019.pdf)
+* 17 Οκτωβρίου 2019 . Σημείωσεις σε [jupyter notebook](../notes/lesson_1.ipynb), [html](../notes/lesson_1.html), [pdf](../notes/lesson_1.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_1_2019.ipynb), [html](lesson_1_2019.html), [pdf](lesson_1_2019.pdf)
 * 22 Οκτωβρίου 2019. Σημειώσεις [jupyter notebook](lesson_2.ipynb), [html](lesson_2.html), [pdf](lesson_2.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_2_2019.ipynb), [html](lesson_2_2019.html), [pdf](lesson_2_2019.pdf)
 * 1 Νοεμβρίου 2019. Σημειώσεις [jupyter notebook](lesson_3.ipynb), [html](lesson_3.html), [pdf](lesson_3.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_3_2019.ipynb), [html](lesson_3_2019.html), [pdf](lesson_3_2019.pdf)
 * 6 Νοεμβρίου 2019. Σημείωσεις [jupyter notebook](lesson_4.ipynb), [html](lesson_4.html), [pdf](lesson_4.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](lesson_4_2019.ipynb), [html](lesson_4_2019.html), [pdf](lesson_4_2019.pdf)
