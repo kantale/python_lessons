@@ -1,6 +1,6 @@
 ### Επικοινωνία
 * [Αλέξανδρος Καντεράκης](https://www.ics.forth.gr/cbml/index_main.php?l=e&c=730). [kantale@ics.forth.gr](kantale@ics.forth.gr)
-* [Chat room](https://gitter.im/CRETE_PYTHON_2019/community)
+* [Slack channel](pythoncrete2020.slack.com)
 
 ### Πρόγραμμα (ενδεικτικό)
 * Week 1: Εισαγωγή στη python, γιατί python; anaconda installation, περιβάλλον ανάπτυξης jupyter, markdown, social coding, primitive data types and operations, strings, boolean logic, slicing
@@ -52,6 +52,7 @@
 
 ### Διαλέξεις 
 * 12 Οκτωβρίου 2020 . Σημειώσεις σε [jupyter notebook](notes/lesson_1.ipynb), [html](notes/lesson_1.html), [pdf](notes/lesson_1.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_1_2020.ipynb), [html](2020_2021/lesson_1_2020.html), [pdf](2020_2021/lesson_1_2020.pdf)
+* 20 Οκτωβρίου 2020 . Σημειώσεις σε [jupyter notebook](notes/lesson_2.ipynb), [html](notes/lesson_2.html), [pdf](notes/lesson_2.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_2_2020.ipynb), [html](2020_2021/lesson_2_2020.html), [pdf](2020_2021/lesson_2_2020.pdf)
 
 
 ### Πως βαθμολογείται μία άσκηση
