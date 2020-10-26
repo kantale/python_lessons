@@ -53,6 +53,8 @@
 ### Διαλέξεις 
 * 12 Οκτωβρίου 2020 . Σημειώσεις σε [jupyter notebook](notes/lesson_1.ipynb), [html](notes/lesson_1.html), [pdf](notes/lesson_1.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_1_2020.ipynb), [html](2020_2021/lesson_1_2020.html), [pdf](2020_2021/lesson_1_2020.pdf)
 * 20 Οκτωβρίου 2020 . Σημειώσεις σε [jupyter notebook](notes/lesson_2.ipynb), [html](notes/lesson_2.html), [pdf](notes/lesson_2.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_2_2020.ipynb), [html](2020_2021/lesson_2_2020.html), [pdf](2020_2021/lesson_2_2020.pdf)
+* 26 Οκτωβρίου 2020 . Σημειώσεις σε [jupyter notebook](notes/lesson_3.ipynb), [html](notes/lesson_3.html), [pdf](notes/lesson_3.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_3_2020.ipynb), [html](2020_2021/lesson_3_2020.html), [pdf](2020_2021/lesson_2_2020.pdf)
+
 
 
 ### Πως βαθμολογείται μία άσκηση
@@ -82,6 +84,6 @@
 ### Λίστα με τις ασκήσεις
 * **ΠΡΟΣΟΧΗ!** Πριν κάνετε κάποια άσκηση (και πριν τη παραδόσετε), διαβάστε λίγο [αυτή τη λίστα με κοινά λάθη που κάνουν οι νέοι προγραμματιστές κυρίως στη python](common_errors.md). 
 * Επίσης καλό θα ήταν να ρίξετε μια ματιά στις [λύσεις των ασκήσεων 2018, σειρά 1η, 2η, 3η και 4η](solutions_2018.ipynb) και στις [λύσεις των ασκήσεων 2019](2019_2020/solutions_2019.ipynb)
-
+* [Σειρά ασκήσεων 1](assignment_1.ipynb). Ημερομηνία παράδοσης: 9 Νοεμβρίου 2020, 23:59.  
 
 
