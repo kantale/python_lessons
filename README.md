@@ -57,6 +57,7 @@
 * 2 Νοεμβρίου 2020 . Οι Σημειώσεις είναι ίδιες με του προηγούμενου μαθήματος. Οι **πρόχειρες** σημειώσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_4_2020.ipynb), [html](2020_2021/lesson_4_2020.html), [pdf](2020_2021/lesson_4_2020.pdf)
 * 9 Νοεμβρίου 2020 . Σημειώσεις σε [jupyter notebook](notes/lesson_4.ipynb), [html](notes/lesson_4.html), [pdf](notes/lesson_4.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_5_2020.ipynb), [html](2020_2021/lesson_5_2020.html), [pdf](2020_2021/lesson_5_2020.pdf)
 * 16 Νοεμβρίου 2020. Σημειώσεις σε [jupyter notebook](notes/lesson_5.ipynb), [html](notes/lesson_5.html), [pdf](notes/lesson_5.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_6_2020.ipynb), [html](2020_2021/lesson_6_2020.html), [pdf](2020_2021/lesson_6_2020.pdf)
+* 23 Νοεμβρίου 2020. Σε αυτό το μάθημα λύσαμε κάποιες από τις ασκήσεις της [2ης σειράς τους 2019](2019_2020/assignment_2.md). Οι λύσεις βρίσκονται εδώ σε [jupyter notebook](2020_2021/lesson_7_2020.ipynb), [html](2020_2021/lesson_7_2020.html), [pdf](2020_2021/lesson_7_2020.pdf)
 
 
 
