@@ -58,6 +58,10 @@
 * 9 Νοεμβρίου 2020 . Σημειώσεις σε [jupyter notebook](notes/lesson_4.ipynb), [html](notes/lesson_4.html), [pdf](notes/lesson_4.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_5_2020.ipynb), [html](2020_2021/lesson_5_2020.html), [pdf](2020_2021/lesson_5_2020.pdf)
 * 16 Νοεμβρίου 2020. Σημειώσεις σε [jupyter notebook](notes/lesson_5.ipynb), [html](notes/lesson_5.html), [pdf](notes/lesson_5.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_6_2020.ipynb), [html](2020_2021/lesson_6_2020.html), [pdf](2020_2021/lesson_6_2020.pdf)
 * 23 Νοεμβρίου 2020. Σε αυτό το μάθημα λύσαμε κάποιες από τις ασκήσεις της [2ης σειράς τους 2019](2019_2020/assignment_2.md). Οι λύσεις βρίσκονται εδώ σε [jupyter notebook](2020_2021/lesson_7_2020.ipynb), [html](2020_2021/lesson_7_2020.html), [pdf](2020_2021/lesson_7_2020.pdf)
+* 30 Νοεμβρίου 2020. Διαβάζουμε:
+   * Άνοιγμα, διαβασμα και σώσιμο αρχείοων: [jupyter notebook](notes/lesson_5.ipynb), [html](notes/lesson_5.html), [pdf](notes/lesson_5.pdf)
+   * Import & Regular Expressions : [jupyter notebook](notes/lesson_6.ipynb), [html](notes/lesson_6.html), [pdf](notes/lesson_6.pdf)
+   * οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_8_2020.ipynb), [html](2020_2021/lesson_8_2020.html), [pdf](2020_2021/lesson_8_2020.pdf)
 	
 
 
