@@ -68,7 +68,10 @@
       * Προσοχή! Δεν είπαμε τα generator comprehensions! Θα τα πούμε την επόμενη φορά
    * Numpy [jupyter notebook](notes/lesson_8.ipynb), [html](notes/lesson_8.html), [pdf](notes/lesson_8.pdf)
    * οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_9_2020.ipynb), [html](2020_2021/lesson_9_2020.html), [pdf](2020_2021/lesson_9_2020.pdf)
-	
+* 14 Δεκεμβρίου 2020/. Διαβάζουμε:
+   * Γραφικές παραστάσεις [jupyter notebook](notes/lesson_10_matplotlib.html), [html](notes/lesson_10_matplotlib.html), [pdf](notes/lesson_10_matplotlib.html)
+   * pandas [jupyter notebook](notes/lesson_9.ipynb), [html](notes/lesson_9.html), [pdf](notes/lesson_9.pdf)
+	* οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_10_2020.ipynb), [html](2020_2021/lesson_10_2020.html), [pdf](2020_2021/lesson_10_2020.pdf)
 
 
 ### Πως βαθμολογείται μία άσκηση
