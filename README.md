@@ -21,7 +21,9 @@
 * [Practical Python Programming from David Beazley](https://dabeaz-course.github.io/practical-python/)
 * [Beginner's Python Cheat Sheets](https://ehmatthes.github.io/pcc_2e/cheat_sheets/cheat_sheets/)
 * [Non-beginner's python cheat sheet](https://gto76.github.io/python-cheatsheet/)
-* [NumPy: the absolute basics for beginners](https://numpy.org/devdocs/user/absolute_beginners.html)
+* NumPy
+   * [NumPy: the absolute basics for beginners](https://numpy.org/devdocs/user/absolute_beginners.html)
+   * [NumPy Illustrated: The Visual Guide to NumPy](https://medium.com/better-programming/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d), from Lev Maximov 
 * [The official Python Tutorial](https://docs.python.org/3/tutorial/index.html)
 * [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/) Practical programming for total beginners. Written by Al Sweigart. Free to read under a Creative Commons license.
 * [A beginner's python tutorial](https://en.wikibooks.org/wiki/A_Beginner%27s_Python_Tutorial)
