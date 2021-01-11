@@ -74,6 +74,11 @@
    * Γραφικές παραστάσεις [jupyter notebook](notes/lesson_10_matplotlib.html), [html](notes/lesson_10_matplotlib.html), [pdf](notes/lesson_10_matplotlib.html)
    * pandas [jupyter notebook](notes/lesson_9.ipynb), [html](notes/lesson_9.html), [pdf](notes/lesson_9.pdf)
 	* οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_10_2020.ipynb), [html](2020_2021/lesson_10_2020.html), [pdf](2020_2021/lesson_10_2020.pdf)
+* 11 Ιανουαρίου 2021 . Διαβάζουμε:
+   * Classes : [jupyter notebook](notes/lesson_7.ipynb), [html](notes/lesson_7.html), [pdf](notes/lesson_7.pdf)
+   * Serialization (JSON): [jupyter notebook](notes/lesson_7.ipynb), [html](notes/lesson_7.html), [pdf](notes/lesson_7.pdf)
+   * API : [jupyter notebook](notes/lesson_11_API.ipynb), [html](notes/lesson_11_API.html), [pdf](notes/lesson_11_API.pdf) 
+   * οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_11_2020.ipynb), [html](2020_2021/lesson_11_2020.html), [pdf](2020_2021/lesson_11_2020.pdf)
 
 
 ### Πως βαθμολογείται μία άσκηση
