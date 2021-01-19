@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>lesson_12_biopython</title>
+<title>lesson_hypothesis_testing</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13116,1624 +13116,46 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#928;&#961;&#959;&#947;&#961;&#945;&#956;&#956;&#945;&#964;&#953;&#963;&#956;&#972;&#962;-&#956;&#949;-&#964;&#951;-&#947;&#955;&#974;&#963;&#963;&#945;-python">&#928;&#961;&#959;&#947;&#961;&#945;&#956;&#956;&#945;&#964;&#953;&#963;&#956;&#972;&#962; &#956;&#949; &#964;&#951; &#947;&#955;&#974;&#963;&#963;&#945; python<a class="anchor-link" href="#&#928;&#961;&#959;&#947;&#961;&#945;&#956;&#956;&#945;&#964;&#953;&#963;&#956;&#972;&#962;-&#956;&#949;-&#964;&#951;-&#947;&#955;&#974;&#963;&#963;&#945;-python">&#182;</a></h2><h3 id="Alexandros-Kanterakis-kantale@ics.forth.gr">Alexandros Kanterakis <a href="mailto:kantale@ics.forth.gr">kantale@ics.forth.gr</a><a class="anchor-link" href="#Alexandros-Kanterakis-kantale@ics.forth.gr">&#182;</a></h3><h3 id="&#916;&#953;&#940;&#955;&#949;&#958;&#951;-12&#951;,-&#928;&#945;&#961;&#945;&#963;&#954;&#949;&#965;&#942;-26-&#921;&#945;&#957;&#959;&#965;&#945;&#961;&#943;&#959;&#965;-2018">&#916;&#953;&#940;&#955;&#949;&#958;&#951; 12&#951;, &#928;&#945;&#961;&#945;&#963;&#954;&#949;&#965;&#942; 26 &#921;&#945;&#957;&#959;&#965;&#945;&#961;&#943;&#959;&#965; 2018<a class="anchor-link" href="#&#916;&#953;&#940;&#955;&#949;&#958;&#951;-12&#951;,-&#928;&#945;&#961;&#945;&#963;&#954;&#949;&#965;&#942;-26-&#921;&#945;&#957;&#959;&#965;&#945;&#961;&#943;&#959;&#965;-2018">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Σκοπός αυτής της διάλεξης είναι η εισαγωγή σε μεθόδους για να προσπελαύνουμε υπάρχοντες online βάσεις δεδομένων οι οποίες περιέχουν γενετικές-βιολογικές πληροφορίες.</p>
-<p>Καταρχήν πρέπει να αναφέρουμε ότι υπάρχουν χιλιάδες τέτοιες βάσεις οι οποίες περιέχουν πληροφορίες για όλες τις μορφές των -omics data. Μία πολύ καλή λίστα βρίσκεται εδώ: <a href="https://www.oxfordjournals.org/nar/database/a/">https://www.oxfordjournals.org/nar/database/a/</a> (προφανώς και η λίστα δεν είναι πλήρης).</p>
-<p>Πως λοιπόν μπορούμε προγραμματιστικά να προσπελάσουμε αυτές τις βάσεις;</p>
-<h3 id="HTTP-GET-and-POST-requests">HTTP GET and POST requests<a class="anchor-link" href="#HTTP-GET-and-POST-requests">&#182;</a></h3><p>Πριν απαντήσουμε σε αυτό πρέπει να πούμε κάποια βασικά στοιχεία για το <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP</a> πρωτόκολλο. Το HTTP είναι ένα πρωτόκολλο που καθορίζει πως δύο υπολογιστές μπορούν να επικοινωνήσουν ώστε ο ένας να "πάρει" κάποια πληροφορία από τον άλλο. Αυτή η "πληροφορία" είναι συνήθως μία HTML σελίδα, αλλά μπορεί να είναι και οποιαδίποτε άλλη μορφή πληροφορίας. Μία πηγή πληροφορίας ορίζεται σύμφωνα με το HTTP ως ένα URL ή αλλιώς ένα link. π.χ: <a href="http://bioinfo-grad.gr/eclass/">http://bioinfo-grad.gr/eclass/</a>.</p>
-<p>Ένας υπολογιστής που "ζητάει" πληροφορία συνήθως αναφέρεται ως "client" ενώ ένας υπολογιστής που μπορεί να τη δώσει ονομάζεται ως server. Ένας client για να "ζητήσει" πληροφορία από τον "server" πρέπει να ξέρει το URL του server. Στη συνέχεια εκτελεί ένα "request" (υποθέτω "αίτημα" στα ελληνικά),  προς τον server και του δηλώνει ποια είναι η μορφή της πληροφορίας που θέλει. Ο server αποφασίζει αν την έχει (και αν πρέπει να τη δώσει) την πληροφορία και ανάλογα την επιστρέφει στον client (κάτι σαν το ΚΕΠ..). Σε περίπτωση που κάτι δεν πάει καλά, ο server μπορεί να ενημερώσει τον client τι λάθος έγινε επιστρέφοντας έναν <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">κωδικό</a>. Αν ο κωδικός είναι το 200, τότε δεν συνέβει κανένα λάθος. Όταν ένας server "απαντάει" σε ένα request, τότε λέμε ότι έστειλε ένα responce.</p>
-<p>Όταν ο client επικοινωνεί με τον server του δηλώνει: Τι θέλει, και σε ποια μορφή το θέλει.</p>
-<p>Σχετικά με το "τι θέλω" υπάρχουν ΔΥΟ βασικοί τρόποι δήλωσης: οι <a href="http://www.w3schools.com/tags/ref_httpmethods.asp">"GET" και "POST"</a>.</p>
-<p>H GET είναι ένας τρόπος να δηλώσεις τι θέλεις από έναν server, κωδικοποιώντας το αίτημα σου πάνω στο link. Αν υποθέσουμε π.χ. ότι θέλεις πληροροφίες για το προιόν με id=123 και το οποίο ανοίκει στη κατηγορία category=678 τότε το link που εκτελεί ένα GET request θα έχει τη μορφή: <a href="http://www.example.com/index.html?id=123&amp;category=678">http://www.example.com/index.html?id=123&amp;category=678</a>. Για παράδειγμα αν κοιτάξουμε αυτό το εντελώς τυχαίο link: <a href="http://news.in.gr/greece/article/?aid=1500029633">http://news.in.gr/greece/article/?aid=1500029633</a> θα δούμε ότι  είναι ένα GET request στη σελίδα news.in.gr/greece/article όπου ζητάει το "resource" το οποίο έχει aid=1500029633. Το GET request είναι ο κύριος τρόπος επικοινωνίας των browsers με τους web servers.</p>
-<p>Τα GET requests έχουν δύο μειονεκτήματα:</p>
-<ul>
-<li>Αυτό που ζητάει ο client "φαίνεται" πάνω στο link. Γενικότερα τα links δεν θεωρούνται "ασφαλή" πληροφορία και είναι προσβάσιμα από πολλούς "ενδιάμεσους". Αν για παράδειγμα ζητάμε κάποια δεδομένα με βάση προσωπικές μας πληροφορίες (π.χ. τηλέφωνο) δεν είναι καλή ιδέα να φαίνεται αυτό στο link. </li>
-<li>Δεδομένου ότι αυτό που ζητάμε βρίσκεται πάνω στο link. Αν αυτό που ζητάμε είναι πολύπλοκο, τότε το link μπορεί να γίνει τεράστιο και μη διαχειρίσιμο. Για παράδειγμα να ένα άσχημο link με πολλά GET πεδία: <a href="https://www.amazon.com/Data-Visualization-Python-JavaScript-Transform/dp/1491920513/ref=s9_cartx_gw_g14_i5_r?_encoding=UTF8&amp;fpl=fresh&amp;pf_rd_m=ATVPDKIKX0DER&amp;pf_rd_s=&amp;pf_rd_r=WRMBPSF9K3H62TEWG5DW&amp;pf_rd_t=36701&amp;pf_rd_p=a6aaf593-1ba4-4f4e-bdcc-0febe090b8ed&amp;pf_rd_i=desktop">https://www.amazon.com/Data-Visualization-Python-JavaScript-Transform/dp/1491920513/ref=s9_cartx_gw_g14_i5_r?_encoding=UTF8&amp;fpl=fresh&amp;pf_rd_m=ATVPDKIKX0DER&amp;pf_rd_s=&amp;pf_rd_r=WRMBPSF9K3H62TEWG5DW&amp;pf_rd_t=36701&amp;pf_rd_p=a6aaf593-1ba4-4f4e-bdcc-0febe090b8ed&amp;pf_rd_i=desktop</a> </li>
+<h3 id="Hypothesis-Testing">Hypothesis Testing<a class="anchor-link" href="#Hypothesis-Testing">&#182;</a></h3><ul>
+<li>Έστω <a href="https://twitter.com/meganinlisbon/status/1101870079858409478">https://twitter.com/meganinlisbon/status/1101870079858409478</a></li>
 </ul>
-<p>O δεύτερος τρόπος επικοινωνίας του client με τον server είναι μεσώ του POST request. Όταν κάνουμε POST βάζουμε μέσα σε ένα ειδικό πεδίο τα δεδομένα μας και το HTTP πρωτόκολο στέλνει αυτά τα δεδομένα στον server χωρίς να φαίνονται στο link. Π.χ. όταν κάνετε login στο site: <a href="http://bioinfo-grad.gr/eclass/">http://bioinfo-grad.gr/eclass/</a> βάζετε το username και το password σας. Στη συνέχεια ο browser στέλνει αυτά τα δεδομένα στον server για επιβεβαίωση. Αυτά τα δεδομένα ΔΕΝ πρέπει προφανώς να φαίνονται στο link. Πως γίνεται αυτό; Αν κοιτάξετε τον κώδικα της σελίδας (π.χ. από Firefox μπορείτε να το δείτε επιλέγοντας Tools -&gt; Web Developer -&gt; Page Source). Θα δείτε σε ένα σημείο να γράφει:</p>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Σύνδεση χρήστη<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&#39;http://bioinfo-grad.gr/eclass/&#39;</span> <span class="na">method</span><span class="o">=</span><span class="s">&#39;post&#39;</span><span class="p">&gt;</span>
-</pre></div>
-<p>Δηλαδή λέει: τα δεδομένα που βάζουμε σε αυτή τη φόρμα (form) θέλω να στέλνονται στον server μέσω POST request.</p>
-<p>Ένα τελευταίο σημείο για το HTTP είναι οι <a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields">headers</a>. Τα headers (επικεφαλίδες;;) είναι πεδία με προ-καθορισμένα ονόματα στα οποία μπορούμε να βάλουμε πληροφορίες που διευκολύνουν τον server να διεκπεραιώσει το request μας. Π.χ. αν βάλουμε στο header με το όνομα "Content-Type" τη τιμή "application/json", τότε λέμε στον server ότι τα δεδομένα που του στέλνουμε μέσω POST είναι σε μορφή JSON.</p>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="python-requests-package">python requests package<a class="anchor-link" href="#python-requests-package">&#182;</a></h3><p>Ωραία όλα αυτά, αλλά πως τα κάνουμε μέσω python; Παρόλο που η python έχει βιβλιοθήκες για να κάνουμε GET και POST, θα χρησιμοποιήσουμε ένα εξωτερικό πακέτο το οποίο είναι εξαιρετικά εύχρηστο. Αυτό το πακέτο είναι το requests: <a href="http://docs.python-requests.org/en/master/">http://docs.python-requests.org/en/master/</a> . Για να το εγκαταστίσετε τρέξτε:</p>
-<div class="highlight"><pre><span></span>pip install requests
-</pre></div>
-<p><strong>ΠΡΟΣΟΧΗ!</strong> πρέπει να βεβαιωθείτε ότι το πρόγραμμα pip βρίσκεται στο ίδιο σημείο που είναι και η python που τρέχετε!.
-Για παράδειγμα:</p>
-<div class="highlight"><pre><span></span>$ which pip
-/Users/alexandroskanterakis/anaconda3/bin/pip
-$ which python
-/Users/alexandroskanterakis/anaconda3/bin/python
-</pre></div>
-<p>Βλέπουμε δηλαδή ότι το pip και η python που τρέχω είναι στο ίδιο σημείο. Διαφορετικά θα πρέπει να γράψετε κάτι σαν αυτό:</p>
-<div class="highlight"><pre><span></span>/Directory/where/your/python/is/pip install requests
-</pre></div>
-<p>Για να βεβαιωθείτε ότι έχει εγκατασταθεί σωστά θα πρέπει να μπορείτε να κάνετε import αυτό το πακέτο χωρίς πρόβλημα:</p>
-<div class="highlight"><pre><span></span>$ python
-Python <span class="m">3</span>.5.2 <span class="p">|</span>Anaconda <span class="m">4</span>.1.1 <span class="o">(</span>x86_64<span class="o">)</span><span class="p">|</span> <span class="o">(</span>default, Jul  <span class="m">2</span> <span class="m">2016</span>, <span class="m">17</span>:52:12<span class="o">)</span> 
-<span class="o">[</span>GCC <span class="m">4</span>.2.1 Compatible Apple LLVM <span class="m">4</span>.2 <span class="o">(</span>clang-425.0.28<span class="o">)]</span> on darwin
-Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&quot;</span>, <span class="s2">&quot;credits&quot;</span> or <span class="s2">&quot;license&quot;</span> <span class="k">for</span> more information.
-&gt;&gt;&gt; import requests
-&gt;&gt;&gt;
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#928;&#961;&#959;&#963;&#960;&#949;&#955;&#945;&#973;&#957;&#959;&#957;&#964;&#945;&#962;-&#964;&#951;&#957;-ENSEMBL">&#928;&#961;&#959;&#963;&#960;&#949;&#955;&#945;&#973;&#957;&#959;&#957;&#964;&#945;&#962; &#964;&#951;&#957; ENSEMBL<a class="anchor-link" href="#&#928;&#961;&#959;&#963;&#960;&#949;&#955;&#945;&#973;&#957;&#959;&#957;&#964;&#945;&#962;-&#964;&#951;&#957;-ENSEMBL">&#182;</a></h2><p>Η <a href="http://www.ensembl.org/index.html">ENSEMBL</a> είναι ένα από τα πιο σημαντικά portals με διάφορες γενομικές πληροφορίες για πολλούς οργανισμούς. Η ENSEMBL έχει ένα API (<a href="https://en.wikipedia.org/wiki/Application_programming_interface">Application programming interface</a>) το οποίο είναι ένα σύνολο από οδηγίες προς προγραμματιστές για να προσπελαύνουν μία υπηρεσία. Το API της ENSEMBL περιγράφεται εδώ:  <a href="http://rest.ensembl.org/">http://rest.ensembl.org/</a></p>
-<p>Παρατηρήστε ότι κάποιες υπηρεσίες είναι προσβάσιμες μέσω GET και κάποιες μέσω POST.</p>
-<p>Σαν παράδειγμα θα χρησιμοποιήσουμε το API της ENSEMBL το οποίο αναφέρεται στο <a href="http://www.ensembl.org/info/docs/tools/vep/index.html">Variant Effect Predictor</a>. Το Variant Effect Predictor μας δίνει διάφορες πληροφορίες σχετικά με το downstream effect και clinical significance ενώς variant. Αλλα πριν κάνουμε αυτό ας δούμε με ποιους τρόπους κωδικοποιούμε έναν variant.</p>
-<p>Γενικότερα υπάρχουν δύο τρόποι.</p>
-<p>Αν ο variant είναι γνωστός τότε κοιτάμε αν έχει καταχωρηθεί στη <a href="https://www.ncbi.nlm.nih.gov/projects/SNP/">dbSNP</a>. Σε αυτή τη περίπτωση ο variant θα έχει εναν κωδικό με το φορμάτ: rsXXXXXX. πχ: rs56116432.</p>
-<p>Αν ο variant δεν είναι γνωστός και δεν υπάρχει στη dbSNP τότε μπορούμε να τον περιγράψουμε μέσω του <a href="http://varnomen.hgvs.org/recommendations/general/">HGVS</a> φορμάτ. Η περιγραφή αυτή είναι αρκετά πολύπλοκη και ξεφεύγει λίγο από τους σκοπούς αυτής της διάλεξης. Απλά θα πούμε ότι μία από τις πολλές HGVS μορφές ενώς variant είναι το:</p>
-<p>{ΧΡΩΜΟΣΩΜΑ}:g.{ΘΕΣΗ}{REFERENCE}&gt;{ALTERNATIVE}</p>
-<p>π.χ.:</p>
-<p>9:g.22125504G&gt;C</p>
-<p>Δηλαδή στο χρωμόσωμα 9 στη θέση 22125504 αντί για G που είναι το reference υπάρχει C.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="GET-request-&#947;&#953;&#945;-dbSNP-variant">GET request &#947;&#953;&#945; dbSNP variant<a class="anchor-link" href="#GET-request-&#947;&#953;&#945;-dbSNP-variant">&#182;</a></h3><p>Για να πάρουμε πληροφορίες από το Variant Effect Predictor για ένα dbSNP variant, η ENSEMBL δίνει αυτό το API: <a href="http://rest.ensembl.org/documentation/info/vep_id_get">http://rest.ensembl.org/documentation/info/vep_id_get</a> Μπορούμε να κάνουμε ένα request σε αυτό το API ως εξής:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="c1"># Το URL που πρέπει να χρησιμοποιήσουμε </span>
-<span class="c1"># υπάρχει στη σελίδα http://rest.ensembl.org/documentation/info/vep_id_get </span>
-<span class="c1"># Επίσης Αφού είναι GET Request βάζουμε τη πληροφορία που θέλουμε στο URL:</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://rest.ensembl.org/vep/human/id/rs56116432?&#39;</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;Content-Type&quot;</span> <span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span>
-
-<span class="c1"># Κάνουμε το GET request</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Στη συνέχεια κοιτάμαι αν όλα πήγαν οκ:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">ok</span><span class="p">)</span> <span class="c1"># Στην ουσία εδώ κοιτάει αν το response έχει κωδικό 200</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>True
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Παίρνουμε τα JSON δεδομένα:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[{&#39;transcript_consequences&#39;: [{&#39;biotype&#39;: &#39;processed_transcript&#39;, &#39;gene_id&#39;: &#39;ENSG00000175164&#39;, &#39;cdna_end&#39;: 700, &#39;hgnc_id&#39;: &#39;HGNC:79&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;cdna_start&#39;: 700, &#39;variant_allele&#39;: &#39;T&#39;, &#39;transcript_id&#39;: &#39;ENST00000453660&#39;, &#39;consequence_terms&#39;: [&#39;non_coding_transcript_exon_variant&#39;, &#39;non_coding_transcript_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;strand&#39;: -1, &#39;gene_symbol&#39;: &#39;ABO&#39;}, {&#39;biotype&#39;: &#39;protein_coding&#39;, &#39;gene_id&#39;: &#39;ENSG00000175164&#39;, &#39;sift_score&#39;: 0, &#39;hgnc_id&#39;: &#39;HGNC:79&#39;, &#39;polyphen_score&#39;: 0.997, &#39;sift_prediction&#39;: &#39;deleterious&#39;, &#39;variant_allele&#39;: &#39;T&#39;, &#39;cds_start&#39;: 686, &#39;codons&#39;: &#39;gGc/gAc&#39;, &#39;transcript_id&#39;: &#39;ENST00000538324&#39;, &#39;cds_end&#39;: 686, &#39;polyphen_prediction&#39;: &#39;probably_damaging&#39;, &#39;impact&#39;: &#39;MODERATE&#39;, &#39;cdna_end&#39;: 711, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;cdna_start&#39;: 711, &#39;consequence_terms&#39;: [&#39;missense_variant&#39;], &#39;protein_end&#39;: 229, &#39;protein_start&#39;: 229, &#39;strand&#39;: -1, &#39;amino_acids&#39;: &#39;G/D&#39;, &#39;gene_symbol&#39;: &#39;ABO&#39;}, {&#39;biotype&#39;: &#39;protein_coding&#39;, &#39;gene_id&#39;: &#39;ENSG00000175164&#39;, &#39;sift_score&#39;: 0, &#39;hgnc_id&#39;: &#39;HGNC:79&#39;, &#39;polyphen_score&#39;: 0.997, &#39;sift_prediction&#39;: &#39;deleterious&#39;, &#39;variant_allele&#39;: &#39;T&#39;, &#39;cds_start&#39;: 686, &#39;codons&#39;: &#39;gGc/gAc&#39;, &#39;transcript_id&#39;: &#39;ENST00000611156&#39;, &#39;cds_end&#39;: 686, &#39;polyphen_prediction&#39;: &#39;probably_damaging&#39;, &#39;impact&#39;: &#39;MODERATE&#39;, &#39;cdna_end&#39;: 711, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;cdna_start&#39;: 711, &#39;consequence_terms&#39;: [&#39;missense_variant&#39;], &#39;protein_end&#39;: 229, &#39;protein_start&#39;: 229, &#39;strand&#39;: -1, &#39;amino_acids&#39;: &#39;G/D&#39;, &#39;gene_symbol&#39;: &#39;ABO&#39;}], &#39;most_severe_consequence&#39;: &#39;missense_variant&#39;, &#39;input&#39;: &#39;rs56116432&#39;, &#39;seq_region_name&#39;: &#39;9&#39;, &#39;allele_string&#39;: &#39;C/T&#39;, &#39;end&#39;: 133256042, &#39;assembly_name&#39;: &#39;GRCh38&#39;, &#39;colocated_variants&#39;: [{&#39;exac_amr_maf&#39;: 0.004932, &#39;exac_sas_maf&#39;: 0.001639, &#39;exac_nfe_maf&#39;: 0.005339, &#39;end&#39;: 133256042, &#39;eas_maf&#39;: 0, &#39;exac_adj_allele&#39;: &#39;T&#39;, &#39;exac_eas_maf&#39;: 0, &#39;exac_fin_maf&#39;: 0.02601, &#39;exac_amr_allele&#39;: &#39;T&#39;, &#39;ea_maf&#39;: 0.003809, &#39;exac_oth_allele&#39;: &#39;T&#39;, &#39;minor_allele&#39;: &#39;T&#39;, &#39;sas_allele&#39;: &#39;T&#39;, &#39;amr_allele&#39;: &#39;T&#39;, &#39;exac_afr_allele&#39;: &#39;T&#39;, &#39;start&#39;: 133256042, &#39;ea_allele&#39;: &#39;T&#39;, &#39;allele_string&#39;: &#39;C/T&#39;, &#39;exac_eas_allele&#39;: &#39;T&#39;, &#39;afr_maf&#39;: 0, &#39;amr_maf&#39;: 0.0014, &#39;sas_maf&#39;: 0.001, &#39;eur_allele&#39;: &#39;T&#39;, &#39;exac_fin_allele&#39;: &#39;T&#39;, &#39;strand&#39;: 1, &#39;afr_allele&#39;: &#39;T&#39;, &#39;exac_maf&#39;: 0.003022, &#39;minor_allele_freq&#39;: 0.0026, &#39;seq_region_name&#39;: 9, &#39;exac_nfe_allele&#39;: &#39;T&#39;, &#39;exac_adj_maf&#39;: 0.004439, &#39;exac_afr_maf&#39;: 0.0005079, &#39;aa_maf&#39;: 0.0007102, &#39;exac_sas_allele&#39;: &#39;T&#39;, &#39;eur_maf&#39;: 0.0109, &#39;aa_allele&#39;: &#39;T&#39;, &#39;eas_allele&#39;: &#39;T&#39;, &#39;id&#39;: &#39;rs56116432&#39;, &#39;exac_allele&#39;: &#39;T&#39;, &#39;exac_oth_maf&#39;: 0.004926}], &#39;strand&#39;: 1, &#39;id&#39;: &#39;rs56116432&#39;, &#39;start&#39;: 133256042}, {&#39;transcript_consequences&#39;: [{&#39;biotype&#39;: &#39;protein_coding&#39;, &#39;gene_id&#39;: &#39;ENSG00000281879&#39;, &#39;sift_score&#39;: 0, &#39;hgnc_id&#39;: &#39;HGNC:79&#39;, &#39;polyphen_score&#39;: 0.997, &#39;sift_prediction&#39;: &#39;deleterious&#39;, &#39;variant_allele&#39;: &#39;T&#39;, &#39;cds_start&#39;: 689, &#39;codons&#39;: &#39;gGc/gAc&#39;, &#39;transcript_id&#39;: &#39;ENST00000626615&#39;, &#39;cds_end&#39;: 689, &#39;polyphen_prediction&#39;: &#39;probably_damaging&#39;, &#39;impact&#39;: &#39;MODERATE&#39;, &#39;cdna_end&#39;: 714, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;cdna_start&#39;: 714, &#39;consequence_terms&#39;: [&#39;missense_variant&#39;], &#39;protein_end&#39;: 230, &#39;protein_start&#39;: 230, &#39;strand&#39;: -1, &#39;amino_acids&#39;: &#39;G/D&#39;, &#39;gene_symbol&#39;: &#39;ABO&#39;}], &#39;most_severe_consequence&#39;: &#39;missense_variant&#39;, &#39;input&#39;: &#39;rs56116432&#39;, &#39;seq_region_name&#39;: &#39;CHR_HG2030_PATCH&#39;, &#39;allele_string&#39;: &#39;C/T&#39;, &#39;end&#39;: 133256189, &#39;assembly_name&#39;: &#39;GRCh38&#39;, &#39;colocated_variants&#39;: [{&#39;allele_string&#39;: &#39;C/T&#39;, &#39;seq_region_name&#39;: &#39;CHR_HG2030_PATCH&#39;, &#39;end&#39;: 133256189, &#39;minor_allele&#39;: &#39;T&#39;, &#39;strand&#39;: 1, &#39;id&#39;: &#39;rs56116432&#39;, &#39;minor_allele_freq&#39;: 0.0026, &#39;start&#39;: 133256189}], &#39;strand&#39;: 1, &#39;id&#39;: &#39;rs56116432&#39;, &#39;start&#39;: 133256189}]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>2
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>επέστρεψε 2 εγγραφές. Ας πάρουμε την πρώτη:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;transcript_consequences&#39;: [{&#39;biotype&#39;: &#39;processed_transcript&#39;, &#39;gene_id&#39;: &#39;ENSG00000175164&#39;, &#39;cdna_end&#39;: 700, &#39;hgnc_id&#39;: &#39;HGNC:79&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;cdna_start&#39;: 700, &#39;variant_allele&#39;: &#39;T&#39;, &#39;transcript_id&#39;: &#39;ENST00000453660&#39;, &#39;consequence_terms&#39;: [&#39;non_coding_transcript_exon_variant&#39;, &#39;non_coding_transcript_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;strand&#39;: -1, &#39;gene_symbol&#39;: &#39;ABO&#39;}, {&#39;biotype&#39;: &#39;protein_coding&#39;, &#39;gene_id&#39;: &#39;ENSG00000175164&#39;, &#39;sift_score&#39;: 0, &#39;hgnc_id&#39;: &#39;HGNC:79&#39;, &#39;polyphen_score&#39;: 0.997, &#39;sift_prediction&#39;: &#39;deleterious&#39;, &#39;variant_allele&#39;: &#39;T&#39;, &#39;cds_start&#39;: 686, &#39;codons&#39;: &#39;gGc/gAc&#39;, &#39;transcript_id&#39;: &#39;ENST00000538324&#39;, &#39;cds_end&#39;: 686, &#39;polyphen_prediction&#39;: &#39;probably_damaging&#39;, &#39;impact&#39;: &#39;MODERATE&#39;, &#39;cdna_end&#39;: 711, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;cdna_start&#39;: 711, &#39;consequence_terms&#39;: [&#39;missense_variant&#39;], &#39;protein_end&#39;: 229, &#39;protein_start&#39;: 229, &#39;strand&#39;: -1, &#39;amino_acids&#39;: &#39;G/D&#39;, &#39;gene_symbol&#39;: &#39;ABO&#39;}, {&#39;biotype&#39;: &#39;protein_coding&#39;, &#39;gene_id&#39;: &#39;ENSG00000175164&#39;, &#39;sift_score&#39;: 0, &#39;hgnc_id&#39;: &#39;HGNC:79&#39;, &#39;polyphen_score&#39;: 0.997, &#39;sift_prediction&#39;: &#39;deleterious&#39;, &#39;variant_allele&#39;: &#39;T&#39;, &#39;cds_start&#39;: 686, &#39;codons&#39;: &#39;gGc/gAc&#39;, &#39;transcript_id&#39;: &#39;ENST00000611156&#39;, &#39;cds_end&#39;: 686, &#39;polyphen_prediction&#39;: &#39;probably_damaging&#39;, &#39;impact&#39;: &#39;MODERATE&#39;, &#39;cdna_end&#39;: 711, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;cdna_start&#39;: 711, &#39;consequence_terms&#39;: [&#39;missense_variant&#39;], &#39;protein_end&#39;: 229, &#39;protein_start&#39;: 229, &#39;strand&#39;: -1, &#39;amino_acids&#39;: &#39;G/D&#39;, &#39;gene_symbol&#39;: &#39;ABO&#39;}], &#39;most_severe_consequence&#39;: &#39;missense_variant&#39;, &#39;input&#39;: &#39;rs56116432&#39;, &#39;seq_region_name&#39;: &#39;9&#39;, &#39;allele_string&#39;: &#39;C/T&#39;, &#39;end&#39;: 133256042, &#39;assembly_name&#39;: &#39;GRCh38&#39;, &#39;colocated_variants&#39;: [{&#39;exac_amr_maf&#39;: 0.004932, &#39;exac_sas_maf&#39;: 0.001639, &#39;exac_nfe_maf&#39;: 0.005339, &#39;end&#39;: 133256042, &#39;eas_maf&#39;: 0, &#39;exac_adj_allele&#39;: &#39;T&#39;, &#39;exac_eas_maf&#39;: 0, &#39;exac_fin_maf&#39;: 0.02601, &#39;exac_amr_allele&#39;: &#39;T&#39;, &#39;ea_maf&#39;: 0.003809, &#39;exac_oth_allele&#39;: &#39;T&#39;, &#39;minor_allele&#39;: &#39;T&#39;, &#39;sas_allele&#39;: &#39;T&#39;, &#39;amr_allele&#39;: &#39;T&#39;, &#39;exac_afr_allele&#39;: &#39;T&#39;, &#39;start&#39;: 133256042, &#39;ea_allele&#39;: &#39;T&#39;, &#39;allele_string&#39;: &#39;C/T&#39;, &#39;exac_eas_allele&#39;: &#39;T&#39;, &#39;afr_maf&#39;: 0, &#39;amr_maf&#39;: 0.0014, &#39;sas_maf&#39;: 0.001, &#39;eur_allele&#39;: &#39;T&#39;, &#39;exac_fin_allele&#39;: &#39;T&#39;, &#39;strand&#39;: 1, &#39;afr_allele&#39;: &#39;T&#39;, &#39;exac_maf&#39;: 0.003022, &#39;minor_allele_freq&#39;: 0.0026, &#39;seq_region_name&#39;: 9, &#39;exac_nfe_allele&#39;: &#39;T&#39;, &#39;exac_adj_maf&#39;: 0.004439, &#39;exac_afr_maf&#39;: 0.0005079, &#39;aa_maf&#39;: 0.0007102, &#39;exac_sas_allele&#39;: &#39;T&#39;, &#39;eur_maf&#39;: 0.0109, &#39;aa_allele&#39;: &#39;T&#39;, &#39;eas_allele&#39;: &#39;T&#39;, &#39;id&#39;: &#39;rs56116432&#39;, &#39;exac_allele&#39;: &#39;T&#39;, &#39;exac_oth_maf&#39;: 0.004926}], &#39;strand&#39;: 1, &#39;id&#39;: &#39;rs56116432&#39;, &#39;start&#39;: 133256042}
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;transcript_consequences&quot;</span><span class="p">]))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>3
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Η πρώτη εγγραφή έχει consequences σε 3 transcripts. Ας πάρουμε το 2ο:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;transcript_consequences&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;biotype&#39;: &#39;protein_coding&#39;, &#39;gene_id&#39;: &#39;ENSG00000175164&#39;, &#39;sift_score&#39;: 0, &#39;hgnc_id&#39;: &#39;HGNC:79&#39;, &#39;polyphen_score&#39;: 0.997, &#39;sift_prediction&#39;: &#39;deleterious&#39;, &#39;variant_allele&#39;: &#39;T&#39;, &#39;cds_start&#39;: 686, &#39;codons&#39;: &#39;gGc/gAc&#39;, &#39;transcript_id&#39;: &#39;ENST00000538324&#39;, &#39;cds_end&#39;: 686, &#39;polyphen_prediction&#39;: &#39;probably_damaging&#39;, &#39;impact&#39;: &#39;MODERATE&#39;, &#39;cdna_end&#39;: 711, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;cdna_start&#39;: 711, &#39;consequence_terms&#39;: [&#39;missense_variant&#39;], &#39;protein_end&#39;: 229, &#39;protein_start&#39;: 229, &#39;strand&#39;: -1, &#39;amino_acids&#39;: &#39;G/D&#39;, &#39;gene_symbol&#39;: &#39;ABO&#39;}
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Ας δούμε ποιο είναι το consequence αυτού του mutation σε αυτό το transcript σύμφωνα με το <a href="http://genetics.bwh.harvard.edu/pph2/">polyphen</a>:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;transcript_consequences&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;polyphen_prediction&quot;</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>probably_damaging
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="POST-request-&#947;&#953;&#945;-dbSNP-variant">POST request &#947;&#953;&#945; dbSNP variant<a class="anchor-link" href="#POST-request-&#947;&#953;&#945;-dbSNP-variant">&#182;</a></h3><p>Θα κάνουμε τώρα το ίδιο αλλά θα χρησιμοποιήσουμε το API για POST request: <a href="http://rest.ensembl.org/documentation/info/vep_id_post">http://rest.ensembl.org/documentation/info/vep_id_post</a></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://rest.ensembl.org/vep/human/id&#39;</span>
-
-<span class="c1"># δηλώνουμε ότι το αποτέλεσμα θέλουμε να είναι σε JSON φορματ (Accept)</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;Content-Type&quot;</span> <span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span> <span class="s2">&quot;Accept&quot;</span> <span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span> 
-
-<span class="c1"># Αφού είναι POST βάζουμε τα data ξεχωριστά:</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;ids&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;rs56116432&quot;</span><span class="p">,</span> <span class="s2">&quot;COSM476&quot;</span> <span class="p">]</span> <span class="p">}</span>
-
-<span class="c1"># ΠΡΟΣΟΧΗ!!!</span>
-<span class="c1"># Τα data είναι ένα dictionary το οποίο πρέπει να το μετατρέψουμε σε JSON!</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="n">data_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-
-<span class="c1"># Κάνουμε το POST request:</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data_json</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Τσεκάρουμε ότι όλα πήγαν οκ:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">ok</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>True
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>παίρνουμε τα data:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[{&#39;transcript_consequences&#39;: [{&#39;biotype&#39;: &#39;processed_transcript&#39;, &#39;gene_id&#39;: &#39;ENSG00000175164&#39;, &#39;cdna_end&#39;: 700, &#39;hgnc_id&#39;: &#39;HGNC:79&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;cdna_start&#39;: 700, &#39;variant_allele&#39;: &#39;T&#39;, &#39;transcript_id&#39;: &#39;ENST00000453660&#39;, &#39;consequence_terms&#39;: [&#39;non_coding_transcript_exon_variant&#39;, &#39;non_coding_transcript_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;strand&#39;: -1, &#39;gene_symbol&#39;: &#39;ABO&#39;}, {&#39;biotype&#39;: &#39;protein_coding&#39;, &#39;gene_id&#39;: &#39;ENSG00000175164&#39;, &#39;sift_score&#39;: 0, &#39;hgnc_id&#39;: &#39;HGNC:79&#39;, &#39;polyphen_score&#39;: 0.997, &#39;sift_prediction&#39;: &#39;deleterious&#39;, &#39;variant_allele&#39;: &#39;T&#39;, &#39;cds_start&#39;: 686, &#39;codons&#39;: &#39;gGc/gAc&#39;, &#39;transcript_id&#39;: &#39;ENST00000538324&#39;, &#39;cds_end&#39;: 686, &#39;polyphen_prediction&#39;: &#39;probably_damaging&#39;, &#39;impact&#39;: &#39;MODERATE&#39;, &#39;cdna_end&#39;: 711, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;cdna_start&#39;: 711, &#39;consequence_terms&#39;: [&#39;missense_variant&#39;], &#39;protein_end&#39;: 229, &#39;protein_start&#39;: 229, &#39;strand&#39;: -1, &#39;amino_acids&#39;: &#39;G/D&#39;, &#39;gene_symbol&#39;: &#39;ABO&#39;}, {&#39;biotype&#39;: &#39;protein_coding&#39;, &#39;gene_id&#39;: &#39;ENSG00000175164&#39;, &#39;sift_score&#39;: 0, &#39;hgnc_id&#39;: &#39;HGNC:79&#39;, &#39;polyphen_score&#39;: 0.997, &#39;sift_prediction&#39;: &#39;deleterious&#39;, &#39;variant_allele&#39;: &#39;T&#39;, &#39;cds_start&#39;: 686, &#39;codons&#39;: &#39;gGc/gAc&#39;, &#39;transcript_id&#39;: &#39;ENST00000611156&#39;, &#39;cds_end&#39;: 686, &#39;polyphen_prediction&#39;: &#39;probably_damaging&#39;, &#39;impact&#39;: &#39;MODERATE&#39;, &#39;cdna_end&#39;: 711, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;cdna_start&#39;: 711, &#39;consequence_terms&#39;: [&#39;missense_variant&#39;], &#39;protein_end&#39;: 229, &#39;protein_start&#39;: 229, &#39;strand&#39;: -1, &#39;amino_acids&#39;: &#39;G/D&#39;, &#39;gene_symbol&#39;: &#39;ABO&#39;}], &#39;most_severe_consequence&#39;: &#39;missense_variant&#39;, &#39;input&#39;: &#39;rs56116432&#39;, &#39;seq_region_name&#39;: &#39;9&#39;, &#39;allele_string&#39;: &#39;C/T&#39;, &#39;end&#39;: 133256042, &#39;assembly_name&#39;: &#39;GRCh38&#39;, &#39;colocated_variants&#39;: [{&#39;exac_amr_maf&#39;: 0.004932, &#39;exac_sas_maf&#39;: 0.001639, &#39;exac_nfe_maf&#39;: 0.005339, &#39;end&#39;: 133256042, &#39;eas_maf&#39;: 0, &#39;exac_adj_allele&#39;: &#39;T&#39;, &#39;exac_eas_maf&#39;: 0, &#39;exac_fin_maf&#39;: 0.02601, &#39;exac_amr_allele&#39;: &#39;T&#39;, &#39;ea_maf&#39;: 0.003809, &#39;exac_oth_allele&#39;: &#39;T&#39;, &#39;minor_allele&#39;: &#39;T&#39;, &#39;sas_allele&#39;: &#39;T&#39;, &#39;amr_allele&#39;: &#39;T&#39;, &#39;exac_afr_allele&#39;: &#39;T&#39;, &#39;start&#39;: 133256042, &#39;ea_allele&#39;: &#39;T&#39;, &#39;allele_string&#39;: &#39;C/T&#39;, &#39;exac_eas_allele&#39;: &#39;T&#39;, &#39;afr_maf&#39;: 0, &#39;amr_maf&#39;: 0.0014, &#39;sas_maf&#39;: 0.001, &#39;eur_allele&#39;: &#39;T&#39;, &#39;exac_fin_allele&#39;: &#39;T&#39;, &#39;strand&#39;: 1, &#39;afr_allele&#39;: &#39;T&#39;, &#39;exac_maf&#39;: 0.003022, &#39;minor_allele_freq&#39;: 0.0026, &#39;seq_region_name&#39;: 9, &#39;exac_nfe_allele&#39;: &#39;T&#39;, &#39;exac_adj_maf&#39;: 0.004439, &#39;exac_afr_maf&#39;: 0.0005079, &#39;aa_maf&#39;: 0.0007102, &#39;exac_sas_allele&#39;: &#39;T&#39;, &#39;eur_maf&#39;: 0.0109, &#39;aa_allele&#39;: &#39;T&#39;, &#39;eas_allele&#39;: &#39;T&#39;, &#39;id&#39;: &#39;rs56116432&#39;, &#39;exac_allele&#39;: &#39;T&#39;, &#39;exac_oth_maf&#39;: 0.004926}], &#39;strand&#39;: 1, &#39;id&#39;: &#39;rs56116432&#39;, &#39;start&#39;: 133256042}, {&#39;transcript_consequences&#39;: [{&#39;biotype&#39;: &#39;protein_coding&#39;, &#39;gene_id&#39;: &#39;ENSG00000281879&#39;, &#39;sift_score&#39;: 0, &#39;hgnc_id&#39;: &#39;HGNC:79&#39;, &#39;polyphen_score&#39;: 0.997, &#39;sift_prediction&#39;: &#39;deleterious&#39;, &#39;variant_allele&#39;: &#39;T&#39;, &#39;cds_start&#39;: 689, &#39;codons&#39;: &#39;gGc/gAc&#39;, &#39;transcript_id&#39;: &#39;ENST00000626615&#39;, &#39;cds_end&#39;: 689, &#39;polyphen_prediction&#39;: &#39;probably_damaging&#39;, &#39;impact&#39;: &#39;MODERATE&#39;, &#39;cdna_end&#39;: 714, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;cdna_start&#39;: 714, &#39;consequence_terms&#39;: [&#39;missense_variant&#39;], &#39;protein_end&#39;: 230, &#39;protein_start&#39;: 230, &#39;strand&#39;: -1, &#39;amino_acids&#39;: &#39;G/D&#39;, &#39;gene_symbol&#39;: &#39;ABO&#39;}], &#39;most_severe_consequence&#39;: &#39;missense_variant&#39;, &#39;input&#39;: &#39;rs56116432&#39;, &#39;seq_region_name&#39;: &#39;CHR_HG2030_PATCH&#39;, &#39;allele_string&#39;: &#39;C/T&#39;, &#39;end&#39;: 133256189, &#39;assembly_name&#39;: &#39;GRCh38&#39;, &#39;colocated_variants&#39;: [{&#39;allele_string&#39;: &#39;C/T&#39;, &#39;seq_region_name&#39;: &#39;CHR_HG2030_PATCH&#39;, &#39;end&#39;: 133256189, &#39;minor_allele&#39;: &#39;T&#39;, &#39;strand&#39;: 1, &#39;id&#39;: &#39;rs56116432&#39;, &#39;minor_allele_freq&#39;: 0.0026, &#39;start&#39;: 133256189}], &#39;strand&#39;: 1, &#39;id&#39;: &#39;rs56116432&#39;, &#39;start&#39;: 133256189}, {&#39;most_severe_consequence&#39;: &#39;?&#39;, &#39;allele_string&#39;: &#39;COSMIC_MUTATION&#39;, &#39;input&#39;: &#39;COSM476&#39;, &#39;seq_region_name&#39;: &#39;7&#39;, &#39;end&#39;: 140753336, &#39;assembly_name&#39;: &#39;GRCh38&#39;, &#39;colocated_variants&#39;: [{&#39;allele_string&#39;: &#39;HGMD_MUTATION&#39;, &#39;seq_region_name&#39;: 7, &#39;phenotype_or_disease&#39;: 1, &#39;strand&#39;: 1, &#39;id&#39;: &#39;CM112509&#39;, &#39;end&#39;: 140753336, &#39;start&#39;: 140753336}, {&#39;allele_string&#39;: &#39;COSMIC_MUTATION&#39;, &#39;seq_region_name&#39;: 7, &#39;phenotype_or_disease&#39;: 1, &#39;start&#39;: 140753336, &#39;strand&#39;: 1, &#39;id&#39;: &#39;COSM18443&#39;, &#39;end&#39;: 140753336, &#39;somatic&#39;: 1}, {&#39;allele_string&#39;: &#39;COSMIC_MUTATION&#39;, &#39;seq_region_name&#39;: 7, &#39;phenotype_or_disease&#39;: 1, &#39;start&#39;: 140753336, &#39;strand&#39;: 1, &#39;id&#39;: &#39;COSM476&#39;, &#39;end&#39;: 140753336, &#39;somatic&#39;: 1}, {&#39;allele_string&#39;: &#39;COSMIC_MUTATION&#39;, &#39;seq_region_name&#39;: 7, &#39;phenotype_or_disease&#39;: 1, &#39;start&#39;: 140753336, &#39;strand&#39;: 1, &#39;id&#39;: &#39;COSM6137&#39;, &#39;end&#39;: 140753336, &#39;somatic&#39;: 1}], &#39;strand&#39;: 1, &#39;id&#39;: &#39;COSM476&#39;, &#39;start&#39;: 140753336}]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Είναι τα ίδια με πριν:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;transcript_consequences&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;polyphen_prediction&quot;</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>probably_damaging
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="GET-request-&#947;&#953;&#945;-HGVS-variant">GET request &#947;&#953;&#945; HGVS variant<a class="anchor-link" href="#GET-request-&#947;&#953;&#945;-HGVS-variant">&#182;</a></h3><p>H ENSEMBL μας δίνει ένα API για να πάρουμε πληροφορίες από το Variant Effect Predictor για ένα HGVS variant μέσω GET request: <a href="http://rest.ensembl.org/documentation/info/vep_hgvs_get">http://rest.ensembl.org/documentation/info/vep_hgvs_get</a></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://rest.ensembl.org/vep/human/hgvs/9:g.22125504G&gt;C?&#39;</span>
-<span class="n">headers</span><span class="o">=</span><span class="p">{</span> <span class="s2">&quot;Content-Type&quot;</span> <span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span>
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">ok</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>True
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-</pre></div>
+<pre><code>I presented the math for this at the #cosyne19 diversity lunch today. 
 
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[{&#39;transcript_consequences&#39;: [{&#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;biotype&#39;: &#39;antisense&#39;, &#39;gene_id&#39;: &#39;ENSG00000240498&#39;, &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;, &#39;distance&#39;: 4407, &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;strand&#39;: 1, &#39;variant_allele&#39;: &#39;C&#39;, &#39;transcript_id&#39;: &#39;ENST00000422420&#39;}, {&#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;biotype&#39;: &#39;antisense&#39;, &#39;gene_id&#39;: &#39;ENSG00000240498&#39;, &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;, &#39;distance&#39;: 4409, &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;strand&#39;: 1, &#39;variant_allele&#39;: &#39;C&#39;, &#39;transcript_id&#39;: &#39;ENST00000428597&#39;}, {&#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;biotype&#39;: &#39;antisense&#39;, &#39;gene_id&#39;: &#39;ENSG00000240498&#39;, &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;, &#39;distance&#39;: 4932, &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;strand&#39;: 1, &#39;variant_allele&#39;: &#39;C&#39;, &#39;transcript_id&#39;: &#39;ENST00000577551&#39;}, {&#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;biotype&#39;: &#39;antisense&#39;, &#39;gene_id&#39;: &#39;ENSG00000240498&#39;, &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;, &#39;distance&#39;: 4858, &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;strand&#39;: 1, &#39;variant_allele&#39;: &#39;C&#39;, &#39;transcript_id&#39;: &#39;ENST00000580576&#39;}, {&#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;biotype&#39;: &#39;antisense&#39;, &#39;gene_id&#39;: &#39;ENSG00000240498&#39;, &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;, &#39;distance&#39;: 4932, &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;strand&#39;: 1, &#39;variant_allele&#39;: &#39;C&#39;, &#39;transcript_id&#39;: &#39;ENST00000581051&#39;}, {&#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;biotype&#39;: &#39;antisense&#39;, &#39;gene_id&#39;: &#39;ENSG00000240498&#39;, &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;, &#39;distance&#39;: 4932, &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;strand&#39;: 1, &#39;variant_allele&#39;: &#39;C&#39;, &#39;transcript_id&#39;: &#39;ENST00000582072&#39;}, {&#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;biotype&#39;: &#39;antisense&#39;, &#39;gene_id&#39;: &#39;ENSG00000240498&#39;, &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;, &#39;distance&#39;: 4932, &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;strand&#39;: 1, &#39;variant_allele&#39;: &#39;C&#39;, &#39;transcript_id&#39;: &#39;ENST00000584020&#39;}, {&#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;biotype&#39;: &#39;antisense&#39;, &#39;gene_id&#39;: &#39;ENSG00000240498&#39;, &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;, &#39;distance&#39;: 4932, &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;strand&#39;: 1, &#39;variant_allele&#39;: &#39;C&#39;, &#39;transcript_id&#39;: &#39;ENST00000584637&#39;}, {&#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;biotype&#39;: &#39;antisense&#39;, &#39;gene_id&#39;: &#39;ENSG00000240498&#39;, &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;, &#39;distance&#39;: 4932, &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;strand&#39;: 1, &#39;variant_allele&#39;: &#39;C&#39;, &#39;transcript_id&#39;: &#39;ENST00000584816&#39;}, {&#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;biotype&#39;: &#39;antisense&#39;, &#39;gene_id&#39;: &#39;ENSG00000240498&#39;, &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;, &#39;distance&#39;: 4960, &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;strand&#39;: 1, &#39;variant_allele&#39;: &#39;C&#39;, &#39;transcript_id&#39;: &#39;ENST00000585267&#39;}], &#39;most_severe_consequence&#39;: &#39;downstream_gene_variant&#39;, &#39;input&#39;: &#39;9:g.22125504G&gt;C&#39;, &#39;seq_region_name&#39;: &#39;9&#39;, &#39;allele_string&#39;: &#39;G/C&#39;, &#39;end&#39;: 22125504, &#39;assembly_name&#39;: &#39;GRCh38&#39;, &#39;colocated_variants&#39;: [{&#39;allele_string&#39;: &#39;G/C&#39;, &#39;eur_maf&#39;: 0.4722, &#39;amr_maf&#39;: 0.4553, &#39;sas_maf&#39;: 0.4908, &#39;eur_allele&#39;: &#39;C&#39;, &#39;end&#39;: 22125504, &#39;eas_maf&#39;: 0.5367, &#39;afr_allele&#39;: &#39;C&#39;, &#39;minor_allele&#39;: &#39;C&#39;, &#39;seq_region_name&#39;: 9, &#39;minor_allele_freq&#39;: 0.4181, &#39;strand&#39;: 1, &#39;pubmed&#39;: &#39;24262325,19501493,22042884,21860704,21149552,20159871,19474294,21894447,21971053,21804106,20502693,22199011,18224312,22400124,18533027,18852197,21297524,22403240,22856518,23963167,19343170,20386740,21400687,24728607,20017983,24573017,24607648,20549515,22144573,22623978,22029572,18362232,19173706,19214202,26252781,20435227,21606135,19924713,17554300,19955471,19956433,25717410,24098343,18780302,18675980,19475673,20231156,20858905,21152093,21698238,24906238,17634449,18979498,19164808,19207022,19750184,20098575,20981302,21242481,21369780,22295058,22848412,25617895,23729007,18469204,20605023,21372283,22429504,26483964,23870195,18704761,23587283,24926413,19463184,24676469,21424681,20175863,22505696,19559344,19578366,23142796,19171343,24246088,18987759,19819472,19926059,21375403,21385355,21705410,24777168,25105296,19888323,23454037,18264662,18599798,18652946,18654002,18925945,18957718,19135198,19319159,19329499,19548844,19664850,19709660,19885677,19956784,20031540,20031580,20031606,20230275,20335276,20395598,2040077&#39;, &#39;sas_allele&#39;: &#39;C&#39;, &#39;phenotype_or_disease&#39;: 1, &#39;amr_allele&#39;: &#39;C&#39;, &#39;afr_maf&#39;: 0.2133, &#39;eas_allele&#39;: &#39;C&#39;, &#39;id&#39;: &#39;rs1333049&#39;, &#39;start&#39;: 22125504}], &#39;strand&#39;: 1, &#39;id&#39;: &#39;9:g.22125504G&gt;C&#39;, &#39;start&#39;: 22125504}]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>1
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Επέστρεψε μόνο μία εγγρφή.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[26]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>dict_keys([&#39;transcript_consequences&#39;, &#39;most_severe_consequence&#39;, &#39;input&#39;, &#39;seq_region_name&#39;, &#39;allele_string&#39;, &#39;end&#39;, &#39;assembly_name&#39;, &#39;colocated_variants&#39;, &#39;strand&#39;, &#39;id&#39;, &#39;start&#39;])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Ας δούμε τα transcript consequences:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;transcript_consequences&quot;</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[27]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[{&#39;biotype&#39;: &#39;antisense&#39;,
-  &#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;],
-  &#39;distance&#39;: 4407,
-  &#39;gene_id&#39;: &#39;ENSG00000240498&#39;,
-  &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;,
-  &#39;gene_symbol_source&#39;: &#39;HGNC&#39;,
-  &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;,
-  &#39;impact&#39;: &#39;MODIFIER&#39;,
-  &#39;strand&#39;: 1,
-  &#39;transcript_id&#39;: &#39;ENST00000422420&#39;,
-  &#39;variant_allele&#39;: &#39;C&#39;},
- {&#39;biotype&#39;: &#39;antisense&#39;,
-  &#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;],
-  &#39;distance&#39;: 4409,
-  &#39;gene_id&#39;: &#39;ENSG00000240498&#39;,
-  &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;,
-  &#39;gene_symbol_source&#39;: &#39;HGNC&#39;,
-  &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;,
-  &#39;impact&#39;: &#39;MODIFIER&#39;,
-  &#39;strand&#39;: 1,
-  &#39;transcript_id&#39;: &#39;ENST00000428597&#39;,
-  &#39;variant_allele&#39;: &#39;C&#39;},
- {&#39;biotype&#39;: &#39;antisense&#39;,
-  &#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;],
-  &#39;distance&#39;: 4932,
-  &#39;gene_id&#39;: &#39;ENSG00000240498&#39;,
-  &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;,
-  &#39;gene_symbol_source&#39;: &#39;HGNC&#39;,
-  &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;,
-  &#39;impact&#39;: &#39;MODIFIER&#39;,
-  &#39;strand&#39;: 1,
-  &#39;transcript_id&#39;: &#39;ENST00000577551&#39;,
-  &#39;variant_allele&#39;: &#39;C&#39;},
- {&#39;biotype&#39;: &#39;antisense&#39;,
-  &#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;],
-  &#39;distance&#39;: 4858,
-  &#39;gene_id&#39;: &#39;ENSG00000240498&#39;,
-  &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;,
-  &#39;gene_symbol_source&#39;: &#39;HGNC&#39;,
-  &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;,
-  &#39;impact&#39;: &#39;MODIFIER&#39;,
-  &#39;strand&#39;: 1,
-  &#39;transcript_id&#39;: &#39;ENST00000580576&#39;,
-  &#39;variant_allele&#39;: &#39;C&#39;},
- {&#39;biotype&#39;: &#39;antisense&#39;,
-  &#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;],
-  &#39;distance&#39;: 4932,
-  &#39;gene_id&#39;: &#39;ENSG00000240498&#39;,
-  &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;,
-  &#39;gene_symbol_source&#39;: &#39;HGNC&#39;,
-  &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;,
-  &#39;impact&#39;: &#39;MODIFIER&#39;,
-  &#39;strand&#39;: 1,
-  &#39;transcript_id&#39;: &#39;ENST00000581051&#39;,
-  &#39;variant_allele&#39;: &#39;C&#39;},
- {&#39;biotype&#39;: &#39;antisense&#39;,
-  &#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;],
-  &#39;distance&#39;: 4932,
-  &#39;gene_id&#39;: &#39;ENSG00000240498&#39;,
-  &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;,
-  &#39;gene_symbol_source&#39;: &#39;HGNC&#39;,
-  &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;,
-  &#39;impact&#39;: &#39;MODIFIER&#39;,
-  &#39;strand&#39;: 1,
-  &#39;transcript_id&#39;: &#39;ENST00000582072&#39;,
-  &#39;variant_allele&#39;: &#39;C&#39;},
- {&#39;biotype&#39;: &#39;antisense&#39;,
-  &#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;],
-  &#39;distance&#39;: 4932,
-  &#39;gene_id&#39;: &#39;ENSG00000240498&#39;,
-  &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;,
-  &#39;gene_symbol_source&#39;: &#39;HGNC&#39;,
-  &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;,
-  &#39;impact&#39;: &#39;MODIFIER&#39;,
-  &#39;strand&#39;: 1,
-  &#39;transcript_id&#39;: &#39;ENST00000584020&#39;,
-  &#39;variant_allele&#39;: &#39;C&#39;},
- {&#39;biotype&#39;: &#39;antisense&#39;,
-  &#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;],
-  &#39;distance&#39;: 4932,
-  &#39;gene_id&#39;: &#39;ENSG00000240498&#39;,
-  &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;,
-  &#39;gene_symbol_source&#39;: &#39;HGNC&#39;,
-  &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;,
-  &#39;impact&#39;: &#39;MODIFIER&#39;,
-  &#39;strand&#39;: 1,
-  &#39;transcript_id&#39;: &#39;ENST00000584637&#39;,
-  &#39;variant_allele&#39;: &#39;C&#39;},
- {&#39;biotype&#39;: &#39;antisense&#39;,
-  &#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;],
-  &#39;distance&#39;: 4932,
-  &#39;gene_id&#39;: &#39;ENSG00000240498&#39;,
-  &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;,
-  &#39;gene_symbol_source&#39;: &#39;HGNC&#39;,
-  &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;,
-  &#39;impact&#39;: &#39;MODIFIER&#39;,
-  &#39;strand&#39;: 1,
-  &#39;transcript_id&#39;: &#39;ENST00000584816&#39;,
-  &#39;variant_allele&#39;: &#39;C&#39;},
- {&#39;biotype&#39;: &#39;antisense&#39;,
-  &#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;],
-  &#39;distance&#39;: 4960,
-  &#39;gene_id&#39;: &#39;ENSG00000240498&#39;,
-  &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;,
-  &#39;gene_symbol_source&#39;: &#39;HGNC&#39;,
-  &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;,
-  &#39;impact&#39;: &#39;MODIFIER&#39;,
-  &#39;strand&#39;: 1,
-  &#39;transcript_id&#39;: &#39;ENST00000585267&#39;,
-  &#39;variant_allele&#39;: &#39;C&#39;}]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="POST-request-&#947;&#953;&#945;-HGVS-variant">POST request &#947;&#953;&#945; HGVS variant<a class="anchor-link" href="#POST-request-&#947;&#953;&#945;-HGVS-variant">&#182;</a></h3><p>Μπορούμε να κάνουμε το ίδιο, κάνοντας ένα POST request: <a href="http://rest.ensembl.org/documentation/info/vep_hgvs_post">http://rest.ensembl.org/documentation/info/vep_hgvs_post</a></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://rest.ensembl.org/vep/human/hgvs&#39;</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;Content-Type&quot;</span> <span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span> <span class="s2">&quot;Accept&quot;</span> <span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;hgvs_notations&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;9:g.22125504G&gt;C&quot;</span><span class="p">]</span> <span class="p">}</span> <span class="c1"># Παρατηρείστε ότι αυτό είναι μία λίστα. </span>
-                                                  <span class="c1"># Μπορούμε να βάλουμε (σχεδόν) όσα HGVS variants θέλουμε</span>
-    
-<span class="n">data_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data_json</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">ok</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>True
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">returned_data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">returned_data</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[{&#39;transcript_consequences&#39;: [{&#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;biotype&#39;: &#39;antisense&#39;, &#39;gene_id&#39;: &#39;ENSG00000240498&#39;, &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;, &#39;distance&#39;: 4407, &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;strand&#39;: 1, &#39;variant_allele&#39;: &#39;C&#39;, &#39;transcript_id&#39;: &#39;ENST00000422420&#39;}, {&#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;biotype&#39;: &#39;antisense&#39;, &#39;gene_id&#39;: &#39;ENSG00000240498&#39;, &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;, &#39;distance&#39;: 4409, &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;strand&#39;: 1, &#39;variant_allele&#39;: &#39;C&#39;, &#39;transcript_id&#39;: &#39;ENST00000428597&#39;}, {&#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;biotype&#39;: &#39;antisense&#39;, &#39;gene_id&#39;: &#39;ENSG00000240498&#39;, &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;, &#39;distance&#39;: 4932, &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;strand&#39;: 1, &#39;variant_allele&#39;: &#39;C&#39;, &#39;transcript_id&#39;: &#39;ENST00000577551&#39;}, {&#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;biotype&#39;: &#39;antisense&#39;, &#39;gene_id&#39;: &#39;ENSG00000240498&#39;, &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;, &#39;distance&#39;: 4858, &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;strand&#39;: 1, &#39;variant_allele&#39;: &#39;C&#39;, &#39;transcript_id&#39;: &#39;ENST00000580576&#39;}, {&#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;biotype&#39;: &#39;antisense&#39;, &#39;gene_id&#39;: &#39;ENSG00000240498&#39;, &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;, &#39;distance&#39;: 4932, &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;strand&#39;: 1, &#39;variant_allele&#39;: &#39;C&#39;, &#39;transcript_id&#39;: &#39;ENST00000581051&#39;}, {&#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;biotype&#39;: &#39;antisense&#39;, &#39;gene_id&#39;: &#39;ENSG00000240498&#39;, &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;, &#39;distance&#39;: 4932, &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;strand&#39;: 1, &#39;variant_allele&#39;: &#39;C&#39;, &#39;transcript_id&#39;: &#39;ENST00000582072&#39;}, {&#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;biotype&#39;: &#39;antisense&#39;, &#39;gene_id&#39;: &#39;ENSG00000240498&#39;, &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;, &#39;distance&#39;: 4932, &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;strand&#39;: 1, &#39;variant_allele&#39;: &#39;C&#39;, &#39;transcript_id&#39;: &#39;ENST00000584020&#39;}, {&#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;biotype&#39;: &#39;antisense&#39;, &#39;gene_id&#39;: &#39;ENSG00000240498&#39;, &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;, &#39;distance&#39;: 4932, &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;strand&#39;: 1, &#39;variant_allele&#39;: &#39;C&#39;, &#39;transcript_id&#39;: &#39;ENST00000584637&#39;}, {&#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;biotype&#39;: &#39;antisense&#39;, &#39;gene_id&#39;: &#39;ENSG00000240498&#39;, &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;, &#39;distance&#39;: 4932, &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;strand&#39;: 1, &#39;variant_allele&#39;: &#39;C&#39;, &#39;transcript_id&#39;: &#39;ENST00000584816&#39;}, {&#39;consequence_terms&#39;: [&#39;downstream_gene_variant&#39;], &#39;impact&#39;: &#39;MODIFIER&#39;, &#39;biotype&#39;: &#39;antisense&#39;, &#39;gene_id&#39;: &#39;ENSG00000240498&#39;, &#39;hgnc_id&#39;: &#39;HGNC:34341&#39;, &#39;distance&#39;: 4960, &#39;gene_symbol&#39;: &#39;CDKN2B-AS1&#39;, &#39;gene_symbol_source&#39;: &#39;HGNC&#39;, &#39;strand&#39;: 1, &#39;variant_allele&#39;: &#39;C&#39;, &#39;transcript_id&#39;: &#39;ENST00000585267&#39;}], &#39;most_severe_consequence&#39;: &#39;downstream_gene_variant&#39;, &#39;input&#39;: &#39;9:g.22125504G&gt;C&#39;, &#39;seq_region_name&#39;: &#39;9&#39;, &#39;allele_string&#39;: &#39;G/C&#39;, &#39;end&#39;: 22125504, &#39;assembly_name&#39;: &#39;GRCh38&#39;, &#39;colocated_variants&#39;: [{&#39;allele_string&#39;: &#39;G/C&#39;, &#39;eur_maf&#39;: 0.4722, &#39;amr_maf&#39;: 0.4553, &#39;sas_maf&#39;: 0.4908, &#39;eur_allele&#39;: &#39;C&#39;, &#39;end&#39;: 22125504, &#39;eas_maf&#39;: 0.5367, &#39;afr_allele&#39;: &#39;C&#39;, &#39;minor_allele&#39;: &#39;C&#39;, &#39;seq_region_name&#39;: 9, &#39;minor_allele_freq&#39;: 0.4181, &#39;strand&#39;: 1, &#39;pubmed&#39;: &#39;24262325,19501493,22042884,21860704,21149552,20159871,19474294,21894447,21971053,21804106,20502693,22199011,18224312,22400124,18533027,18852197,21297524,22403240,22856518,23963167,19343170,20386740,21400687,24728607,20017983,24573017,24607648,20549515,22144573,22623978,22029572,18362232,19173706,19214202,26252781,20435227,21606135,19924713,17554300,19955471,19956433,25717410,24098343,18780302,18675980,19475673,20231156,20858905,21152093,21698238,24906238,17634449,18979498,19164808,19207022,19750184,20098575,20981302,21242481,21369780,22295058,22848412,25617895,23729007,18469204,20605023,21372283,22429504,26483964,23870195,18704761,23587283,24926413,19463184,24676469,21424681,20175863,22505696,19559344,19578366,23142796,19171343,24246088,18987759,19819472,19926059,21375403,21385355,21705410,24777168,25105296,19888323,23454037,18264662,18599798,18652946,18654002,18925945,18957718,19135198,19319159,19329499,19548844,19664850,19709660,19885677,19956784,20031540,20031580,20031606,20230275,20335276,20395598,2040077&#39;, &#39;sas_allele&#39;: &#39;C&#39;, &#39;phenotype_or_disease&#39;: 1, &#39;amr_allele&#39;: &#39;C&#39;, &#39;afr_maf&#39;: 0.2133, &#39;eas_allele&#39;: &#39;C&#39;, &#39;id&#39;: &#39;rs1333049&#39;, &#39;start&#39;: 22125504}], &#39;strand&#39;: 1, &#39;id&#39;: &#39;9:g.22125504G&gt;C&#39;, &#39;start&#39;: 22125504}]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Mutalyzer">Mutalyzer<a class="anchor-link" href="#Mutalyzer">&#182;</a></h3><p>Το <a href="https://mutalyzer.nl/">mutalyzer</a> είναι ένα service με το οποίο μπορούμε να ελέγχουμε και να κάνουμε μετατροπές σε variants οι οποίοι περιγράφονται σε HGVS. Για παράδειγμα μέσω το numberConversion μπορούμε να βρούμε το genomic location ενός variant:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-  <span class="s1">&#39;https://mutalyzer.nl/json/numberConversion&#39;</span><span class="p">,</span> 
-  <span class="p">{</span>
-  <span class="s1">&#39;build&#39;</span><span class="p">:</span> <span class="s1">&#39;hg38&#39;</span><span class="p">,</span> 
-  <span class="s1">&#39;variant&#39;</span><span class="p">:</span> <span class="s1">&#39;NM_001276506.1:c.204C&gt;T&#39;</span>
-  <span class="p">})</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[&#39;NC_000011.10:g.112088901C&gt;T&#39;]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Variation-Reporter">Variation Reporter<a class="anchor-link" href="#Variation-Reporter">&#182;</a></h3><p>Το <a href="https://www.ncbi.nlm.nih.gov/variation/tools/reporter">Variation Reporter</a> είναι το αντίστοιχο με το VEP service του NCBI. Μπορουμε να το χρησιμοποιήσουμε ως εξής:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://www.ncbi.nlm.nih.gov/projects/SNP/VariantAnalyzer/var_rep.cgi&#39;</span>
-<span class="n">var</span> <span class="o">=</span> <span class="s1">&#39;NM_001276506.1:c.204C&gt;T&#39;</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;annot1&#39;</span><span class="p">:</span> <span class="n">var</span><span class="p">,</span> <span class="p">})</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">ok</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>True
-Submitted: JSID_01_1003310_130.14.18.6_9000__variant_analyzer
-.
-## URL: https://www.ncbi.nlm.nih.gov/variation/tools/reporter/JSID_01_1003310_130.14.18.6_9000__variant_analyzer
-## Submitted time:	01/26/2018 11:29:20
-## Report generated time:	01/26/2018 11:29:22
-## Summary report for 
-## Summary of Submitted Data
-## Number of variant locations:	1
-## Number of variant alleles:	1
-## Summary of Data Report:
-## Number of unique NCBI Ids found:	1
-## Number of novel alleles at known locations:	0
-## Number of novel alleles at novel locations:	0
-## Total number of novel locations:	0
-## Variant alleles with clinical information:	1
-## Variant alleles with molecular consequence:	1
-## Total number of rows in the report:	13
-## Assembly:	GRCh37.p13
-
-# Submitted ID	Submitted Loc	Cytoband	Mapped Loc	NCBI ID	Allele	GMAF	Gene ID	Gene Symbol	Hgvs_g	Origin	Hgvs_g (RefSeqGene)	Hgvs_c	Hgvs_p	Consequences	OnTestPanel	ClinVar Accession	Clinical Source ID	Clinical Significance	Clinical Evidence	Clinical Review	Phenotype ID	Phenotype Description	PMIDs	Number Of Submissions	Suspected False Positive	GWAS Association	Has Genotype?	On Genotyping Kit?	Exception	Novel allele?
-NM_001276506.1:c.204C&gt;T	NM_001276506.1: 288	11q23.1	NP_002993.1:68	rs9919552	NC_000011.9:g.111959625C&gt;T	T: 0.1134	6392	SDHD	NC_000011.9:g.111959625C&gt;T	germline	NG_012337.3:g.7055C&gt;T	NM_001276506.1:c.204C&gt;T	NP_001263435.1:p.Ser68=	SO:0001819 (synonymous_codon)		RCV000037727.5; RCV000162450.1; RCV000265027.1	Illumina Clinical Services Laboratory,Illumina:839653	Conflicting interpretations of pathogenicity; Benign; Benign	clinical testing; clinical testing; clinical testing	conf; single; single	MedGen:CN169374; MedGen:C0027672,SNOMED CT:699346009; MedGen:C0031511,OMIM:171300	not specified; Hereditary cancer-predisposing syndrome; Pheochromocytoma	24033266;25741868	34			Yes	Yes		
-NM_001276506.1:c.204C&gt;T	NM_001276506.1: 288	11q23.1	NT_033899.8:15522041	rs9919552	NC_000011.9:g.111959625C&gt;T	T: 0.1134	6392	SDHD	NC_000011.9:g.111959625C&gt;T	germline	NG_012337.3:g.7055C&gt;T	NM_001276506.1:c.204C&gt;T	NP_001263435.1:p.Ser68=	SO:0001819 (synonymous_codon)		RCV000037727.5; RCV000162450.1; RCV000265027.1	Illumina Clinical Services Laboratory,Illumina:839653	Conflicting interpretations of pathogenicity; Benign; Benign	clinical testing; clinical testing; clinical testing	conf; single; single	MedGen:CN169374; MedGen:C0027672,SNOMED CT:699346009; MedGen:C0031511,OMIM:171300	not specified; Hereditary cancer-predisposing syndrome; Pheochromocytoma	24033266;25741868	34			Yes	Yes		
-NM_001276506.1:c.204C&gt;T	NM_001276506.1: 288	11q23.1	NC_000011.9:111959625	rs9919552	NC_000011.9:g.111959625C&gt;T	T: 0.1134	6392	SDHD	NC_000011.9:g.111959625C&gt;T	germline	NG_012337.3:g.7055C&gt;T	NM_001276506.1:c.204C&gt;T	NP_001263435.1:p.Ser68=	SO:0001819 (synonymous_codon)		RCV000037727.5; RCV000162450.1; RCV000265027.1	Illumina Clinical Services Laboratory,Illumina:839653	Conflicting interpretations of pathogenicity; Benign; Benign	clinical testing; clinical testing; clinical testing	conf; single; single	MedGen:CN169374; MedGen:C0027672,SNOMED CT:699346009; MedGen:C0031511,OMIM:171300	not specified; Hereditary cancer-predisposing syndrome; Pheochromocytoma	24033266;25741868	34			Yes	Yes		
-NM_001276506.1:c.204C&gt;T	NM_001276506.1: 288	11q23.1	NM_003002.3:288	rs9919552	NC_000011.9:g.111959625C&gt;T	T: 0.1134	6392	SDHD	NC_000011.9:g.111959625C&gt;T	germline	NG_012337.3:g.7055C&gt;T	NM_001276506.1:c.204C&gt;T	NP_001263435.1:p.Ser68=	SO:0001819 (synonymous_codon)		RCV000037727.5; RCV000162450.1; RCV000265027.1	Illumina Clinical Services Laboratory,Illumina:839653	Conflicting interpretations of pathogenicity; Benign; Benign	clinical testing; clinical testing; clinical testing	conf; single; single	MedGen:CN169374; MedGen:C0027672,SNOMED CT:699346009; MedGen:C0031511,OMIM:171300	not specified; Hereditary cancer-predisposing syndrome; Pheochromocytoma	24033266;25741868	34			Yes	Yes		
-NM_001276506.1:c.204C&gt;T	NM_001276506.1: 288	11q23.1	NM_001276504.1:171	rs9919552	NC_000011.9:g.111959625C&gt;T	T: 0.1134	6392	SDHD	NC_000011.9:g.111959625C&gt;T	germline	NG_012337.3:g.7055C&gt;T	NM_001276506.1:c.204C&gt;T	NP_001263435.1:p.Ser68=	SO:0001819 (synonymous_codon)		RCV000037727.5; RCV000162450.1; RCV000265027.1	Illumina Clinical Services Laboratory,Illumina:839653	Conflicting interpretations of pathogenicity; Benign; Benign	clinical testing; clinical testing; clinical testing	conf; single; single	MedGen:CN169374; MedGen:C0027672,SNOMED CT:699346009; MedGen:C0031511,OMIM:171300	not specified; Hereditary cancer-predisposing syndrome; Pheochromocytoma	24033266;25741868	34			Yes	Yes		
-NM_001276506.1:c.204C&gt;T	NM_001276506.1: 288	11q23.1	NP_001263433.1:29	rs9919552	NC_000011.9:g.111959625C&gt;T	T: 0.1134	6392	SDHD	NC_000011.9:g.111959625C&gt;T	germline	NG_012337.3:g.7055C&gt;T	NM_001276506.1:c.204C&gt;T	NP_001263435.1:p.Ser68=	SO:0001819 (synonymous_codon)		RCV000037727.5; RCV000162450.1; RCV000265027.1	Illumina Clinical Services Laboratory,Illumina:839653	Conflicting interpretations of pathogenicity; Benign; Benign	clinical testing; clinical testing; clinical testing	conf; single; single	MedGen:CN169374; MedGen:C0027672,SNOMED CT:699346009; MedGen:C0031511,OMIM:171300	not specified; Hereditary cancer-predisposing syndrome; Pheochromocytoma	24033266;25741868	34			Yes	Yes		
-NM_001276506.1:c.204C&gt;T	NM_001276506.1: 288	11q23.1	NM_001276506.1:288	rs9919552	NC_000011.9:g.111959625C&gt;T	T: 0.1134	6392	SDHD	NC_000011.9:g.111959625C&gt;T	germline	NG_012337.3:g.7055C&gt;T	NM_001276506.1:c.204C&gt;T	NP_001263435.1:p.Ser68=	SO:0001819 (synonymous_codon)		RCV000037727.5; RCV000162450.1; RCV000265027.1	Illumina Clinical Services Laboratory,Illumina:839653	Conflicting interpretations of pathogenicity; Benign; Benign	clinical testing; clinical testing; clinical testing	conf; single; single	MedGen:CN169374; MedGen:C0027672,SNOMED CT:699346009; MedGen:C0031511,OMIM:171300	not specified; Hereditary cancer-predisposing syndrome; Pheochromocytoma	24033266;25741868	34			Yes	Yes		
-NM_001276506.1:c.204C&gt;T	NM_001276506.1: 288	11q23.1	NP_001263435.1:68	rs9919552	NC_000011.9:g.111959625C&gt;T	T: 0.1134	6392	SDHD	NC_000011.9:g.111959625C&gt;T	germline	NG_012337.3:g.7055C&gt;T	NM_001276506.1:c.204C&gt;T	NP_001263435.1:p.Ser68=	SO:0001819 (synonymous_codon)		RCV000037727.5; RCV000162450.1; RCV000265027.1	Illumina Clinical Services Laboratory,Illumina:839653	Conflicting interpretations of pathogenicity; Benign; Benign	clinical testing; clinical testing; clinical testing	conf; single; single	MedGen:CN169374; MedGen:C0027672,SNOMED CT:699346009; MedGen:C0031511,OMIM:171300	not specified; Hereditary cancer-predisposing syndrome; Pheochromocytoma	24033266;25741868	34			Yes	Yes		
-NM_001276506.1:c.204C&gt;T	NM_001276506.1: 288	11q23.1	NR_077060.1:288	rs9919552	NC_000011.9:g.111959625C&gt;T	T: 0.1134	6392	SDHD	NC_000011.9:g.111959625C&gt;T	germline	NG_012337.3:g.7055C&gt;T	NM_001276506.1:c.204C&gt;T	NP_001263435.1:p.Ser68=	SO:0001819 (synonymous_codon)		RCV000037727.5; RCV000162450.1; RCV000265027.1	Illumina Clinical Services Laboratory,Illumina:839653	Conflicting interpretations of pathogenicity; Benign; Benign	clinical testing; clinical testing; clinical testing	conf; single; single	MedGen:CN169374; MedGen:C0027672,SNOMED CT:699346009; MedGen:C0031511,OMIM:171300	not specified; Hereditary cancer-predisposing syndrome; Pheochromocytoma	24033266;25741868	34			Yes	Yes		
-NM_001276506.1:c.204C&gt;T	NM_001276506.1: 288	11q23.1	NG_033145.1:2898	rs9919552	NC_000011.9:g.111959625C&gt;T	T: 0.1134	6392	SDHD	NC_000011.9:g.111959625C&gt;T	germline	NG_012337.3:g.7055C&gt;T	NM_001276506.1:c.204C&gt;T	NP_001263435.1:p.Ser68=	SO:0001819 (synonymous_codon)		RCV000037727.5; RCV000162450.1; RCV000265027.1	Illumina Clinical Services Laboratory,Illumina:839653	Conflicting interpretations of pathogenicity; Benign; Benign	clinical testing; clinical testing; clinical testing	conf; single; single	MedGen:CN169374; MedGen:C0027672,SNOMED CT:699346009; MedGen:C0031511,OMIM:171300	not specified; Hereditary cancer-predisposing syndrome; Pheochromocytoma	24033266;25741868	34			Yes	Yes		
-NM_001276506.1:c.204C&gt;T	NM_001276506.1: 288	11q23.1	XM_005271644.1:283	rs9919552	NC_000011.9:g.111959625C&gt;T	T: 0.1134	6392	SDHD	NC_000011.9:g.111959625C&gt;T	germline	NG_012337.3:g.7055C&gt;T	NM_001276506.1:c.204C&gt;T	NP_001263435.1:p.Ser68=	SO:0001819 (synonymous_codon)		RCV000037727.5; RCV000162450.1; RCV000265027.1	Illumina Clinical Services Laboratory,Illumina:839653	Conflicting interpretations of pathogenicity; Benign; Benign	clinical testing; clinical testing; clinical testing	conf; single; single	MedGen:CN169374; MedGen:C0027672,SNOMED CT:699346009; MedGen:C0031511,OMIM:171300	not specified; Hereditary cancer-predisposing syndrome; Pheochromocytoma	24033266;25741868	34			Yes	Yes		
-NM_001276506.1:c.204C&gt;T	NM_001276506.1: 288	11q23.1	XP_005271701.1:68	rs9919552	NC_000011.9:g.111959625C&gt;T	T: 0.1134	6392	SDHD	NC_000011.9:g.111959625C&gt;T	germline	NG_012337.3:g.7055C&gt;T	NM_001276506.1:c.204C&gt;T	NP_001263435.1:p.Ser68=	SO:0001819 (synonymous_codon)		RCV000037727.5; RCV000162450.1; RCV000265027.1	Illumina Clinical Services Laboratory,Illumina:839653	Conflicting interpretations of pathogenicity; Benign; Benign	clinical testing; clinical testing; clinical testing	conf; single; single	MedGen:CN169374; MedGen:C0027672,SNOMED CT:699346009; MedGen:C0031511,OMIM:171300	not specified; Hereditary cancer-predisposing syndrome; Pheochromocytoma	24033266;25741868	34			Yes	Yes		
-NM_001276506.1:c.204C&gt;T	NM_001276506.1: 288	11q23.1	NG_012337.3:7055	rs9919552	NC_000011.9:g.111959625C&gt;T	T: 0.1134	6392	SDHD	NC_000011.9:g.111959625C&gt;T	germline	NG_012337.3:g.7055C&gt;T	NM_001276506.1:c.204C&gt;T	NP_001263435.1:p.Ser68=	SO:0001819 (synonymous_codon)		RCV000037727.5; RCV000162450.1; RCV000265027.1	Illumina Clinical Services Laboratory,Illumina:839653	Conflicting interpretations of pathogenicity; Benign; Benign	clinical testing; clinical testing; clinical testing	conf; single; single	MedGen:CN169374; MedGen:C0027672,SNOMED CT:699346009; MedGen:C0031511,OMIM:171300	not specified; Hereditary cancer-predisposing syndrome; Pheochromocytoma	24033266;25741868	34			Yes	Yes		
-
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Παρατηρούμε ότι τα δεδομένα που επιστρέφει δεν είναι σε JSON αλλά tabular. Μπορούμε να τα "φροτώσουμε" σε ένα pandas DataFrame!</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">io</span> <span class="k">import</span> <span class="n">StringIO</span>
-
-<span class="c1"># Remove non tabular data</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Su&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;##&#39;</span><span class="p">]]</span>
-<span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-
-<span class="c1">#Create a &quot;virtual&quot; file-like structure that contains the string.</span>
-<span class="n">data_f</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-
-<span class="c1">#data_f is a file. Yet it is not stored in the disk. </span>
-<span class="c1">#Now we can pass it to pandas!</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_f</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">df</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[6]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th># Submitted ID</th>
-      <th>Submitted Loc</th>
-      <th>Cytoband</th>
-      <th>Mapped Loc</th>
-      <th>NCBI ID</th>
-      <th>Allele</th>
-      <th>GMAF</th>
-      <th>Gene ID</th>
-      <th>Gene Symbol</th>
-      <th>Hgvs_g</th>
-      <th>...</th>
-      <th>Phenotype ID</th>
-      <th>Phenotype Description</th>
-      <th>PMIDs</th>
-      <th>Number Of Submissions</th>
-      <th>Suspected False Positive</th>
-      <th>GWAS Association</th>
-      <th>Has Genotype?</th>
-      <th>On Genotyping Kit?</th>
-      <th>Exception</th>
-      <th>Novel allele?</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>NM_001276506.1:c.204C&gt;T</td>
-      <td>NM_001276506.1: 288</td>
-      <td>11q23.1</td>
-      <td>NP_002993.1:68</td>
-      <td>rs9919552</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>T: 0.1134</td>
-      <td>6392</td>
-      <td>SDHD</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>...</td>
-      <td>MedGen:CN169374; MedGen:C0027672,SNOMED CT:699...</td>
-      <td>not specified; Hereditary cancer-predisposing ...</td>
-      <td>24033266;25741868</td>
-      <td>34</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>NM_001276506.1:c.204C&gt;T</td>
-      <td>NM_001276506.1: 288</td>
-      <td>11q23.1</td>
-      <td>NT_033899.8:15522041</td>
-      <td>rs9919552</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>T: 0.1134</td>
-      <td>6392</td>
-      <td>SDHD</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>...</td>
-      <td>MedGen:CN169374; MedGen:C0027672,SNOMED CT:699...</td>
-      <td>not specified; Hereditary cancer-predisposing ...</td>
-      <td>24033266;25741868</td>
-      <td>34</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>NM_001276506.1:c.204C&gt;T</td>
-      <td>NM_001276506.1: 288</td>
-      <td>11q23.1</td>
-      <td>NC_000011.9:111959625</td>
-      <td>rs9919552</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>T: 0.1134</td>
-      <td>6392</td>
-      <td>SDHD</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>...</td>
-      <td>MedGen:CN169374; MedGen:C0027672,SNOMED CT:699...</td>
-      <td>not specified; Hereditary cancer-predisposing ...</td>
-      <td>24033266;25741868</td>
-      <td>34</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>NM_001276506.1:c.204C&gt;T</td>
-      <td>NM_001276506.1: 288</td>
-      <td>11q23.1</td>
-      <td>NM_003002.3:288</td>
-      <td>rs9919552</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>T: 0.1134</td>
-      <td>6392</td>
-      <td>SDHD</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>...</td>
-      <td>MedGen:CN169374; MedGen:C0027672,SNOMED CT:699...</td>
-      <td>not specified; Hereditary cancer-predisposing ...</td>
-      <td>24033266;25741868</td>
-      <td>34</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>NM_001276506.1:c.204C&gt;T</td>
-      <td>NM_001276506.1: 288</td>
-      <td>11q23.1</td>
-      <td>NM_001276504.1:171</td>
-      <td>rs9919552</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>T: 0.1134</td>
-      <td>6392</td>
-      <td>SDHD</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>...</td>
-      <td>MedGen:CN169374; MedGen:C0027672,SNOMED CT:699...</td>
-      <td>not specified; Hereditary cancer-predisposing ...</td>
-      <td>24033266;25741868</td>
-      <td>34</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>NM_001276506.1:c.204C&gt;T</td>
-      <td>NM_001276506.1: 288</td>
-      <td>11q23.1</td>
-      <td>NP_001263433.1:29</td>
-      <td>rs9919552</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>T: 0.1134</td>
-      <td>6392</td>
-      <td>SDHD</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>...</td>
-      <td>MedGen:CN169374; MedGen:C0027672,SNOMED CT:699...</td>
-      <td>not specified; Hereditary cancer-predisposing ...</td>
-      <td>24033266;25741868</td>
-      <td>34</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>NM_001276506.1:c.204C&gt;T</td>
-      <td>NM_001276506.1: 288</td>
-      <td>11q23.1</td>
-      <td>NM_001276506.1:288</td>
-      <td>rs9919552</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>T: 0.1134</td>
-      <td>6392</td>
-      <td>SDHD</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>...</td>
-      <td>MedGen:CN169374; MedGen:C0027672,SNOMED CT:699...</td>
-      <td>not specified; Hereditary cancer-predisposing ...</td>
-      <td>24033266;25741868</td>
-      <td>34</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>NM_001276506.1:c.204C&gt;T</td>
-      <td>NM_001276506.1: 288</td>
-      <td>11q23.1</td>
-      <td>NP_001263435.1:68</td>
-      <td>rs9919552</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>T: 0.1134</td>
-      <td>6392</td>
-      <td>SDHD</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>...</td>
-      <td>MedGen:CN169374; MedGen:C0027672,SNOMED CT:699...</td>
-      <td>not specified; Hereditary cancer-predisposing ...</td>
-      <td>24033266;25741868</td>
-      <td>34</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>NM_001276506.1:c.204C&gt;T</td>
-      <td>NM_001276506.1: 288</td>
-      <td>11q23.1</td>
-      <td>NR_077060.1:288</td>
-      <td>rs9919552</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>T: 0.1134</td>
-      <td>6392</td>
-      <td>SDHD</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>...</td>
-      <td>MedGen:CN169374; MedGen:C0027672,SNOMED CT:699...</td>
-      <td>not specified; Hereditary cancer-predisposing ...</td>
-      <td>24033266;25741868</td>
-      <td>34</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>NM_001276506.1:c.204C&gt;T</td>
-      <td>NM_001276506.1: 288</td>
-      <td>11q23.1</td>
-      <td>NG_033145.1:2898</td>
-      <td>rs9919552</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>T: 0.1134</td>
-      <td>6392</td>
-      <td>SDHD</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>...</td>
-      <td>MedGen:CN169374; MedGen:C0027672,SNOMED CT:699...</td>
-      <td>not specified; Hereditary cancer-predisposing ...</td>
-      <td>24033266;25741868</td>
-      <td>34</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>NM_001276506.1:c.204C&gt;T</td>
-      <td>NM_001276506.1: 288</td>
-      <td>11q23.1</td>
-      <td>XM_005271644.1:283</td>
-      <td>rs9919552</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>T: 0.1134</td>
-      <td>6392</td>
-      <td>SDHD</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>...</td>
-      <td>MedGen:CN169374; MedGen:C0027672,SNOMED CT:699...</td>
-      <td>not specified; Hereditary cancer-predisposing ...</td>
-      <td>24033266;25741868</td>
-      <td>34</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>NM_001276506.1:c.204C&gt;T</td>
-      <td>NM_001276506.1: 288</td>
-      <td>11q23.1</td>
-      <td>XP_005271701.1:68</td>
-      <td>rs9919552</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>T: 0.1134</td>
-      <td>6392</td>
-      <td>SDHD</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>...</td>
-      <td>MedGen:CN169374; MedGen:C0027672,SNOMED CT:699...</td>
-      <td>not specified; Hereditary cancer-predisposing ...</td>
-      <td>24033266;25741868</td>
-      <td>34</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>NM_001276506.1:c.204C&gt;T</td>
-      <td>NM_001276506.1: 288</td>
-      <td>11q23.1</td>
-      <td>NG_012337.3:7055</td>
-      <td>rs9919552</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>T: 0.1134</td>
-      <td>6392</td>
-      <td>SDHD</td>
-      <td>NC_000011.9:g.111959625C&gt;T</td>
-      <td>...</td>
-      <td>MedGen:CN169374; MedGen:C0027672,SNOMED CT:699...</td>
-      <td>not specified; Hereditary cancer-predisposing ...</td>
-      <td>24033266;25741868</td>
-      <td>34</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Yes</td>
-      <td>Yes</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-<p>13 rows × 31 columns</p>
-</div>
-</div>
-
-</div>
+Success rates for first authors with known gender: 
+Female: 83/264 accepted = 31.4%
+Male: 255/677 accepted = 37.7%
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Assembly-Converter">Assembly Converter<a class="anchor-link" href="#Assembly-Converter">&#182;</a></h3><p>Με το <a href="https://rest.ensembl.org/documentation/info/assembly_map">Assembly Converter</a> μπορούμε να μετατρέψουμε μία γενομική θέση από ένα assembly σε ένα άλλο. Για παράδειγμα έστω ότι έχουμε τη θέση 111959625 στο χρωμόσωμα 11 στο assembly GRCh37 και θέλουμε να το μετατρέψουμε στο GRCh38 assembly:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">location</span> <span class="o">=</span> <span class="mi">111959625</span>
-<span class="n">chromosome</span> <span class="o">=</span> <span class="mi">11</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://rest.ensembl.org/map/human/GRCh37/</span><span class="si">{chr}</span><span class="s1">:</span><span class="si">{pos}</span><span class="s1">..</span><span class="si">{pos}</span><span class="s1">:1/GRCh38&#39;</span>
-
-<span class="n">this_url</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="n">location</span><span class="p">,</span> <span class="nb">chr</span><span class="o">=</span><span class="n">chromosome</span><span class="p">)</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;content-type&#39;</span><span class="p">:</span><span class="s1">&#39;application/json&#39;</span><span class="p">}</span>
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">this_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
-<span class="nb">print</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">ok</span><span class="p">)</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>True
-{&#39;mappings&#39;: [{&#39;original&#39;: {&#39;seq_region_name&#39;: &#39;11&#39;, &#39;strand&#39;: 1, &#39;coord_system&#39;: &#39;chromosome&#39;, &#39;end&#39;: 111959625, &#39;start&#39;: 111959625, &#39;assembly&#39;: &#39;GRCh37&#39;}, &#39;mapped&#39;: {&#39;seq_region_name&#39;: &#39;11&#39;, &#39;strand&#39;: 1, &#39;coord_system&#39;: &#39;chromosome&#39;, &#39;end&#39;: 112088901, &#39;start&#39;: 112088901, &#39;assembly&#39;: &#39;GRCh38&#39;}}]}
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Το νέο location είναι το:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;mappings&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;mapped&#39;</span><span class="p">][</span><span class="s1">&#39;start&#39;</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>112088901
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Biopython-/-Entrez">Biopython / Entrez<a class="anchor-link" href="#Biopython-/-Entrez">&#182;</a></h2><p>Η <a href="https://www.ncbi.nlm.nih.gov/gquery/">ENTREZ</a> είναι μία ομογενοποιημένη βάση δεδομένων από το NCBI (Το αμερικάνικο EMBL). Δυστυχώς το API της ENTREZ δεν είναι τόσο φιλικό όσο της ENSEMBL. Το <a href="https://www.ncbi.nlm.nih.gov/books/NBK25501/">documentation</a> είναι διάσπαρτο και δεν υπάρχουν πολλά παραδείγματα (<a href="https://www.ncbi.nlm.nih.gov/books/NBK25498/">Και για αυτά που υπάρχουν είναι σε perl</a> &#x1F631;).</p>
-<p>Η <a href="http://biopython.org">biopython</a> είναι το πιο γνωστό και σημαντικό πακέτο της python για πρόσβαση σε γενετική πληροφορία αλλά και επεξεργασία. Από το <a href="http://biopython.org/DIST/docs/tutorial/Tutorial.html">documentation</a> φαίνεται ότι πρόκειται στην ουσία για ένα ολοκληρωμένο περιβάλλον το οποίο δεν προλαβαίνουμε να καλύψουμε όλο. Εδώ θα δούμε πως μπορούμε να χρησιμοποιήσουμε την biopython για να έχουμε πρόσβαση στο NCBI μέσω του Entrez.</p>
-<p>Για να εγκαταστήσουμε τη biopython τρέχουμε:</p>
-<div class="highlight"><pre><span></span>pip install biopython
-</pre></div>
-<p><strong>ΠΡΟΣΟΧΗ:</strong>
-Σας προτείνω να ρίξετε τουλάχιστον μία ματιά στο υπέροχο tutorial της biopython:
-<a href="http://biopython.org/DIST/docs/tutorial/Tutorial.html">http://biopython.org/DIST/docs/tutorial/Tutorial.html</a></p>
-<p>Δύσκολα δεν θα βρείτε κάτι σχετικό με την έρευνα που κάνετε!</p>
-<p>Αρχικά κάνουμε import τις βιβλιοθήκες:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">Bio</span> <span class="k">import</span> <span class="n">Entrez</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="c1"># For some reason Entrez needs to know who are you</span>
-<span class="c1"># but you don&#39;t have to be that honest..</span>
-<span class="n">Entrez</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="s1">&#39;anonymous@gmail.com&#39;</span>  
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Ας δούμε σε ποιες βάσεις δεδομένων παρέχει πρόσβαση η Entrez:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">handle</span> <span class="o">=</span> <span class="n">Entrez</span><span class="o">.</span><span class="n">einfo</span><span class="p">()</span>
-<span class="n">record</span> <span class="o">=</span> <span class="n">Entrez</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
-</pre></div>
+37.7/31.4 = a 20% higher success rate for men</code></pre>
+<p>Υπάρχει όντως προκατάληψη εναντίων των γυναικών σε αυτό το συνέδριο;</p>
 
-    </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">female_yes</span> <span class="o">=</span> <span class="mi">83</span>
+<span class="n">female_total</span> <span class="o">=</span> <span class="mi">264</span>
+
+<span class="n">male_yes</span> <span class="o">=</span> <span class="mi">255</span>
+<span class="n">male_total</span> <span class="o">=</span> <span class="mi">677</span> 
+
+<span class="n">total</span> <span class="o">=</span> <span class="n">female_total</span> <span class="o">+</span> <span class="n">male_total</span>
+<span class="n">accepted</span> <span class="o">=</span> <span class="n">female_yes</span> <span class="o">+</span> <span class="n">male_yes</span>
+<span class="n">failed</span> <span class="o">=</span> <span class="n">total</span> <span class="o">-</span> <span class="n">accepted</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;total papers:&#39;</span><span class="p">,</span> <span class="n">total</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Accepted papers:&#39;</span><span class="p">,</span> <span class="n">accepted</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Failed papers::&#39;</span><span class="p">,</span> <span class="n">fail</span><span class="p">)</span>
+
+<span class="n">female_success_rate</span> <span class="o">=</span> <span class="n">female_yes</span><span class="o">/</span><span class="n">female_total</span>
+<span class="n">male_success_rate</span> <span class="o">=</span> <span class="n">male_yes</span><span class="o">/</span><span class="n">male_total</span>
+
+<span class="n">diff</span> <span class="o">=</span> <span class="n">male_success_rate</span> <span class="o">-</span> <span class="n">female_success_rate</span>
+<span class="n">diff</span>
 </pre></div>
 
     </div>
@@ -14746,7 +13168,488 @@ NM_001276506.1:c.204C&gt;T	NM_001276506.1: 288	11q23.1	NG_012337.3:7055	rs991955
 
 <div class="output_area">
 
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>total papers: 941
+Accepted papers: 338
+Failed papers:: 603
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
     <div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.06226780358981243</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Η διαφορά μεταξύ του acceptance rate (ποσοστό των papers που έγιναν δεκτά) μεταξύ των ανδρών και γυναικών είναι 0.06226780358981243 . Άραγε αυτό έγινε κατά τύχη, ή λόγω προκατάληψης;</p>
+<p>Αρχικά κοιτάμε να δούμε ποια είναι η πιθανότητα να έγινε κατά τύχη. Για να το κάνουμε αυτό πρέπει να βρούμε το εξής:</p>
+<p>Βάζουμε σε ένα κουτί 338 μαύρες μπάλες (failed papers) και 603 άσπρες μπάλες (accepted papers). Στη συνέχεια ανακατέβουμε το κουτί και παίρνουμε 264 τυχαίες μπάλες (female papers) και τις βάζουμε στο δοχείο Α και τις υπόλοιπες 677 μπάλες (male papers) τις βάζουμε στο δοχείο Β. Μετά μετράμε το ποσοστό των μπαλών που είναι άσπρες στο κουτί Α και το ποσοστό των μπαλών που είναι άσπρες στο κουτί Β. Τέλος υπολογίζουμε τη διαφορά αυτών των ποσοστών και ελέγχουμε αν αυτή η διαφορά είναι μεγαλύτερη ή ίση με αυτή που παρατηρήσαμε..</p>
+<p><strong>Δηλαδή βρίσκουμε τη πιθανότητα αυτή η "ανισότητα" που βρήκαμε να ήταν τυχαία αν υποθέσουμε ότι ΔΕΝ υπάρχει προκατάληψη</strong></p>
+<p>Ας το κάνουμε αυτό σε python:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">random_papers</span><span class="p">():</span>
+    
+    <span class="n">box</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="n">accepted</span> <span class="o">+</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="n">failed</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">box</span><span class="p">)</span>
+    
+    <span class="n">female_papers</span> <span class="o">=</span> <span class="n">box</span><span class="p">[:</span><span class="n">female_total</span><span class="p">]</span>
+    <span class="n">male_papers</span> <span class="o">=</span> <span class="n">box</span><span class="p">[</span><span class="n">female_total</span><span class="p">:]</span>
+    
+    <span class="n">female_acceptance_rate</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">female_papers</span><span class="p">)</span><span class="o">/</span><span class="n">female_total</span>
+    <span class="n">male_acceptance_rate</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">male_papers</span><span class="p">)</span><span class="o">/</span><span class="n">male_total</span>
+    
+    <span class="k">return</span> <span class="p">(</span><span class="n">male_acceptance_rate</span> <span class="o">-</span> <span class="n">female_acceptance_rate</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">diff</span>
+    
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ας κάνουμε 100.000 πειράματα:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tries</span> <span class="o">=</span> <span class="mi">100</span><span class="n">_000</span>
+<span class="nb">sum</span> <span class="p">(</span><span class="n">random_papers</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tries</span><span class="p">))</span><span class="o">/</span><span class="n">tries</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[35]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.0326</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Το αποτέλεσμα είναι 0.0326. Το οποίο μπορεί να "ερμηνευθεί" ως εξής: Η πιθανότητα αυτή η διαφορά που υπολογίσαμε (0.06226780358981243) να μην οφείλεται σε κάποια προκατάληψη αλλά.. στη τύχη είναι μικρότερη από 1 στις 20. Ένα από τα πιο συνηθισμένα όρια που θέτουμε για να πούμε ότι "κάτι παίζει" και ότι αυτό που μετρήσαμε δεν είναι τυχαίο είναι το 0.05 (1/20).</p>
+<p>Άρα βγάζουμε το συμπέρασμα ότι όντως υπήρχε προκατάληψη σε αυτό το συνέδριο.</p>
+<p>Ένας στατιστικός θα το υπολόγιζε με αυτό τον τρόπο:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.stats.distributions</span> <span class="k">as</span> <span class="nn">dist</span>
+
+<span class="n">total_accepted_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">female_yes</span> <span class="o">+</span> <span class="n">male_yes</span><span class="p">)</span> <span class="o">/</span> <span class="n">total</span>
+
+<span class="n">variance</span> <span class="o">=</span> <span class="n">total_accepted_rate</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">total_accepted_rate</span><span class="p">)</span>
+
+<span class="n">standard_error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">variance</span> <span class="o">*</span> <span class="p">((</span><span class="mi">1</span> <span class="o">/</span> <span class="n">female_total</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">male_total</span><span class="p">)))</span>
+
+<span class="n">best_estimate</span> <span class="o">=</span> <span class="n">male_success_rate</span> <span class="o">-</span> <span class="n">female_success_rate</span>
+
+<span class="n">hypothesized_estimate</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<span class="n">test_stat</span> <span class="o">=</span> <span class="p">(</span><span class="n">best_estimate</span><span class="o">-</span><span class="n">hypothesized_estimate</span><span class="p">)</span> <span class="o">/</span> <span class="n">standard_error</span>
+
+<span class="n">dist</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">test_stat</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[36]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.03683152398331601</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Το ποιον τρόπο θα επιλέξετε είναι δικό σας θέμα! Αλλά: ο πρώτος (ονομάζεται και permutation test: <a href="https://en.wikipedia.org/wiki/Resampling_(statistics">https://en.wikipedia.org/wiki/Resampling_(statistics</a>) ) είναι πιο ευκολονόητος και διαισθητικός για αυτούς που έχουν εμπειρία στον προγραμματισμό! Ο 2ος βέβαια είναι πιο γρήγορος και πιο ακριβής (αν το κάνετε σωστά). Μία μέση λύση είναι να κάνετε το πρώτο για να έχετε μία ιδέα το που κυμαίνεται το p-value και μετά να το επιβεβαιώσετε με τον 2ο τρόπο.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#928;&#945;&#961;&#940;&#948;&#949;&#953;&#947;&#956;&#945;-2">&#928;&#945;&#961;&#940;&#948;&#949;&#953;&#947;&#956;&#945; 2<a class="anchor-link" href="#&#928;&#945;&#961;&#940;&#948;&#949;&#953;&#947;&#956;&#945;-2">&#182;</a></h3><p><strong>Αυτό το παράδειγμα είναι "κλεμμένο" από εδώ:</strong> <a href="https://www.youtube.com/watch?v=5Dnw46eC-0o">https://www.youtube.com/watch?v=5Dnw46eC-0o</a> <strong>H παρακολούθηση αυτού του βίντεο είναι υποχρεωτική!</strong></p>
+<p>Σε ένα <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0009546">paper</a>  οι συγγραφείς εξέτασαν την υπόθεση: "Η κατανάλωση μπύρας αυξάνει την ελκυστικότητά μας στα κουνούπια που προκαλούν ελονοσία". Για να το ελέγξουν, χωρίσανε μία ομάδα από ανθρώπους σε δύο γκρουπ. Στη 1η δώσανε να πιούν μπύρα και στη δεύτερη νερό. Στη συνέχεια για κάθε άνθρωπο ελέγξαν το πλήθος από κουνούπια που προσέλκησε. Τα δεδομένα είναι:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">beer</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">29</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> 
+    <span class="mi">20</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> 
+    <span class="mi">21</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span>
+    <span class="mi">26</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="mi">27</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span>
+    <span class="mi">31</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span>
+    <span class="mi">24</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span>
+    <span class="mi">21</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span>
+    <span class="mi">20</span>
+<span class="p">]</span>
+
+<span class="n">water</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">21</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span>
+    <span class="mi">22</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span>
+    <span class="mi">15</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="mi">21</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span>
+    <span class="mi">16</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ας ελέγξουμε για αρχή τη διαφορά στον μέσο όρο:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">beer_average</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">beer</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">beer</span><span class="p">)</span>
+<span class="n">water_average</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">water</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">water</span><span class="p">)</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">beer_average</span> <span class="o">-</span> <span class="n">water_average</span>
+<span class="n">diff</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[38]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>4.457777777777778</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ποια είναι η πιθανότητα αυτή η διαφορά να προήλθε κατά τύχη; Κάνουμε ότι κάναμε και πριν. Υποθέτουμε ότι είτε πιει κάποιος μπύρα είτε νερό θα συγκεντρώσει το ίδιο πλήθος από κουνούπια. Αρα αν πάρουμε τυχάια <code>len(beer)</code> άτομα θα έχουν τον ίδιο μέσο όρο κουνουπιών με τους υπόλοιπους <code>len(water)</code>. Επίσης υποθέτουμε ότι αυτή η διαφορά πυ μετρήσαμε (4.458) συμβαίνει "πολύ συχνά" (δηλαδή ποιο συχνά από 1/20) κατά τύχη:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">random_mosquitos</span><span class="p">():</span>
+    <span class="n">box</span> <span class="o">=</span> <span class="n">beer</span> <span class="o">+</span> <span class="n">water</span> 
+    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">box</span><span class="p">)</span>
+    <span class="n">random_beer</span> <span class="o">=</span> <span class="n">box</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">beer</span><span class="p">)]</span>
+    <span class="n">random_water</span> <span class="o">=</span> <span class="n">box</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">beer</span><span class="p">):]</span>
+    
+    <span class="n">random_average_beer</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">random_beer</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">random_beer</span><span class="p">)</span>
+    <span class="n">random_average_water</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">random_water</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">random_water</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="p">(</span><span class="n">random_average_beer</span> <span class="o">-</span> <span class="n">random_average_water</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">diff</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tries</span> <span class="o">=</span> <span class="mi">100</span><span class="n">_000</span>
+<span class="nb">sum</span> <span class="p">(</span><span class="n">random_mosquitos</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tries</span><span class="p">))</span> <span class="o">/</span> <span class="n">tries</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[54]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.00042</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ας το υπολογίσουμε τώρα με την αναλυτική μέθοδο:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">ttest_ind</span>
+<span class="n">ttest_ind</span><span class="p">(</span><span class="n">beer</span><span class="p">,</span> <span class="n">water</span><span class="p">)</span><span class="o">.</span><span class="n">pvalue</span><span class="o">/</span><span class="mi">2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[51]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.0004205775278799323</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#928;&#945;&#961;&#940;&#948;&#949;&#953;&#947;&#956;&#945;-3">&#928;&#945;&#961;&#940;&#948;&#949;&#953;&#947;&#956;&#945; 3<a class="anchor-link" href="#&#928;&#945;&#961;&#940;&#948;&#949;&#953;&#947;&#956;&#945;-3">&#182;</a></h3><p>Ίσως το κυριότερο ερώτημα στις γενετικές έρευνες είναι: "υπάρχει συσχετισμός μεταξύ ενός αλληλόμορφου και στην εμφάνιση μιας ασθένειας"; Με την σημερινή τεχνογία μπορούμε να πάρουμε τον γονότυπο ενώς μεγάλου μέρους τον γονοδιόματος από έναν άνθρωπο. Αυτή η διαδικασία ονομάζεται "γονοτύπηση". Αν κάνουμε αυτή τη διαδικασία για ένα μεγάλο πλήθος από ανθρώπους, κάποιους από τους οποίους εμφανίζουν μία ασθένεια, τότε μπορούμε να απαντήσουμε στο παραπάνω ερώτημα. Οι έρευνες αυτού του είδους ονομάζονται και GWAS: <a href="https://en.wikipedia.org/wiki/Genome-wide_association_study">Genome Wide Association Studies</a>. Ας δούμε λοιπόν πως μπορούμε να προσεγγίσουμε αυτό το ερώτημα. Για αρχή ας υποθέσουμε ότι έχουμε 10 ανθρώπους. 5 από αυτούς εμφανίζουν μία ασθένεια η οποία πιστεύουμε ότι έχει γενετική βάση και 5 δεν την εμφανίζουν. Ας πάρουμε τον γονότυπό τους σε μία περιοχή του γονιδώματος:</p>
+<table>
+<thead><tr>
+<th>Δείγμα</th>
+<th>Α1</th>
+<th>Α2</th>
+<th>Α3</th>
+<th>Α4</th>
+<th>Α5</th>
+<th>Α6</th>
+<th>Α7</th>
+<th>Α8</th>
+<th>Α9</th>
+<th>Α10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Γονότυπος</td>
+<td>A/A</td>
+<td>A/a</td>
+<td>A/A</td>
+<td>A/A</td>
+<td>A/A</td>
+<td>A/A</td>
+<td>A/a</td>
+<td>A/a</td>
+<td>a/a</td>
+<td>a/a</td>
+</tr>
+<tr>
+<td>Ασθένεια</td>
+<td>ΟΧΙ</td>
+<td>ΟΧΙ</td>
+<td>ΟΧΙ</td>
+<td>ΟΧΙ</td>
+<td>ΟΧΙ</td>
+<td>ΝΑΙ</td>
+<td>ΝΑΙ</td>
+<td>ΝΑΙ</td>
+<td>ΝΑΙ</td>
+<td>ΝΑΙ</td>
+</tr>
+</tbody>
+</table>
+<p>Και σε python:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">genotypes</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">),</span> 
+             <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)]</span>
+<span class="n">phenotypes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;NO&#39;</span><span class="p">,</span> <span class="s1">&#39;NO&#39;</span><span class="p">,</span> <span class="s1">&#39;NO&#39;</span><span class="p">,</span> <span class="s1">&#39;NO&#39;</span><span class="p">,</span> <span class="s1">&#39;NO&#39;</span><span class="p">,</span> <span class="s1">&#39;YES&#39;</span><span class="p">,</span> <span class="s1">&#39;YES&#39;</span><span class="p">,</span> <span class="s1">&#39;YES&#39;</span><span class="p">,</span> <span class="s1">&#39;YES&#39;</span><span class="p">,</span> <span class="s1">&#39;YES&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Για αρχή φτιάχνουμε έναν πίνακα που δείχνει πόσα αλληλόμορφα υπάρχουν σε ασθενείς και μη ασθενείς. Αυτός ο πίνακας ονομάζεται <a href="https://en.wikipedia.org/wiki/Contingency_table">contingency table</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">def</span> <span class="nf">create_contingency_table</span><span class="p">(</span><span class="n">genotypes</span><span class="p">,</span> <span class="n">phenotypes</span><span class="p">):</span>
+    <span class="n">contingency</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Disease&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;NO&#39;</span><span class="p">,</span> <span class="s1">&#39;YES&#39;</span><span class="p">,</span> <span class="s1">&#39;total&#39;</span><span class="p">]}</span>
+    <span class="k">for</span> <span class="n">allele</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">):</span>
+        <span class="n">contingency</span><span class="p">[</span><span class="n">allele</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">phenotype</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;NO&#39;</span><span class="p">,</span> <span class="s1">&#39;YES&#39;</span><span class="p">):</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">allele</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span><span class="p">,</span><span class="n">p</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">genotypes</span><span class="p">,</span> <span class="n">phenotypes</span><span class="p">)</span> <span class="k">if</span> <span class="n">p</span><span class="o">==</span><span class="n">phenotype</span><span class="p">)</span>
+            <span class="n">contingency</span><span class="p">[</span><span class="n">allele</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="n">c</span>
+        <span class="n">contingency</span><span class="p">[</span><span class="n">allele</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+
+    <span class="n">contingency</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">contingency</span><span class="p">)</span>
+    <span class="n">contingency</span> <span class="o">=</span> <span class="n">contingency</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Disease&#39;</span><span class="p">)</span>
+    <span class="n">contingency</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contingency</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">sum</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">contingency</span>
+
+<span class="n">contingency</span> <span class="o">=</span> <span class="n">create_contingency_table</span><span class="p">(</span><span class="n">genotypes</span><span class="p">,</span> <span class="n">phenotypes</span><span class="p">)</span>
+
+<span class="n">contingency</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[56]:</div>
 
 
 
@@ -14769,181 +13672,35 @@ NM_001276506.1:c.204C&gt;T	NM_001276506.1: 288	11q23.1	NG_012337.3:7055	rs991955
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>DbList</th>
+      <th>A</th>
+      <th>a</th>
+      <th>total</th>
+    </tr>
+    <tr>
+      <th>Disease</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>pubmed</td>
+      <th>NO</th>
+      <td>9</td>
+      <td>1</td>
+      <td>10</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>protein</td>
+      <th>YES</th>
+      <td>4</td>
+      <td>6</td>
+      <td>10</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>nuccore</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>ipg</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>nucleotide</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>structure</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>genome</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>annotinfo</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>assembly</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>bioproject</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>biosample</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>blastdbinfo</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>books</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>cdd</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>clinvar</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>gap</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>gapplus</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>grasp</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>dbvar</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>gene</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>gds</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>geoprofiles</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>homologene</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>medgen</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>mesh</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>ncbisearch</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>nlmcatalog</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>omim</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>orgtrack</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>pmc</td>
-    </tr>
-    <tr>
-      <th>30</th>
-      <td>popset</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>proteinclusters</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>pcassay</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>protfam</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>biosystems</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>pccompound</td>
-    </tr>
-    <tr>
-      <th>36</th>
-      <td>pcsubstance</td>
-    </tr>
-    <tr>
-      <th>37</th>
-      <td>seqannot</td>
-    </tr>
-    <tr>
-      <th>38</th>
-      <td>snp</td>
-    </tr>
-    <tr>
-      <th>39</th>
-      <td>sra</td>
-    </tr>
-    <tr>
-      <th>40</th>
-      <td>taxonomy</td>
-    </tr>
-    <tr>
-      <th>41</th>
-      <td>biocollections</td>
-    </tr>
-    <tr>
-      <th>42</th>
-      <td>gtr</td>
+      <th>total</th>
+      <td>13</td>
+      <td>7</td>
+      <td>20</td>
     </tr>
   </tbody>
 </table>
@@ -14959,41 +13716,155 @@ NM_001276506.1:c.204C&gt;T	NM_001276506.1: 288	11q23.1	NG_012337.3:7055	rs991955
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Για να δούμε περισσότερες πληροφορίες για όλες αυτές τις βάσεις μπορούμε να πάμε στο λινκ:</p>
-<p><a href="https://www.ncbi.nlm.nih.gov/{ΟΝΟΜΑ_ΒΑΣΗΣ}">https://www.ncbi.nlm.nih.gov/{ΟΝΟΜΑ_ΒΑΣΗΣ}</a></p>
-<p>Π.χ:</p>
-<ul>
-<li><a href="https://www.ncbi.nlm.nih.gov/sra">https://www.ncbi.nlm.nih.gov/sra</a></li>
-<li><a href="https://www.ncbi.nlm.nih.gov/probe">https://www.ncbi.nlm.nih.gov/probe</a> </li>
-<li>κτλ...</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Κάθε στοιχείο της βάσης αυτή έχει ένα "id". Μπορούμε να "κατεβάσουμε" μία εγγραφή της βάσης δίνοντας το ονομα της βάσης, το id του στοιχείου και σε τι φορμάτ το θέλουμε. Για παράδειγμα μπορούμε να κατεβάσουμε σε fasta φορμάτ την ακολουθία με id: "NM_000762.5" από τη nuccore βάση. Το link αυτής της εγγραφής είναι το εξής: <a href="https://www.ncbi.nlm.nih.gov/nuccore/189339232">https://www.ncbi.nlm.nih.gov/nuccore/189339232</a></p>
-
+<p>Φτιάχνουμε τώρα έναν άλλο πίνακα που περιέχει την αναμενόμενες τιμές του πινακα αν υποθέταμε ότι ο γονότυπος αυτός δεν έχει κάποια σχέση με την εκδήλωση της ασθένειας.</p>
+<p>Το στοιχείο του πίνακα αυτού για το allele=X και phenotype=Y ισούται με:</p>
+$$ E_{X,Y} = \frac{Total_X * Total_Y}{total} $$
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">handle</span> <span class="o">=</span> <span class="n">Entrez</span><span class="o">.</span><span class="n">efetch</span><span class="p">(</span>
-  <span class="n">db</span><span class="o">=</span><span class="s1">&#39;nuccore&#39;</span><span class="p">,</span> 
-  <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;NM_000762.5&#39;</span><span class="p">,</span> 
-  <span class="n">retmode</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> 
-  <span class="n">rettype</span><span class="o">=</span><span class="s1">&#39;fasta&#39;</span><span class="p">,</span>
-  <span class="c1">#rettype=&#39;genbank&#39;,</span>
-<span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">create_expected_contingency_table</span><span class="p">(</span><span class="n">observed</span><span class="p">):</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">handle</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">contingency_e</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Disease&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;NO&#39;</span><span class="p">,</span> <span class="s1">&#39;YES&#39;</span><span class="p">,</span> <span class="s1">&#39;total&#39;</span><span class="p">]}</span>
+    <span class="k">for</span> <span class="n">allele</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">):</span>
+        <span class="n">contingency_e</span><span class="p">[</span><span class="n">allele</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">phenotype</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;NO&#39;</span><span class="p">,</span> <span class="s1">&#39;YES&#39;</span><span class="p">):</span>
+            <span class="c1">#c = sum(g.count(allele) for g,p in zip(genotypes, phenotypes) if p==phenotype)</span>
+
+            <span class="n">c</span> <span class="o">=</span> <span class="n">observed</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">phenotype</span><span class="p">][</span><span class="s1">&#39;total&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">observed</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">][</span><span class="n">allele</span><span class="p">]</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">c</span><span class="o">/</span><span class="n">observed</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">][</span><span class="s1">&#39;total&#39;</span><span class="p">]</span>
+
+            <span class="n">contingency_e</span><span class="p">[</span><span class="n">allele</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="n">c</span>
+        <span class="n">contingency_e</span><span class="p">[</span><span class="n">allele</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+
+    <span class="n">contingency_e</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">contingency_e</span><span class="p">)</span>
+    <span class="n">contingency_e</span> <span class="o">=</span> <span class="n">contingency_e</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Disease&#39;</span><span class="p">)</span>
+    <span class="n">contingency_e</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contingency_e</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">sum</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">contingency_e</span>
+
+
+<span class="n">contingency_e</span> <span class="o">=</span> <span class="n">create_expected_contingency_table</span><span class="p">(</span><span class="n">contingency</span><span class="p">)</span>
+<span class="n">contingency_e</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[58]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>a</th>
+      <th>total</th>
+    </tr>
+    <tr>
+      <th>Disease</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>NO</th>
+      <td>6.5</td>
+      <td>3.5</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>YES</th>
+      <td>6.5</td>
+      <td>3.5</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>total</th>
+      <td>13.0</td>
+      <td>7.0</td>
+      <td>20.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Παρατηρείστε ότι αν υποθέσουμε ότι η θέση αυτή δεν συσχετίζεται με την ασθένεια, τότε η κατανομή των αλληλόμορφων είναι ίδια για τις δύο κλάσεις (NO, YES) της ασθένειας.</p>
+<p>Τώρα μπορούμε να δούμε αν η διαφορά μεταξύ του observed contingency table ($O$) και του expected contingency table (E) είναι στατιστικά σημαντική. Υπολογίζουμε το $\chi^2$:</p>
+$$\chi^2 = \sum_{p=[YES,NO]} \sum_{al=[A,a]} \frac{ \left ( O_{p,al}-E_{p,al} \right )^2 }{E_{p,al}} $$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_chi_square</span><span class="p">(</span><span class="n">O</span><span class="p">,</span><span class="n">E</span><span class="p">):</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;NO&#39;</span><span class="p">,</span> <span class="s1">&#39;YES&#39;</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">al</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">):</span>
+            <span class="n">O_p_al</span> <span class="o">=</span> <span class="n">O</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">al</span><span class="p">]</span>
+            <span class="n">E_p_al</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">][</span><span class="n">al</span><span class="p">]</span>
+            <span class="n">ret</span> <span class="o">+=</span> <span class="p">(</span><span class="n">O_p_al</span><span class="o">-</span><span class="n">E_p_al</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">E_p_al</span>
+    
+    <span class="k">return</span> <span class="n">ret</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">chi_square</span> <span class="o">=</span> <span class="n">get_chi_square</span><span class="p">(</span><span class="n">contingency</span><span class="p">,</span> <span class="n">contingency_e</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;chi square:&#39;</span><span class="p">,</span> <span class="n">chi_square</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -15010,35 +13881,7 @@ NM_001276506.1:c.204C&gt;T	NM_001276506.1: 288	11q23.1	NG_012337.3:7055	rs991955
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>&gt;NM_000762.5 Homo sapiens cytochrome P450 family 2 subfamily A member 6 (CYP2A6), mRNA
-ATCTATCATCCCACTACCACCATGCTGGCCTCAGGGATGCTTCTGGTGGCCTTGCTGGTCTGCCTGACTG
-TAATGGTCTTGATGTCTGTTTGGCAGCAGAGGAAGAGCAAGGGGAAGCTGCCTCCGGGACCCACCCCATT
-GCCCTTCATTGGAAACTACCTGCAGCTGAACACAGAGCAGATGTACAACTCCCTCATGAAGATCAGTGAG
-CGCTATGGCCCCGTGTTCACCATTCACTTGGGGCCCCGGCGGGTCGTGGTGCTGTGTGGACATGATGCCG
-TCAGGGAGGCTCTGGTGGACCAGGCTGAGGAGTTCAGCGGGCGAGGCGAGCAAGCCACCTTCGACTGGGT
-CTTCAAAGGCTATGGCGTGGTATTCAGCAACGGGGAGCGCGCCAAGCAGCTCCGGCGCTTCTCCATCGCC
-ACCCTGCGGGACTTCGGGGTGGGCAAGCGAGGCATCGAGGAGCGCATCCAGGAGGAGGCGGGCTTCCTCA
-TCGACGCCCTCCGGGGCACTGGCGGCGCCAATATCGATCCCACCTTCTTCCTGAGCCGCACAGTCTCCAA
-TGTCATCAGCTCCATTGTCTTTGGGGACCGCTTTGACTATAAGGACAAAGAGTTCCTGTCACTGTTGCGC
-ATGATGCTAGGAATCTTCCAGTTCACGTCAACCTCCACGGGGCAGCTCTATGAGATGTTCTCTTCGGTGA
-TGAAACACCTGCCAGGACCACAGCAACAGGCCTTTCAGTTGCTGCAAGGGCTGGAGGACTTCATAGCCAA
-GAAGGTGGAGCACAACCAGCGCACGCTGGATCCCAATTCCCCACGGGACTTCATTGACTCCTTTCTCATC
-CGCATGCAGGAGGAGGAGAAGAACCCCAACACGGAGTTCTACTTGAAAAACCTGGTGATGACCACGTTGA
-ACCTCTTCATTGGGGGCACCGAGACCGTCAGCACCACCCTGCGCTATGGCTTCTTGCTGCTCATGAAGCA
-CCCAGAGGTGGAGGCCAAGGTCCATGAGGAGATTGACAGAGTGATCGGCAAGAACCGGCAGCCCAAGTTT
-GAGGACCGGGCCAAGATGCCCTACATGGAGGCAGTGATCCACGAGATCCAAAGATTTGGAGACGTGATCC
-CCATGAGTTTGGCCCGCAGAGTCAAAAAGGACACCAAGTTTCGGGATTTCTTCCTCCCTAAGGGCACCGA
-AGTGTACCCTATGCTGGGCTCTGTGCTGAGAGACCCCAGTTTCTTCTCCAACCCCCAGGACTTCAATCCC
-CAGCACTTCCTGAATGAGAAGGGGCAGTTTAAGAAGAGTGATGCTTTTGTGCCCTTTTCCATCGGAAAGC
-GGAACTGTTTCGGAGAAGGCCTGGCCAGAATGGAGCTCTTTCTCTTCTTCACCACCGTCATGCAGAACTT
-CCGCCTCAAGTCCTCCCAGTCACCTAAGGACATTGACGTGTCCCCCAAACACGTGGGCTTTGCCACGATC
-CCACGAAACTACACCATGAGCTTCCTGCCCCGCTGAGCGAGGGCTGTGCCGGTGCAGGTCTGGTGGGCGG
-GGCCAGGGAAAGGGCAGGGCCAAGACCGGGCTTGGGAGAGGGGCGCAGCTAAGACTGGGGGCAGGATGGC
-GGAAAGGAAGGGGCGTGGTGGCTAGAGGGAAGAGAAGAAACAGAAGCGGCTCAGTTCACCTTGATAAGGT
-GCTTCCGAGCTGGGATGAGAGGAAGGAAACCCTTACATTATGCTATGAAGAGTAGTAATAATAGCAGCTC
-TTATTTCCTGAGCAAAAAAAAAAAA
-
-
+<pre>chi square: 5.4945054945054945
 </pre>
 </div>
 </div>
@@ -15050,43 +13893,25 @@ TTATTTCCTGAGCAAAAAAAAAAAA
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Μπορούμε τώρα να τρέξουμε <a href="https://en.wikipedia.org/wiki/BLAT_(bioinformatics%29">BLAT</a> σε αυτή την ακολουθία και να δούμε σε ποιο σημείο του ανθρώπινου γονιδιώματος ανοίκει:</p>
+<p>Ποια είναι η πιθανότητα να βρούμε αυτό το chi-square (ή μεγαλύτερο) αν υποθέσουμε ότι δεν υπάρχει σχέση μεταξύ της μετάλλαξης και της ασθένειας; Απλό: φτιάχνουμε έναν τυχαίο contingency table ο οποίως κάνει αυτή ακριβώς την υπόθεση:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[82]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">Bio.Blast</span> <span class="k">import</span> <span class="n">NCBIWWW</span>
-<span class="kn">from</span> <span class="nn">Bio.Blast</span> <span class="k">import</span> <span class="n">NCBIXML</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">genotypes</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">),</span> 
+             <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)]</span>
+<span class="n">phenotypes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;NO&#39;</span><span class="p">,</span> <span class="s1">&#39;NO&#39;</span><span class="p">,</span> <span class="s1">&#39;NO&#39;</span><span class="p">,</span> <span class="s1">&#39;NO&#39;</span><span class="p">,</span> <span class="s1">&#39;NO&#39;</span><span class="p">,</span> <span class="s1">&#39;YES&#39;</span><span class="p">,</span> <span class="s1">&#39;YES&#39;</span><span class="p">,</span> <span class="s1">&#39;YES&#39;</span><span class="p">,</span> <span class="s1">&#39;YES&#39;</span><span class="p">,</span> <span class="s1">&#39;YES&#39;</span><span class="p">]</span>
 
-<span class="c1">#result_handle = NCBIWWW.qblast(&quot;blastn&quot;, &quot;refseq_genomic_human&quot;, data)</span>
-<span class="n">result_handle</span> <span class="o">=</span> <span class="n">NCBIWWW</span><span class="o">.</span><span class="n">qblast</span><span class="p">(</span><span class="s2">&quot;blastn&quot;</span><span class="p">,</span> <span class="s2">&quot;nt&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;fasta&quot;</span><span class="p">))</span>
-<span class="n">blast_record</span> <span class="o">=</span> <span class="n">NCBIXML</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">result_handle</span><span class="p">)</span>
-</pre></div>
+<span class="n">phenotypes_random</span> <span class="o">=</span> <span class="n">phenotypes</span>
+<span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">phenotypes_random</span><span class="p">)</span>
 
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Σε πόσες ακολουθίες έγινε match;</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">blast_record</span><span class="o">.</span><span class="n">alignments</span><span class="p">)</span>
+<span class="n">random_contigency_table</span> <span class="o">=</span> <span class="n">create_contingency_table</span><span class="p">(</span><span class="n">genotypes</span><span class="p">,</span> <span class="n">phenotypes_random</span><span class="p">)</span>
+<span class="n">random_contigency_table</span>
 </pre></div>
 
     </div>
@@ -15099,13 +13924,104 @@ TTATTTCCTGAGCAAAAAAAAAAAA
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[10]:</div>
+    <div class="prompt output_prompt">Out[82]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>a</th>
+      <th>total</th>
+    </tr>
+    <tr>
+      <th>Disease</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>NO</th>
+      <td>5</td>
+      <td>5</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>YES</th>
+      <td>8</td>
+      <td>2</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>total</th>
+      <td>13</td>
+      <td>7</td>
+      <td>20</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Και υπολογίζουμε το chi-square αυτού του τυχαίου πίνακα:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[83]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">random_chi_square</span> <span class="o">=</span> <span class="n">get_chi_square</span><span class="p">(</span><span class="n">random_contigency_table</span><span class="p">,</span> <span class="n">contingency_e</span><span class="p">)</span>
+<span class="n">random_chi_square</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[83]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>50</pre>
+<pre>1.978021978021978</pre>
 </div>
 
 </div>
@@ -15117,18 +14033,81 @@ TTATTTCCTGAGCAAAAAAAAAAAA
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Ποιες είναι αυτές;</p>
+<p>Παρατηρούμε ότι σε ένα τυχαίο "ανακάτωμα" των φαινότυπων, το chi-square είναι μικρότερο από αυτό που παρατηρήσαμε (1.978&lt;5.494). Ας δούμε λοιπόν ποια είναι η πιθανότητα να βρούμε chi-suare μεγαλύτερο από αυτό που παρατηρήσαμε:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[93]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">blast_record</span><span class="o">.</span><span class="n">alignments</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">random_trial</span><span class="p">():</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">phenotypes_random</span><span class="p">)</span>
+
+    <span class="n">random_contigency_table</span> <span class="o">=</span> <span class="n">create_contingency_table</span><span class="p">(</span><span class="n">genotypes</span><span class="p">,</span> <span class="n">phenotypes_random</span><span class="p">)</span>
+    <span class="n">random_chi_square</span> <span class="o">=</span> <span class="n">get_chi_square</span><span class="p">(</span><span class="n">random_contigency_table</span><span class="p">,</span> <span class="n">contingency_e</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">random_chi_square</span> <span class="o">&gt;</span> <span class="n">chi_square</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[94]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">trials</span> <span class="o">=</span> <span class="mi">10</span><span class="n">_000</span>
+<span class="nb">sum</span><span class="p">(</span><span class="n">random_trial</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">trials</span><span class="p">))</span><span class="o">/</span><span class="n">trials</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[94]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.007</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Αν λοιπόν θέσουμε ως όριο σημαντικότητας το 0.05 τότε βγάζουμε ως συμπέρασμα ότι p_value &lt; 0.05, άρα το αλληλόμορφο a σε αυτή τη θέση συσχετίζεται με την ανάπτυξη της ασθένειας.</p>
+<p>Ας το υπολογίσουμε τώρα και με τον αναλυτικό τρόπο:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[100]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats.distributions</span> <span class="k">import</span> <span class="n">chi2</span> 
+<span class="n">p_value</span> <span class="o">=</span> <span class="n">chi2</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">chi_square</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># 1 = degrees of freedom</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;p_value=&#39;</span><span class="p">,</span> <span class="n">p_value</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -15145,56 +14124,7 @@ TTATTTCCTGAGCAAAAAAAAAAAA
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>gi|1519246407|ref|NM_000762.6| Homo sapiens cytochrome P450 family 2 subfamily A member 6 (CYP2A6), mRNA
-gi|180986|gb|M33318.1|HUMCPIIA3A Human cytochrome P450IIA3 (CYP2A3) mRNA, complete cds
-gi|29546|emb|X13897.1| Human mRNA for cytochrome P-450IIA
-gi|30331|emb|X13930.1| Human CYP2A4 mRNA for P-450 IIA4 protein
-gi|1753053698|ref|XM_019015583.2| PREDICTED: Gorilla gorilla gorilla cytochrome P450 2A6 (LOC101146638), transcript variant X1, mRNA
-gi|64654819|gb|BC096256.1| Homo sapiens cytochrome P450, family 2, subfamily A, polypeptide 6, mRNA (cDNA clone MGC:116921 IMAGE:40006068), complete cds
-gi|64654814|gb|BC096255.1| Homo sapiens cytochrome P450, family 2, subfamily A, polypeptide 6, mRNA (cDNA clone MGC:116920 IMAGE:40006064), complete cds
-gi|64653226|gb|BC096254.1| Homo sapiens cytochrome P450, family 2, subfamily A, polypeptide 6, mRNA (cDNA clone MGC:116919 IMAGE:40006062), complete cds
-gi|109730085|gb|BC096253.3| Homo sapiens cytochrome P450, family 2, subfamily A, polypeptide 6, mRNA (cDNA clone MGC:116918 IMAGE:40006061), complete cds
-gi|1351473687|ref|XM_024237332.1| PREDICTED: Pongo abelii cytochrome P450 2A6 (LOC100457048), transcript variant X1, mRNA
-gi|35197|emb|X13929.1| Human CYP2A3 mRNA for P-450 IIA3 protein
-gi|6470138|gb|AF182275.1|AF182275 Homo sapiens cytochrome P450-2A6 (CYP2A6) mRNA, complete cds
-gi|1887789759|ref|NM_000764.3| Homo sapiens cytochrome P450 family 2 subfamily A member 7 (CYP2A7), transcript variant 1, mRNA
-gi|1849054764|ref|XM_034944594.1| PREDICTED: Pan paniscus cytochrome P450 family 2 subfamily A member 7 (CYP2A7), mRNA
-gi|181269|gb|M33317.1|HUMCYIIA4A Human cytochrome P450IIA4 (CYP2A4) mRNA, complete cds
-gi|1367220708|ref|XM_024351394.1| PREDICTED: Pan troglodytes cytochrome P450 2A7 (LOC107966456), mRNA
-gi|1008465|gb|U22029.1|HSU22029 Human cytochrome P450 (CYP2A7) mRNA, complete cds
-gi|1743170194|ref|XM_003282448.4| PREDICTED: Nomascus leucogenys cytochrome P450 2A13 (LOC100579248), transcript variant X1, mRNA
-gi|1800015647|ref|XM_032172847.1| PREDICTED: Hylobates moloch cytochrome P450 2A13 (LOC116480658), transcript variant X1, mRNA
-gi|1751200936|ref|XM_010380822.2| PREDICTED: Rhinopithecus roxellana cytochrome P450 2A13-like (LOC104676097), transcript variant X1, mRNA
-gi|795398387|ref|XM_012086802.1| PREDICTED: Cercocebus atys cytochrome P450 2A13-like (LOC105598002), transcript variant X1, mRNA
-gi|1825863830|ref|XM_033224912.1| PREDICTED: Trachypithecus francoisi cytochrome P450 2A13 (LOC117091930), mRNA
-gi|548960720|ref|NM_001285348.1| Macaca fascicularis cytochrome P450 family 2 subfamily A member 24 (CYP2A24), mRNA &gt;gi|71152698|gb|DQ074792.1| Macaca fascicularis cytochrome P450 2A24 (CYP2A24) mRNA, complete cds
-gi|164691768|dbj|AK312964.1| Homo sapiens cDNA, FLJ93424, highly similar to Homo sapiens cytochrome P450, family 2, subfamily A, polypeptide 6 (CYP2A6), mRNA
-gi|1825821225|ref|XM_033218604.1| PREDICTED: Trachypithecus francoisi cytochrome P450 2A13-like (LOC117087862), mRNA
-gi|1653961540|ref|NM_000766.5| Homo sapiens cytochrome P450 family 2 subfamily A member 13 (CYP2A13), mRNA
-gi|1411126738|ref|XM_025366233.1| PREDICTED: Theropithecus gelada cytochrome P450 2A13-like (LOC112612112), transcript variant X2, mRNA
-gi|795398405|ref|XM_012086807.1| PREDICTED: Cercocebus atys cytochrome P450 2A13-like (LOC105598006), mRNA
-gi|1351473349|ref|XM_024237225.1| PREDICTED: Pongo abelii cytochrome P450 2A13 (LOC100458875), transcript variant X1, mRNA
-gi|795234893|ref|XM_011952499.1| PREDICTED: Colobus angolensis palliatus cytochrome P450 2A13-like (LOC105519195), transcript variant X1, mRNA
-gi|1622890953|ref|XM_028838334.1| PREDICTED: Macaca mulatta cytochrome P450, family 2, subfamily A, polypeptide 24 (CYP2A24), transcript variant X1, mRNA
-gi|1849062391|ref|XM_003812465.2| PREDICTED: Pan paniscus cytochrome P450 family 2 subfamily A member 13 (CYP2A13), mRNA
-gi|1788688032|ref|XM_023229274.3| PREDICTED: Piliocolobus tephrosceles cytochrome P450 2A13 (LOC111554025), transcript variant X1, mRNA
-gi|1411126736|ref|XM_025366232.1| PREDICTED: Theropithecus gelada cytochrome P450 2A13-like (LOC112612112), transcript variant X1, mRNA
-gi|649118244|gb|KJ896677.1| Synthetic construct Homo sapiens clone ccsbBroadEn_06071 CYP2A6 gene, encodes complete protein
-gi|1147694741|emb|LT740833.1| Human ORFeome Gateway entry vector pENTR223-CYP2A6, complete sequence
-gi|823673899|gb|KR711779.1| Synthetic construct Homo sapiens clone CCSBHm_00030839 CYP2A6 (CYP2A6) mRNA, encodes complete protein
-gi|823673897|gb|KR711778.1| Synthetic construct Homo sapiens clone CCSBHm_00030834 CYP2A6 (CYP2A6) mRNA, encodes complete protein
-gi|823673895|gb|KR711777.1| Synthetic construct Homo sapiens clone CCSBHm_00030831 CYP2A6 (CYP2A6) mRNA, encodes complete protein
-gi|823673893|gb|KR711776.1| Synthetic construct Homo sapiens clone CCSBHm_00030829 CYP2A6 (CYP2A6) mRNA, encodes complete protein
-gi|795398351|ref|XM_012086792.1| PREDICTED: Cercocebus atys cytochrome P450 2A13 (LOC105597997), transcript variant X3, mRNA
-gi|795398348|ref|XM_012086791.1| PREDICTED: Cercocebus atys cytochrome P450 2A13 (LOC105597997), transcript variant X2, mRNA
-gi|795398345|ref|XM_012086790.1| PREDICTED: Cercocebus atys cytochrome P450 2A13 (LOC105597997), transcript variant X1, mRNA
-gi|544525941|ref|XM_005595716.1| PREDICTED: Macaca fascicularis cytochrome P450 2A13-like (LOC102143277), mRNA
-gi|1751208157|ref|XM_030913665.1| PREDICTED: Rhinopithecus roxellana cytochrome P450 2A13 (LOC104676180), mRNA
-gi|1753052882|ref|XM_031004339.1| PREDICTED: Gorilla gorilla gorilla cytochrome P450 2A13 (LOC101127384), mRNA
-gi|795137501|ref|XM_011936512.1| PREDICTED: Colobus angolensis palliatus cytochrome P450 2A13 (LOC105507828), transcript variant X1, mRNA
-gi|1825820915|ref|XM_033216130.1| PREDICTED: Trachypithecus francoisi cytochrome P450 2A13-like (LOC117086673), mRNA
-gi|1751201107|ref|XM_010380820.2| PREDICTED: Rhinopithecus roxellana cytochrome P450 2A13 (LOC104676095), mRNA
-gi|1381460778|ref|XM_011764694.2| PREDICTED: Macaca nemestrina cytochrome P450 2A13 (LOC105495313), mRNA
+<pre>p_value= 0.01907632210177841
 </pre>
 </div>
 </div>
@@ -15203,296 +14133,18 @@ gi|1381460778|ref|XM_011764694.2| PREDICTED: Macaca nemestrina cytochrome P450 2
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Ας πάρουμε το πρώτο:</p>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">first_alignment</span> <span class="o">=</span> <span class="n">blast_record</span><span class="o">.</span><span class="n">alignments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
     </div>
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Το κάθε alignment έχει πολλά "hsps". Σύμφωνα με το <a href="http://biopython.org/DIST/docs/tutorial/Tutorial.html#htoc105">documentation</a>:</p>
-
-<pre><code>HSP (high-scoring pair) represents region(s) in the hit sequence that contains significant alignment(s) to the query sequence. It contains the actual match between your query sequence and a database entry. As this match is determined by the sequence search tool’s algorithms, the HSP object contains the bulk of the statistics computed by the search tool. This also makes the distinction between HSP objects from different search tools more apparent compared to the differences you’ve seen in QueryResult or Hit objects.</code></pre>
-<p>Ας πάρουμε το πρώτο:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">first_hsp</span> <span class="o">=</span> <span class="n">first_alignment</span><span class="o">.</span><span class="n">hsps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Μπορούμε να τυπώσουμε το match:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="n">first_hsp</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Score 3522 (3177 bits), expectation 0.0e+00, alignment length 1761
-Query:       1 ATCTATCATCCCACTACCACCATGCTGGCCTCAGGGATGCTTCTG...TGA 1761
-               |||||||||||||||||||||||||||||||||||||||||||||...|||
-Sbjct:       1 ATCTATCATCCCACTACCACCATGCTGGCCTCAGGGATGCTTCTG...TGA 1761
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Επίσης μπορούμε να πάρουμε πληροφορίες για το match:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Subject start:&#39;</span><span class="p">,</span> <span class="n">first_hsp</span><span class="o">.</span><span class="n">sbjct_start</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Subject end:&#39;</span><span class="p">,</span> <span class="n">first_hsp</span><span class="o">.</span><span class="n">sbjct_end</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Query start:&#39;</span><span class="p">,</span> <span class="n">first_hsp</span><span class="o">.</span><span class="n">query_start</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Query end:&#39;</span><span class="p">,</span> <span class="n">first_hsp</span><span class="o">.</span><span class="n">query_end</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Subject start: 1
-Subject end: 1761
-Query start: 1
-Query end: 1761
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Ας δούμε πως είναι και ένα "κακό" alignment:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">last_alignment</span> <span class="o">=</span> <span class="n">blast_record</span><span class="o">.</span><span class="n">alignments</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">last_hsp</span> <span class="o">=</span> <span class="n">last_alignment</span><span class="o">.</span><span class="n">hsps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="nb">print</span> <span class="p">(</span><span class="n">last_hsp</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Score 2873 (2591 bits), expectation 0.0e+00, alignment length 1765
-Query:       1 ATCTATCATCCCACTACCACCATGCTGGCCTCAGGGATGCTTCTG...CAA 1765
-               ||| ||||||||||| || ||||||||||||||||| |||| |||...|||
-Sbjct:     564 ATCGATCATCCCACTGCCCCCATGCTGGCCTCAGGGCTGCTCCTG...CAA 2310
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Paiwise-alignment-&#956;&#949;-biopython">Paiwise alignment &#956;&#949; biopython<a class="anchor-link" href="#Paiwise-alignment-&#956;&#949;-biopython">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">Bio</span> <span class="k">import</span> <span class="n">pairwise2</span>
-<span class="kn">from</span> <span class="nn">Bio.pairwise2</span> <span class="k">import</span> <span class="n">format_alignment</span>
-
-<span class="n">alignments</span> <span class="o">=</span> <span class="n">pairwise2</span><span class="o">.</span><span class="n">align</span><span class="o">.</span><span class="n">globalxx</span><span class="p">(</span><span class="s2">&quot;ACCGT&quot;</span><span class="p">,</span> <span class="s2">&quot;ACG&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">format_alignment</span><span class="p">(</span><span class="o">*</span><span class="n">alignments</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>ACCGT
-| || 
-A-CG-
-  Score=3
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="&#902;&#955;&#955;&#949;&#962;-&#946;&#940;&#963;&#949;&#953;&#962;-&#948;&#949;&#948;&#959;&#956;&#941;&#957;&#969;&#957;">&#902;&#955;&#955;&#949;&#962; &#946;&#940;&#963;&#949;&#953;&#962; &#948;&#949;&#948;&#959;&#956;&#941;&#957;&#969;&#957;<a class="anchor-link" href="#&#902;&#955;&#955;&#949;&#962;-&#946;&#940;&#963;&#949;&#953;&#962;-&#948;&#949;&#948;&#959;&#956;&#941;&#957;&#969;&#957;">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Γενικότερα το τοπίο με της online βάσεις γενομικών δεδομένων είναι αρκετά δυναμικό. Καινούργιες βάσεις προστίθονται, νέα APIs κτλ. Σε επίπεδα οργανισμών υπάρχουν δύο μεγάλοι το NCBI και το EMBL. Το NCBI έχει ομαδοποιήσει όλες τις βάσεις δεδομένων με το σύστημα Entrez, ενώ το EMBL έχει το <a href="https://rest.ensembl.org/">REST API</a>. Άλλες αντιστοιχίες είναι:</p>
-<table>
-<thead><tr>
-<th>Service</th>
-<th><a href="https://www.embl.de/">EMBL</a></th>
-<th><a href="https://www.ncbi.nlm.nih.gov/">NCBI</a></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Variant Annotation</td>
-<td><a href="https://www.ensembl.org/info/docs/tools/vep/index.html">VEP</a></td>
-<td><a href="https://www.ncbi.nlm.nih.gov/variation/tools/reporter">Variation Reporter</a></td>
-</tr>
-<tr>
-<td>Raw Sequencing Data</td>
-<td><a href="https://www.ebi.ac.uk/ena">European Nucleotide Archive</a></td>
-<td><a href="https://www.ncbi.nlm.nih.gov/sra">SRA</a></td>
-</tr>
-<tr>
-<td>Expression Data</td>
-<td><a href="https://www.ebi.ac.uk/arrayexpress/">ArrayExpress</a></td>
-<td><a href="https://www.ncbi.nlm.nih.gov/geo/">Gene Expression Omnibus</a></td>
-</tr>
-<tr>
-<td>Phenotype</td>
-<td><a href="https://www.ebi.ac.uk/ega/home">EGA (European Genome-Phenome Archive)</a></td>
-<td><a href="https://www.ncbi.nlm.nih.gov/gap">dbGAP</a></td>
-</tr>
-<tr>
-<td>Mutation Database</td>
-<td><a href="http://www.ensembl.org/index.html">Ensembl</a></td>
-<td><a href="https://www.ncbi.nlm.nih.gov/projects/SNP/">dbSNP</a> </td>
-</tr>
-<tr>
-<td>Genomic Browsers</td>
-<td><a href="http://www.ensembl.org/Homo_sapiens/Location/View?r=17:63992802-64038237">Ensembl</a></td>
-<td><a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&amp;lastVirtModeType=default&amp;lastVirtModeExtraState=&amp;virtModeType=default&amp;virtMode=0&amp;nonVirtPosition=&amp;position=chr17%3A63992802%2D64038237&amp;hgsid=654038027_kzafCuBRWkvSS4Uq55z0pjldJcyS">UCSC</a></td>
-</tr>
-<tr>
-<td>Location converters</td>
-<td><a href="https://rest.ensembl.org/documentation/info/assembly_map">REST API (map)</a></td>
-<td><a href="https://www.ncbi.nlm.nih.gov/genome/tools/remap">remap</a></td>
-</tr>
-<tr>
-<td>Query services</td>
-<td><a href="https://rest.ensembl.org/">REST API</a></td>
-<td><a href="https://www.ncbi.nlm.nih.gov/Class/MLACourse/Original8Hour/Entrez/">Entrez</a></td>
-</tr>
-</tbody>
-</table>
-<p>Εκτός από ENSEMBL/NCBI μια άλλη πολύ καλή βάση είναι:</p>
-<ul>
-<li><a href="http://mygene.info/">MyGene</a>, <a href="http://myvariant.info/">MyVariant</a> . Πολύ μοντέρνο API, φιλικό και καλή οργάνωση πληροφορίας. Δοκιμάστε το: <a href="http://myvariant.info/v1/api">http://myvariant.info/v1/api</a> . Το αρνητικό του είναι ότι περιέχει ΜΟΝΟ πληροφορίες για variants (π.χ. δεν έχει transcripts, proteins, ...)</li>
-</ul>
-
-</div>
-</div>
 </div>
     </div>
   </div>

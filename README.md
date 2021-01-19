@@ -82,6 +82,14 @@
    * Serialization (JSON): [jupyter notebook](notes/lesson_7.ipynb), [html](notes/lesson_7.html), [pdf](notes/lesson_7.pdf)
    * API : [jupyter notebook](notes/lesson_11_API.ipynb), [html](notes/lesson_11_API.html), [pdf](notes/lesson_11_API.pdf) 
    * οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_11_2020.ipynb), [html](2020_2021/lesson_11_2020.html), [pdf](2020_2021/lesson_11_2020.pdf)
+* 18 Ιανουαρίου 2021. Διαβάζουμε:
+   * Hypothesis Testing: [jupyter notebook](notes/lesson_hypothesis_testing.ipynb), [html](notes/lesson_hypothesis_testing.html), [pdf](notes/lesson_hypothesis_testing.pdf)
+   * BioPython: [jupyter notebook](notes/lesson_12_biopython.ipynb), [html](notes/lesson_12_biopython.html), [pdf](notes/lesson_12_biopython.pdf)
+   * Decorators : https://realpython.com/primer-on-python-decorators/ (+ παράδειγμα στις πρόχειρες σημειώσεις)
+   * Interactive Plots with:
+      * bokeh : https://docs.bokeh.org/en/latest/docs/user_guide/quickstart.html 
+      * plot.ly : https://plotly.com/python/plotly-fundamentals/ 
+   * οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_12_2020.ipynb), [html](2020_2021/lesson_12_2020.html), [pdf](2020_2021/lesson_12_2020.pdf)
 
 
 ### Πως βαθμολογείται μία άσκηση
