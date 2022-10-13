@@ -18,7 +18,6 @@
 * Week 13: Object Oriented Programming: Classes, Inheritance, Initializers, member functions, static/class functions.
 
 ### Επιπλέον υλικό:
-* Το μάθημα "μοιράζεται" υλικό με το [αντίστοιχο μάθημα](https://github.com/kantale/biol-494) του τμήματος Βιολογίας του Πανεπιστημίου Κρήτης.
 * [Practical Python Programming from David Beazley](https://dabeaz-course.github.io/practical-python/)
 * [Beginner's Python Cheat Sheets](https://ehmatthes.github.io/pcc_2e/cheat_sheets/cheat_sheets/)
 * [Non-beginner's python cheat sheet](https://gto76.github.io/python-cheatsheet/)
@@ -50,22 +49,15 @@
 * [Data falacies to avoid](https://www.geckoboard.com/uploads/data-fallacies-to-avoid.pdf) [source](https://www.geckoboard.com/best-practice/statistical-fallacies/) [twitter link](https://twitter.com/simongerman600/status/1294764565406855170?s=11)
 
 ### Προηγούμενες χρονιές
-* [Διαλέξεις 2020-2021](2020_2021/README.md)
 * [Διαλέξεις 2019-2020](2019_2020/README.md)
 * [Διαλέξεις 2018-2019](https://gist.github.com/kantale/b726b3ac17fbb00eb21fec8e262967ec)
 * [Διαλέξεις 2017-2018](https://gist.github.com/kantale/7a84e046fca8eba6bf11035b49be00ce)
 * [Διαλέξεις 2016-2017](https://gist.github.com/kantale/c94e9559cc408a986638794ede47f9d5)
 
 ### Βαθμολογία
-Η βαθμολογία του μαθήματος θα αποτελείται από το 50% των ασκήσεων και το 50% των projects
-* Θα δωθούν 5 σειρές ασκήσεων, μία κάθε 2 εβδομάδες περίπου. ΘΑ δοδούν δηλαδή συνολικά 100 ασκήσεις.
-* Θα δωθούν 10 projects στο μέσο του εξαμήνου περίπου. Κάθε φοιτητής θα πρέπει να υλοποιήσει και τα 10. 
+* Θα δωθούν 5 σειρές ασκήσεων, μία κάθε 2 εβδομάδες περίπου. Η κάθε σειρά μετράει στο 20% του βαθμού. Δηλαδή θα δοθούν 100 ασκήσεις, η κάθε άσκηση μετράει στο 1% του βαθμού.
 
 ### Διαλέξεις 
-* Διάλεξη 1η. Σημειώσεις σε [jupyter notebook](notes/lesson_1.ipynb), [html](notes/lesson_1.html), [pdf](notes/lesson_1.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2022_2023/lesson_1_2022.ipynb), [html](2022_2023/lesson_1_2022.html), [pdf](2022_2023/lesson_1_2022.pdf) 
-
-
-### Παλιές διαλέξεις
 * 12 Οκτωβρίου 2020 . Σημειώσεις σε [jupyter notebook](notes/lesson_1.ipynb), [html](notes/lesson_1.html), [pdf](notes/lesson_1.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_1_2020.ipynb), [html](2020_2021/lesson_1_2020.html), [pdf](2020_2021/lesson_1_2020.pdf)
 * 20 Οκτωβρίου 2020 . Σημειώσεις σε [jupyter notebook](notes/lesson_2.ipynb), [html](notes/lesson_2.html), [pdf](notes/lesson_2.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_2_2020.ipynb), [html](2020_2021/lesson_2_2020.html), [pdf](2020_2021/lesson_2_2020.pdf)
 * 26 Οκτωβρίου 2020 . Σημειώσεις σε [jupyter notebook](notes/lesson_3.ipynb), [html](notes/lesson_3.html), [pdf](notes/lesson_3.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_3_2020.ipynb), [html](2020_2021/lesson_3_2020.html), [pdf](2020_2021/lesson_3_2020.pdf)
@@ -129,9 +121,11 @@
 ### Λίστα με τις ασκήσεις
 * **ΠΡΟΣΟΧΗ!** Πριν κάνετε κάποια άσκηση (και πριν τη παραδόσετε), διαβάστε λίγο [αυτή τη λίστα με κοινά λάθη που κάνουν οι νέοι προγραμματιστές κυρίως στη python](common_errors.md). 
 * Επίσης καλό θα ήταν να ρίξετε μια ματιά στις [λύσεις των ασκήσεων 2018, σειρά 1η, 2η, 3η και 4η](solutions_2018.ipynb) και στις [λύσεις των ασκήσεων 2019](2019_2020/solutions_2019.ipynb)
-
-**Οι ασκήσεις δεν έχουν δημοσιευτεί ακόμα**
-
+* [Σειρά ασκήσεων 1](2020_2021/assignment_1.ipynb). Ημερομηνία παράδοσης: 9 Νοεμβρίου 2020, 23:59.  
+* [Σειρά ασκήσεων 2](2020_2021/assignment_2.ipynb). Ημερομηνία παράδοσης: 23 Νοεμβρίου 2020, 23:59.
+* [Σειρά ασκήσεων 3](2020_2021/assignment_3.ipynb). Ημερομηνία παράδοσης: 14 Δεκεμβρίου 2020, 23:59
+* [Σειρά ασκήσεων 4](2020_2021/assignment_4.ipynb). Ημερομηνία παράδοσης: 31 Δεκεμβρίου 2020, 23:59 (!)
+* [Σειρά ασκήσεων 5](2020_2021/assignment_5.ipynb). Ημερομηνία παράδοσης: 28 Φεβρουαρίου 2021
 
 
 
