@@ -58,11 +58,13 @@
 
 ### Βαθμολογία
 Η βαθμολογία του μαθήματος θα αποτελείται από το 50% των ασκήσεων και το 50% των projects
-* Θα δωθούν 5 σειρές ασκήσεων, μία κάθε 2 εβδομάδες περίπου. ΘΑ δοδούν δηλαδή συνολικά 100 ασκήσεις.
+* Θα δωθούν 5 σειρές ασκήσεων, μία κάθε 2 εβδομάδες περίπου. Θα δοδούν δηλαδή συνολικά 100 ασκήσεις.
 * Θα δωθούν 10 projects στο μέσο του εξαμήνου περίπου. Κάθε φοιτητής θα πρέπει να υλοποιήσει και τα 10. 
 
 ### Διαλέξεις 
-* Διάλεξη 1η. Σημειώσεις σε [jupyter notebook](notes/lesson_1.ipynb), [html](notes/lesson_1.html), [pdf](notes/lesson_1.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2022_2023/lesson_1_2022.ipynb), [html](2022_2023/lesson_1_2022.html), [pdf](2022_2023/lesson_1_2022.pdf) 
+* Διάλεξη 1η. 10 Οκτωβρίου 2022.  Σημειώσεις σε [jupyter notebook](notes/lesson_1.ipynb), [html](notes/lesson_1.html), [pdf](notes/lesson_1.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2022_2023/lesson_1_2022.ipynb), [html](2022_2023/lesson_1_2022.html), [pdf](2022_2023/lesson_1_2022.pdf) 
+* Διάλεξη 2η. 17 Οκτωβρίου 2022 . Σημειώσεις σε [jupyter notebook](notes/lesson_2.ipynb), [html](notes/lesson_2.html), [pdf](notes/lesson_2.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/b8b141a5f71495d5b648c0abd8df3875)
+* Διάλεξη 3η. 24 Οκτωβρίου 2022 . Σημειώσεις σε [jupyter notebook](notes/lesson_3.ipynb), [html](notes/lesson_3.html), [pdf](notes/lesson_3.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/c7b5ca988045afcc17b68f0b9e8b3b59)
 
 
 ### Παλιές διαλέξεις
