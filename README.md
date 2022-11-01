@@ -65,6 +65,8 @@
 * Διάλεξη 1η. 10 Οκτωβρίου 2022.  Σημειώσεις σε [jupyter notebook](notes/lesson_1.ipynb), [html](notes/lesson_1.html), [pdf](notes/lesson_1.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2022_2023/lesson_1_2022.ipynb), [html](2022_2023/lesson_1_2022.html), [pdf](2022_2023/lesson_1_2022.pdf) 
 * Διάλεξη 2η. 17 Οκτωβρίου 2022 . Σημειώσεις σε [jupyter notebook](notes/lesson_2.ipynb), [html](notes/lesson_2.html), [pdf](notes/lesson_2.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/b8b141a5f71495d5b648c0abd8df3875)
 * Διάλεξη 3η. 24 Οκτωβρίου 2022 . Σημειώσεις σε [jupyter notebook](notes/lesson_3.ipynb), [html](notes/lesson_3.html), [pdf](notes/lesson_3.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/c7b5ca988045afcc17b68f0b9e8b3b59)
+* Διάλεξη 4η. 31 Οκτωβρίου 2022.  Οι Σημειώσεις είναι ίδιες με του προηγούμενου μαθήματος. Οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/d4df81ade4339e5cb77d4b5cf3b428a2)
+
 
 
 ### Παλιές διαλέξεις
