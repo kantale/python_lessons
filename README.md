@@ -66,6 +66,7 @@
 * Διάλεξη 2η. 17 Οκτωβρίου 2022 . Σημειώσεις σε [jupyter notebook](notes/lesson_2.ipynb), [html](notes/lesson_2.html), [pdf](notes/lesson_2.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/b8b141a5f71495d5b648c0abd8df3875)
 * Διάλεξη 3η. 24 Οκτωβρίου 2022 . Σημειώσεις σε [jupyter notebook](notes/lesson_3.ipynb), [html](notes/lesson_3.html), [pdf](notes/lesson_3.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/c7b5ca988045afcc17b68f0b9e8b3b59)
 * Διάλεξη 4η. 31 Οκτωβρίου 2022.  Οι Σημειώσεις είναι ίδιες με του προηγούμενου μαθήματος. Οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/d4df81ade4339e5cb77d4b5cf3b428a2)
+* Διάλεξη 5η. 7 Νοεμβρίου 2022.  Σημειώσεις σε [jupyter notebook](notes/lesson_4.ipynb), [html](notes/lesson_4.html), [pdf](notes/lesson_4.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/4e309853e30e8a5d387c6206dac3a7e6)
 
 
 
@@ -137,6 +138,7 @@
 * Επίσης καλό θα ήταν να ρίξετε μια ματιά στις [λύσεις των ασκήσεων 2018, σειρά 1η, 2η, 3η και 4η](solutions_2018.ipynb) και στις [λύσεις των ασκήσεων 2019](2019_2020/solutions_2019.ipynb)
 
 * H ημερομηνία παράδοσης των ασκήσεων 1-20 είναι: 14 Νοεμβρίου 2022, 23:59 [Anywhere on Earth](https://time.is/Anywhere_on_Earth)
+* H ημερομηνία παράδοσης των ασκήσεων 21-30 είναι: 28 Νοεμβρίου 2022, 23:59 [Anywhere on Earth](https://time.is/Anywhere_on_Earth)
 
 
 
