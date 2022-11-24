@@ -21,6 +21,7 @@
 * Το μάθημα "μοιράζεται" υλικό με το [αντίστοιχο μάθημα](https://github.com/kantale/biol-494) του τμήματος Βιολογίας του Πανεπιστημίου Κρήτης.
 * [Practical Python Programming from David Beazley](https://dabeaz-course.github.io/practical-python/)
 * [Beginner's Python Cheat Sheets](https://ehmatthes.github.io/pcc_2e/cheat_sheets/cheat_sheets/)
+* [A collection of python cheatsheets](https://github.com/afizs/python-notes/blob/main/resources/cheatsheets.md)
 * [Non-beginner's python cheat sheet](https://gto76.github.io/python-cheatsheet/)
 * NumPy
    * [NumPy Tutorial](https://realpython.com/numpy-tutorial/)
