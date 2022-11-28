@@ -1241,6 +1241,194 @@ print (f())
  [4, 1, 6, 8, 3, 8, 7, 5, 6, 1, 1]]
 ```
 
+### Άσκηση 46 
+
+Σε αυτή τη σελίδα: https://en.wikipedia.org/wiki/List_of_cities_and_towns_in_Greece Υπάρχει ένας πίνακας με τον πληθυσμό των Ελληνικών πόλεων.
+
+Ο πίνακας αυτός σε μορφή dictionary είναι:
+
+```python
+cities = {
+ 'Athens': [772072, 745514, 664046, 'Attica'],
+ 'Thessaloniki': [383967, 363987, 315196, 'Central Macedonia'],
+ 'Patras': [152570, 160400, 167446, 'Western Greece'],
+ 'Piraeus': [182671, 175697, 163688, 'Attica'],
+ 'Larissa': [112777, 124394, 144651, 'Thessaly'],
+ 'Heraklion': [115270, 130914, 140730, 'Crete'],
+ 'Peristeri': [137288, 137918, 139981, 'Attica'],
+ 'Kallithea': [194233, 109609, 100641, 'Attica'],
+ 'Acharnes': [61052, 75329, 99346, 'Attica'],
+ 'Kalamaria': [80698, 87255, 91279, 'Central Macedonia'],
+ 'Nikaia': [87597, 93086, 89380, 'Attica'],
+ 'Glyfada': [63306, 80409, 87305, 'Attica'],
+ 'Volos': [77192, 82439, 86046, 'Thessaly'],
+ 'Ilio': [78326, 80859, 84793, 'Attica'],
+ 'Ilioupoli': [75037, 75904, 78153, 'Attica'],
+ 'Keratsini': [71982, 76102, 77077, 'Attica'],
+ 'Evosmos': [28821, 52624, 74686, 'Central Macedonia'],
+ 'Chalandri': [66285, 71684, 74192, 'Attica'],
+ 'Nea Smyrni': [69749, 73986, 73076, 'Attica'],
+ 'Marousi': [64092, 69470, 72333, 'Attica'],
+ 'Agios Dimitrios': [57574, 65173, 71294, 'Attica'],
+ 'Zografou': [80492, 76115, 71026, 'Attica'],
+ 'Egaleo': [78563, 74046, 69946, 'Attica'],
+ 'Nea Ionia': [27904, 30804, 32661, 'Thessaly'],
+ 'Ioannina': [56699, 61629, 65574, 'Epirus'],
+ 'Palaio Faliro': [61371, 64759, 64021, 'Attica'],
+ 'Korydallos': [63184, 67456, 63445, 'Attica'],
+ 'Trikala': [45835, 48686, 61653, 'Thessaly'],
+ 'Vyronas': [58523, 61102, 61308, 'Attica'],
+ 'Agia Paraskevi': [47463, 56836, 59704, 'Attica'],
+ 'Galatsi': [57230, 58042, 59345, 'Attica'],
+ 'Agrinio': [52081, 54523, 59329, 'Western Greece'],
+ 'Chalcis': [51646, 53584, 59125, 'Central Greece'],
+ 'Petroupoli': [38278, 48327, 58979, 'Attica'],
+ 'Serres': [50017, 54266, 58287, 'Central Macedonia'],
+ 'Alexandroupoli': [37904, 48885, 57812, 'Eastern Macedonia and Thrace'],
+ 'Xanthi': [37430, 45111, 56122, 'Eastern Macedonia and Thrace'],
+ 'Katerini': [43613, 50510, 55997, 'Central Macedonia'],
+ 'Kalamata': [43625, 49154, 54100, 'Peloponnese'],
+ 'Kavala': [56571, 58663, 54027, 'Eastern Macedonia and Thrace'],
+ 'Chania': [50077, 53373, 53910, 'Crete'],
+ 'Lamia': [44084, 46406, 52006, 'Central Greece'],
+ 'Komotini': [37036, 43326, 50990, 'Eastern Macedonia and Thrace'],
+ 'Irakleio': [42905, 45926, 49642, 'Attica'],
+ 'Rhodes': [42400, 52318, 49541, 'South Aegean'],
+ 'Kifissia': [39166, 43929, 47332, 'Attica'],
+ 'Stavroupoli': [37596, 41653, 46008, 'Central Macedonia'],
+ 'Chaidari': [44831, 45227, 45642, 'Attica'],
+ 'Drama': [37604, 42501, 44823, 'Eastern Macedonia and Thrace'],
+ 'Veria': [37858, 42794, 43158, 'Central Macedonia'],
+ 'Alimos': [32024, 38047, 41720, 'Attica'],
+ 'Kozani': [31553, 35242, 41066, 'Western Macedonia'],
+ 'Polichni': [27894, 36146, 39332, 'Central Macedonia'],
+ 'Karditsa': [30067, 32031, 38554, 'Thessaly'],
+ 'Sykies': [34059, 41726, 37753, 'Central Macedonia'],
+ 'Ampelokipoi': [40093, 40959, 37381, 'Central Macedonia'],
+ 'Pylaia': [20785, 22744, 34625, 'Central Macedonia'],
+ 'Agioi Anargyroi': [30739, 32957, 34168, 'Attica'],
+ 'Argyroupoli': [31530, 33158, 34097, 'Attica'],
+ 'Ano Liosia': [21397, 26423, 33565, 'Attica'],
+ 'Rethymno': [23420, 27868, 32468, 'Crete'],
+ 'Ptolemaida': [25125, 28679, 32127, 'Western Macedonia'],
+ 'Tripoli': [22429, 25520, 30866, 'Peloponnese'],
+ 'Cholargos': [33691, 32166, 30840, 'Attica'],
+ 'Vrilissia': [16571, 25582, 30741, 'Attica'],
+ 'Aspropyrgos': [15715, 27741, 30251, 'Attica'],
+ 'Corinth': [27412, 29787, 30176, 'Peloponnese'],
+ 'Gerakas': [8512, 13921, 29939, 'Attica'],
+ 'Metamorfosi': [21052, 26448, 29891, 'Attica'],
+ 'Giannitsa': [22504, 26296, 29789, 'Central Macedonia'],
+ 'Voula': [17998, 25532, 28364, 'Attica'],
+ 'Kamatero': [17410, 22234, 28361, 'Attica'],
+ 'Mytilene': [23971, 27247, 27871, 'North Aegean'],
+ 'Neapoli': [30568, 29995, 27084, 'Central Macedonia'],
+ 'Eleftherio-Kordelio': [16549, 21630, 27067, 'Central Macedonia'],
+ 'Chios': [22894, 23779, 26850, 'North Aegean'],
+ 'Agia Varvara': [28706, 30562, 26550, 'Attica'],
+ 'Kaisariani': [26701, 26323, 26370, 'Attica'],
+ 'Nea Filadelfeia': [25261, 24112, 25734, 'Attica'],
+ 'Moschato': [22039, 23153, 25441, 'Attica'],
+ 'Perama': [24119, 25720, 25389, 'Attica'],
+ 'Salamina': [22567, 25730, 25370, 'Attica'],
+ 'Eleusis': [22793, 25863, 24910, 'Attica'],
+ 'Corfu': [31359, 28185, 24838, 'Ionian Islands'],
+ 'Pyrgos': [28465, 23274, 24359, 'Western Greece'],
+ 'Megara': [20403, 23032, 23456, 'Attica'],
+ 'Kilkis': [12139, 17430, 22914, 'Central Macedonia'],
+ 'Dafni': [24152, 23674, 22913, 'Attica'],
+ 'Thebes': [19505, 21211, 22883, 'Central Greece'],
+ 'Melissia': [13469, 19526, 22741, 'Attica'],
+ 'Argos': [21901, 24239, 22209, 'Peloponnese'],
+ 'Arta': [19087, 19435, 21895, 'Epirus'],
+ 'Artemida': [9485, 17391, 21488, 'Attica'],
+ 'Livadeia': [18437, 20061, 21379, 'Central Greece'],
+ 'Pefki': [17987, 19887, 21352, 'Attica'],
+ 'Oraiokastro': [5458, 11896, 20852, 'Central Macedonia'],
+ 'Aigio': [22178, 21061, 20422, 'Western Greece'],
+ 'Kos': [14714, 17890, 19432, 'South Aegean'],
+ 'Koropi': [12790, 15860, 19164, 'Attica'],
+ 'Preveza': [13695, 16321, 19042, 'Epirus'],
+ 'Naousa': [19794, 19870, 18882, 'Central Macedonia'],
+ 'Orestiada': [12691, 15246, 18426, 'Eastern Macedonia and Thrace'],
+ 'Peraia': [2949, 13306, 18326, 'Central Macedonia'],
+ 'Edessa': [17128, 18253, 18229, 'Central Macedonia'],
+ 'Florina': [12355, 14279, 17686, 'Western Macedonia'],
+ 'Panorama': [10275, 14552, 17444, 'Central Macedonia'],
+ 'Nea Erythraia': [12993, 15439, 17379, 'Attica'],
+ 'Elliniko': [13517, 16740, 17259, 'Attica'],
+ 'Amaliada': [15232, 18261, 16763, 'Western Greece'],
+ 'Pallini': [8021, 12552, 16415, 'Attica'],
+ 'Sparta': [13011, 14817, 16239, 'Peloponnese'],
+ 'Agios Ioannis Rentis': [14218, 15060, 16050, 'Attica'],
+ 'Thermi': [5156, 11360, 16004, 'Central Macedonia'],
+ 'Vari': [8488, 10998, 15855, 'Attica'],
+ 'Nea Makri': [12120, 13986, 15554, 'Attica'],
+ 'Tavros': [15456, 14963, 14972, 'Attica'],
+ 'Alexandreia': [12109, 13229, 14821, 'Central Macedonia'],
+ 'Menemeni': [12932, 14910, 14746, 'Central Macedonia'],
+ 'Paiania': [9710, 12855, 14595, 'Attica'],
+ 'Kalyvia Thorikou': [8488, 12202, 14424, 'Attica'],
+ 'Nafplio': [11897, 13822, 14203, 'Peloponnese'],
+ 'Drapetsona': [13094, 12944, 13968, 'Attica'],
+ 'Efkarpia': [3480, 6598, 13905, 'Central Macedonia'],
+ 'Papagou': [13974, 13207, 13699, 'Attica'],
+ 'Nafpaktos': [10854, 12924, 13415, 'Western Greece'],
+ 'Kastoria': [14775, 14813, 13387, 'Western Macedonia'],
+ 'Grevena': [9345, 10177, 13137, 'Western Macedonia'],
+ 'Pefka': [3561, 6434, 13052, 'Central Macedonia'],
+ 'Nea Alikarnassos': [10683, 11551, 12925, 'Crete'],
+ 'Missolonghi': [10916, 12225, 12785, 'Western Greece'],
+ 'Gazi': [1395, 8018, 12606, 'Crete'],
+ 'Ierapetra': [9541, 11678, 12355, 'Crete'],
+ 'Kalymnos': [10543, 10149, 12324, 'South Aegean'],
+ 'Rafina': [7752, 11352, 12168, 'Attica'],
+ 'Loutraki': [9388, 11383, 11564, 'Peloponnese'],
+ 'Agios Nikolaos': [8093, 10080, 11421, 'Crete'],
+ 'Ermoupoli': [13030, 11799, 11407, 'South Aegean'],
+ 'Ialysos': [7193, 10107, 11331, 'South Aegean'],
+ 'Mandra': [10012, 10947, 11327, 'Attica'],
+ 'Tyrnavos': [12028, 11116, 11069, 'Thessaly'],
+ 'Glyka Nera': [5813, 6623, 11049, 'Attica'],
+ 'Ymittos': [11671, 11139, 10715, 'Attica'],
+ 'Neo Psychiko': [12023, 10848, 10137, 'Attica'],
+}
+```
+
+Σε αυτό το dictionary οι τιμές στις λίστες των τιμών είναι:
+
+* Η 1η είναι ο πληθυσμός της πόλης με βάση την απογραφή του 1991
+* Η 2η είναι ο πληθυσμός της πόλης με βάση την απογραφή του 2001
+* Η 3η είναι η πληθυσμός της πόλης με βάση την απογραφή του 2011
+* Η 4η είναι η περιφέρεια στην οποία ανήκει η πόλη
+
+Φτιάξτε μία συνάρτηση η οποία θα παίρνει σαν παράμετρο ένα dictionary με την ίδια δομή όπως το `cities` (δεν χρειάζεται να το ελέγξετε αυτό). Η συνάρτηση θα επιστρέφει ένα νέο dictionary όπου τα κλειδιά θα είναι η κάθε περιφέρεια και οι τιμές θα είναι μία λίστα με τις δύο πόλεις που έχουν τον μικρότερο μέσο μέσο όρο πληθυσμών για τις 3 χρονιές: 1991, 2001, 2011.
+
+### Άσκηση 47 
+Έστω η παρακάτω λίστα με διαστήματα:
+```python
+l = [(1, 2), (3, 4), (5, 6), (0, 7), (-1, 5.5)]
+``` 
+
+Παρατηρούμε ότι πολλα διαστήματα επικαλύπτονται:
+* Το διάστημα (1,2) δεν επικαλύπτει κανένα άλλο διάστημα
+* Το διάστημα (3,4) δεν επικαλύπτει κανένα άλλο διάστημα
+* Το διάστημα (5,6) δεν επικαλύπτει κανένα άλλο διάστημα
+* Το διάστημα (0,7) επικαλύπτει 3 διαστήματα: (1,2), (3,4), (5,6)
+* Το διάστημα (-1,5.5) επικαλύπτει 2 διαστήματα: (1,2), (3,4)
+
+Άρα το διάστημα το οποίο επικαλύπτει τα περισσότερα διαστήματα είνα το (0,7).
+
+Φτιάξτε μία συνάρτηση η οποία θα παίρνει σαν παράμετρο μία λίστα με την ίδια δομή όπως η l (δεν χρειάζεται να το ελέγξετε αυτό). Η συνάρτηση θα επιστρέφει το διάστημα το οποίο επικαλύπτι το μεγαλύτερο πλήθος από τα υπόλοιπα διαστήματα. Θα πρέπει δηλαδή:
+
+```python
+print (f(l)) # Επιστρέφει: (0,7) 
+```
+
+Σημείωση: ως επικάλυψη εννοούμε τις αυστηρές ανισότητες (<, >) και όχι <= ή >=. Για παράδειγμα το διάστημα (1,2) δεν επικαλύπτει το διάστημα (1,2). 
+
+
+
 
 
 
