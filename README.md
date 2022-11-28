@@ -70,7 +70,10 @@
 * Διάλεξη 5η. 7 Νοεμβρίου 2022.  Σημειώσεις σε [jupyter notebook](notes/lesson_4.ipynb), [html](notes/lesson_4.html), [pdf](notes/lesson_4.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/4e309853e30e8a5d387c6206dac3a7e6)
 * Διάλεξη 6η. 14 Νοεμβρίου 2022 . Σημειώσεις σε [jupyter notebook](notes/lesson_5.ipynb), [html](notes/lesson_5.html), [pdf](notes/lesson_5.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/bd749f4834b152123b1669604cb849d2)
 * Διάλεξη 7η. 21 Νοεμβρίου 2022 . Σημειώσεις σε [jupyter notebook](notes/lesson_6.ipynb), [html](notes/lesson_6.html), [pdf](notes/lesson_6.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/b79333fd70410b1172b0edba0306a04b)
-
+* Διάλεξη 8η. 28 Νοεμβρίου 2022 . 
+   * Άνοιγμα, διαβασμα και σώσιμο αρχείων: [jupyter notebook](notes/lesson_5.ipynb), [html](notes/lesson_5.html), [pdf](notes/lesson_5.pdf)
+   * Import & Regular Expressions : [jupyter notebook](notes/lesson_6.ipynb), [html](notes/lesson_6.html), [pdf](notes/lesson_6.pdf)
+   * οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/58b91ed4865c97843cbb94bf8a854b68)
 
 ### Παλιές διαλέξεις
 * 12 Οκτωβρίου 2020 . Σημειώσεις σε [jupyter notebook](notes/lesson_1.ipynb), [html](notes/lesson_1.html), [pdf](notes/lesson_1.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_1_2020.ipynb), [html](2020_2021/lesson_1_2020.html), [pdf](2020_2021/lesson_1_2020.pdf)
