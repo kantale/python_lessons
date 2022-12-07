@@ -1893,7 +1893,7 @@ with open('easy_words.txt') as f:
 ### Άσκηση 61 
 Σε αυτό το link: https://www.dropbox.com/s/3my2injwaw0sj29/words_greek_normalized.txt?dl=0 υπάρχει ένα αρχείο με το όνομα `words_greek_normalized.txt`
 
-Φτιάξτε μία συνάρτηση η οποία δεν θα παίρνει κανένα όρισμα. Η συνάρτηση θα επιστρέφει ένα dictionary όπου τα κλειδιά θα είναι όλα τα μικρά γράμματα της ελληνικής αλφαβήτας. Οι τιμές θα είναι το πλήθος από λέξεις οι οποίες ξεκινάν με αυτό το γράμμα σύμφωνα με το αρχείο `words_greek_normalized.txt`. 
+Φτιάξτε μία συνάρτηση η οποία δεν θα παίρνει κανένα όρισμα. Η συνάρτηση θα επιστρέφει ένα dictionary όπου τα κλειδιά θα είναι όλα τα μικρά γράμματα της ελληνικής αλφαβήτας. Οι τιμές θα είναι το πλήθος από λέξεις οι οποίες ξεκινάνε με αυτό το γράμμα σύμφωνα με το αρχείο `words_greek_normalized.txt`. 
 
 
 Σημείωση: Είναι υποχρεωτικό να χρησιμοποιήσετε [Counter](https://docs.python.org/3/library/collections.html#collections.Counter). 
@@ -1901,7 +1901,7 @@ with open('easy_words.txt') as f:
 ### Άσκηση 62 
 Σε αυτό το link: https://www.dropbox.com/s/3my2injwaw0sj29/words_greek_normalized.txt?dl=0 υπάρχει ένα αρχείο με το όνομα `words_greek_normalized.txt`
 
-Φτιάξτε μία συνάρτηση η οποία δεν θα παίρνει κανένα όρισμα. Η συνάρτηση θα επιστρέφει ένα dictionary όπου τα κλειδιά θα είναι όλα τα μικρά γράμματα της ελληνικής αλφαβήτας. Οι τιμές θα είναι το πλήθος από λέξεις οι οποίες ξεκινάν με αυτό το γράμμα σύμφωνα με το αρχείο `words_greek_normalized.txt`. 
+Φτιάξτε μία συνάρτηση η οποία δεν θα παίρνει κανένα όρισμα. Η συνάρτηση θα επιστρέφει ένα dictionary όπου τα κλειδιά θα είναι όλα τα μικρά γράμματα της ελληνικής αλφαβήτας. Οι τιμές θα είναι το πλήθος από λέξεις οι οποίες ξεκινάνε με αυτό το γράμμα σύμφωνα με το αρχείο `words_greek_normalized.txt`. 
 
 
 Σημείωση: Είναι υποχρεωτικό να χρησιμοποιήσετε [defaultdict](https://docs.python.org/3/library/collections.html#collections.defaultdict).
@@ -1909,16 +1909,16 @@ with open('easy_words.txt') as f:
 ### Άσκηση 63 
 Σε αυτό το link: https://www.dropbox.com/s/3my2injwaw0sj29/words_greek_normalized.txt?dl=0 υπάρχει ένα αρχείο με το όνομα `words_greek_normalized.txt`
 
-Φτιάξτε μία συνάρτηση η οποία δεν θα παίρνει κανένα όρισμα. Η συνάρτηση θα επιστρέφει ένα dictionary όπου τα κλειδιά θα είναι όλα τα μικρά γράμματα της ελληνικής αλφαβήτας. Οι τιμές θα είναι το πλήθος από λέξεις οι οποίες ξεκινάν με αυτό το γράμμα σύμφωνα με το αρχείο `words_greek_normalized.txt`. 
+Φτιάξτε μία συνάρτηση η οποία δεν θα παίρνει κανένα όρισμα. Η συνάρτηση θα επιστρέφει ένα dictionary όπου τα κλειδιά θα είναι όλα τα μικρά γράμματα της ελληνικής αλφαβήτας. Οι τιμές θα είναι το πλήθος από λέξεις οι οποίες ξεκινάνε με αυτό το γράμμα σύμφωνα με το αρχείο `words_greek_normalized.txt`. 
 
 
 Σημείωση: Είναι υποχρεωτικό να χρησιμοποιήσετε [itertools.groupby](https://docs.python.org/3/library/itertools.html#itertools.groupby).
-Hint: Για να δουλέψει σωστά η groupby πρέπει η λίστα να είναι ταξονιμημένη. 
+Hint: Για να δουλέψει σωστά η groupby πρέπει η λίστα να είναι ταξονομημένη. 
 
 ### Άσκηση 64 
 Σε αυτό το link: https://www.dropbox.com/s/3my2injwaw0sj29/words_greek_normalized.txt?dl=0 υπάρχει ένα αρχείο με το όνομα `words_greek_normalized.txt`
 
-Φτιάξτε μία συνάρτηση η οποία δεν θα παίρνει κανένα όρισμα. Η συνάρτηση θα επιστρέφει ένα dictionary όπου τα κλειδιά θα είναι όλα τα μικρά γράμματα της ελληνικής αλφαβήτας. Οι τιμές θα είναι το πλήθος από λέξεις οι οποίες ξεκινάν με αυτό το γράμμα σύμφωνα με το αρχείο `words_greek_normalized.txt`. 
+Φτιάξτε μία συνάρτηση η οποία δεν θα παίρνει κανένα όρισμα. Η συνάρτηση θα επιστρέφει ένα dictionary όπου τα κλειδιά θα είναι όλα τα μικρά γράμματα της ελληνικής αλφαβήτας. Οι τιμές θα είναι το πλήθος από λέξεις οι οποίες ξεκινάνε με αυτό το γράμμα σύμφωνα με το αρχείο `words_greek_normalized.txt`. 
 
 
 Σημείωση: Μη χρησιμοποιήσετε [Counter](https://docs.python.org/3/library/collections.html#collections.Counter), [defaultdict](https://docs.python.org/3/library/collections.html#collections.defaultdict) ή [itertools.groupby](https://docs.python.org/3/library/itertools.html#itertools.groupby). 
@@ -1930,6 +1930,7 @@ Hint: Για να δουλέψει σωστά η groupby πρέπει η λίσ�
 
 ### Άσκηση 66
 Αν υποθέσουμε ότι τα τρία σημεία ενός τριγώνου Α,Β,Γ βρίσκονται στα σημεία: (Χ<sub>A</sub>, Υ<sub>A</sub>), (Χ<sub>B</sub>, Υ<sub>B</sub>) και (Χ<sub>Γ</sub>, Υ<sub>Γ</sub>) τότε το εμβαδόν του είναι ([πηγή](https://en.wikipedia.org/wiki/Triangle#Area)):
+
 ![img](https://wikimedia.org/api/rest_v1/media/math/render/svg/16c43b4e96346a8a1b86097618fdd30c4e4a9b32)
 
 Έστω ότι τα παρακάτω σύνολα σημείων:
