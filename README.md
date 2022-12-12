@@ -75,6 +75,10 @@
    * Import & Regular Expressions : [jupyter notebook](notes/lesson_6.ipynb), [html](notes/lesson_6.html), [pdf](notes/lesson_6.pdf)
    * οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/58b91ed4865c97843cbb94bf8a854b68)
 * Διάλεξη 9η, 5 Δεκεμβρίου 2022 . οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/4beb665ff5c282ed79004203425e0197) 
+* Διάλεξη 10η, 12 Δεκεμβρίου 2022.  
+   * Numpy [jupyter notebook](notes/lesson_8.ipynb), [html](notes/lesson_8.html), [pdf](notes/lesson_8.pdf)
+   * οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/4f7629fe1bc0e9a63234dbe90bea5b98) 
+
 
 ### Παλιές διαλέξεις
 * 12 Οκτωβρίου 2020 . Σημειώσεις σε [jupyter notebook](notes/lesson_1.ipynb), [html](notes/lesson_1.html), [pdf](notes/lesson_1.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_1_2020.ipynb), [html](2020_2021/lesson_1_2020.html), [pdf](2020_2021/lesson_1_2020.pdf)
