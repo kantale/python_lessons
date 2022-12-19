@@ -78,7 +78,9 @@
 * Διάλεξη 10η, 12 Δεκεμβρίου 2022.  
    * Numpy [jupyter notebook](notes/lesson_8.ipynb), [html](notes/lesson_8.html), [pdf](notes/lesson_8.pdf)
    * οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/4f7629fe1bc0e9a63234dbe90bea5b98) 
-
+* Διάλεξη 11η, 19 Δεκεμβρίου 2022. 
+   * Γραφικές παραστάσεις [jupyter](notes/python_matplotlib.ipynb) 
+   * οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/31ef63c0cbf126acb9b669f893f9a417). Προσοχή! Επειδή το jupyter notebook είναι πολύ μεγάλο, δεν το δείχνει το gist. Μπορείτε να το κατεβάσετε, πατώντας στο κουμπί "Raw", και επιλέξτε από τον browser σας: "File --> Save as". Αφού το κατεβάσετε μπορείτε να το ανοίξετε με ένα jupyter το οποίο τρέχετε στον υπολογιστή σας. 
 
 ### Παλιές διαλέξεις
 * 12 Οκτωβρίου 2020 . Σημειώσεις σε [jupyter notebook](notes/lesson_1.ipynb), [html](notes/lesson_1.html), [pdf](notes/lesson_1.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_1_2020.ipynb), [html](2020_2021/lesson_1_2020.html), [pdf](2020_2021/lesson_1_2020.pdf)
