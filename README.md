@@ -160,7 +160,7 @@ def f():
 * H ημερομηνία παράδοσης των ασκήσεων 21-40 είναι: 28 Νοεμβρίου 2022, 23:59 [Anywhere on Earth](https://time.is/Anywhere_on_Earth)
 * H ημερομηνία παράδοσης των ασκήσεων 41-60 είναι: 12 Δεκεμβρίου 2022, 23:59 [Anywhere on Earth](https://time.is/Anywhere_on_Earth)
 * H ημερομηνία παράδοσης των ασκήσεων 61-80 είναι: 26 Δεκεμβρίου 2022, 23:59 [Anywhere on Earth](https://time.is/Anywhere_on_Earth)
-* H ημερομηνία παράδοσης των ασκήσεων 81-100 είναι: 31 Δεκεμβρίου 2023, 23:59 [Anywhere on Earth](https://time.is/Anywhere_on_Earth)
+* H ημερομηνία παράδοσης των ασκήσεων 81-100 είναι: 31 Ιανουαρίου 2023, 23:59 [Anywhere on Earth](https://time.is/Anywhere_on_Earth)
 
 
 ### projects 
