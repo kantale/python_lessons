@@ -162,6 +162,12 @@ def f():
 * H ημερομηνία παράδοσης των ασκήσεων 61-80 είναι: 26 Δεκεμβρίου 2022, 23:59 [Anywhere on Earth](https://time.is/Anywhere_on_Earth)
 
 
+### projects 
+[Το jupyter noteboook με τα projects βρίσκεται εδώ](2022_projects.ipynb)
+
+Η ημερομηνία παράδοσης είναι 28 Φεβρουαρίου 2023.
+
+
 
 
 
