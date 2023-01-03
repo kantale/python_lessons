@@ -1902,8 +1902,10 @@ with open('easy_words.txt') as f:
     for l in f:
         c += 1
     print (f'Σύνολο: {c}')
-Σύνολο: 10547
+Σύνολο: 15338
 ```
+
+* Σημείωση: Σε μία παλαιότερη έκδοση αυτής της άσκησης είχα αναφέρει λανθασμένα ότι το πλήθος των σωστών λέξεων είναι 10547
 
 ### Άσκηση 61 
 Σε αυτό το link: https://www.dropbox.com/s/3my2injwaw0sj29/words_greek_normalized.txt?dl=0 υπάρχει ένα αρχείο με το όνομα `words_greek_normalized.txt`
