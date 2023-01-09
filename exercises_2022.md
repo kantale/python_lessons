@@ -2741,6 +2741,54 @@ for x in range(25):
 ![img](https://i.imgur.com/NQcZb95.png) 
 
 
+### Άσκηση 89
+Η παρακάτω συνάρτηση επιστρέφει ένα pandas DataFrame με μία λίστα με μετάγραφα:
+
+```python
+import pandas as pd
+def get_df_89():
+    return pd.read_csv('https://www.dropbox.com/s/5e4btcptal5pp3w/ask_89.csv?dl=1')
+```
+
+Τα δεδομένα προέρχονται από τη [δημοσίευση](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-016-2582-9): 
+
+> Sahakyan, Aleksandr B., and Shankar Balasubramanian. "Long genes and genes with multiple splice variants are enriched in pathways linked to cancer and other multigenic diseases." BMC genomics 17, no. 1 (2016): 1-10.
+
+To DataFram περιέχει τις εξής στήλες:
+* `TR.NAME`: όνομα του μετάγραφου κατά το RefSeq
+* `GENE.NAME`: όνομα του γονιδίου
+* `N.EXONS`: πλήθος από exons που έχει το μετάγραφο
+* `N.INTRONS`: πλήθος από introns που έχει το μετάγραφο
+* `TRANSCRIPT.L`: Μέγεθος του μετάγραφου
+* `EXONS.L`: Συνολικό μέγεθος όλων των exons
+* `INTRONS.L`: Συνολικό μέγεθος όλων των introns 
+
+
+Γράψτε μία συνάρτηση η οποία δεν θα παίρνει καμία παράμετρο. Η συνάρτηση θα:
+* Καλεί τη `get_df_89` ώστε να αποθηκεύει το DataFrame σε μία μεταβλητή
+* Επιστρέφει το όνομα του γονιδίου που έχει τα περισσότερα μετάγραφα. 
+
+### Άσκηση 90
+Γράψτε μία συνάρτηση η οποία δεν θα παίρνει καμία παράμετρο. Η συνάρτηση θα:
+* Καλεί τη `get_df_89` ώστε να αποθηκεύει το DataFrame σε μία μεταβλητή
+* Για κάθε transcript θα υπολογίζει το μέσο μήκος των exons του (δηλαδή στήλη `EXONS.L`/`N.EXONS`) και θα το αποθηκεύει σε μία νέα στήλη με το όνομα `AV.EXON.L`
+* Για κάθε transcript θα υπολογίζει το μέσο μήκος των introns του (δηλαδή στήλη `INTRONS.L`/`N.INTRONS`) και θα το αποθηκεύει σε μία νέα στήλη με το όνομα `AV.INTRONS.L`
+* Για κάθε transcript θα υπολογίζει το `AV.EXON.L` / `AV.INTRONS.L` και θα τα αποθηκεύει σε μία νέα στήλη με το όνομα: `AV.EXON.DIV.INTRON`
+* Για κάθε γονίδιο θα υπολογίζει τον μέσο όρο του `AV.EXON.DIV.INTRON` για όλα τα transcripts του.
+* Θα αφαιρεί τα γονίδια για τα οποία αυτός ο μέσος είναι είναι `NaN`.
+* Θα ταξινομεί τα γονίδια από αυτα που έχουν μικρότερο μέσο όρο με αυτά που έχουν μεγαλύτερο μέσο όρο
+* Θα κάνει `line` plot (`kind=line`) όπου ο άξονας Υ θα έχει λογαριθμική κλίμακα (`logy=True`).
+
+Το plot που βγήκε σε μένα είναι:
+
+![img](https://i.imgur.com/eWJPzSS.png)
+
+
+
+
+
+
+
 
 
 
