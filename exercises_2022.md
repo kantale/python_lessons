@@ -2754,7 +2754,7 @@ def get_df_89():
 
 > Sahakyan, Aleksandr B., and Shankar Balasubramanian. "Long genes and genes with multiple splice variants are enriched in pathways linked to cancer and other multigenic diseases." BMC genomics 17, no. 1 (2016): 1-10.
 
-To DataFram περιέχει τις εξής στήλες:
+To DataFrame περιέχει τις εξής στήλες:
 * `TR.NAME`: όνομα του μετάγραφου κατά το RefSeq
 * `GENE.NAME`: όνομα του γονιδίου
 * `N.EXONS`: πλήθος από exons που έχει το μετάγραφο
@@ -2782,6 +2782,8 @@ To DataFram περιέχει τις εξής στήλες:
 Το plot που βγήκε σε μένα είναι:
 
 ![img](https://i.imgur.com/eWJPzSS.png)
+
+Εσείς μπορείτε να το βελτιώσετε αισθητικά!
 
 
 
