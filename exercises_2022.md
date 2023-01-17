@@ -2894,7 +2894,7 @@ for i,pair in enumerate(gen_91(10)):
 * Οι τόνοι και τα διαλυτικά έχουν αντικατασταθεί με τα αντίστοιχα γράμματά τους (π.χ ά --> α)
 * Το τελικό `ς` έχει αντικατασταθεί με το `σ`.
 
-Ας παίξουμε [λέξλι](https://lexli.gr/)!!
+Ας παίξουμε [λέξλη](https://lexli.gr/)!!
 
 Για αρχή διαβάστε πως παίζεται το παιχνίδι (υπάρχει στη σελίδα του παιχνιδιού). 
 
@@ -2923,12 +2923,12 @@ print (next(g)) # αβαι
 Φτιάξτε έναν generator ο οποίος θα παίρνει 3 παραμέτρους:
 * Η παράμετρος `gen` θα είναι ένας generator o οποίος θα κάνει generate ελληνικές λέξεις.
 * H παράμετρος `tried` θα είναι ένα string με μία ελληνική λέξη (με μικρά, χωρίς τόνους) η οποία θα είναι μία λέξη που βάλατε στο λέξλι.
-* Η παράμετρος `pattern` θα είναι το αποτέλεσμα που έδειξε το λέξλι όταν δοκιμάσατε το `tried` στο παιχνίδι. Το `pattern` θα είναι ένα string με 5 χαρακτήρες οι οποίοι θα είναι είτε: `'0'` είτε `'1'` είτε `'2'`:
+* Η παράμετρος `pattern` θα είναι το αποτέλεσμα που έδειξε το "λέξλη" όταν δοκιμάσατε το `tried` στο παιχνίδι. Το `pattern` θα είναι ένα string με 5 χαρακτήρες οι οποίοι θα είναι είτε: `'0'` είτε `'1'` είτε `'2'`:
     * Το `'0'` σημαίνει ότι δεν υπάρχει αυτός ο χαρακτήρας σε καμία θέση (δηλαδή είχε χρώμα γκρι)
     * Το `'1'` σημαίνει ότι υπάρχει ο χαρακτήρας αλλά σε άλλη θέση (δηλαδή είχε χρώμα κίτρινο).
     * Το `'2'` σημαίνει ότι ο χαρακτήρας είναι σωστός (δηλαδή είχε χρώμα πράσινο). 
 
-Για παράδειγμα ας υποθέσουμε ότι `pattern='χωροσ'` και το λέξλι επέστρεψε: `00210`. Αυτό σημαίνει ότι:
+Για παράδειγμα ας υποθέσουμε ότι `pattern='χωροσ'` και το "λέξλη" επέστρεψε: `00210`. Αυτό σημαίνει ότι:
   * Τα `'Χ'`, `'Ω'`, `'Σ'` δεν υπάρχουν πουθενά στη λέξη που ψάχνουμε
   * Το `'Ο'` υπάρχει αλλά όχι στη 4η θέση. 
   * Το `'Ρ'` υπάρχει και είναι στη 3η θέση.   
@@ -2959,5 +2959,135 @@ for x in g4:
 ```
 
 
+### Άσκηση 93 
+Ένας περίεργος καθηγητής προγραμματισμού, απαιτεί οι φοιτητές να παραδώσουν 100 ασκήσεις. Κάθε άσκηση θα πρέπει να ξεκινάει με ένα σχόλιο το οποίο να έχει την εξής μορφή:
+
+```text
+# exercise XYZ
+...
+``` 
+
+Όπου `ΧΥΖ` ένας αριθμός από το 1 μέχρι και το 100. 
+
+Για να διορθώσει τις ασκήσεις, έχει υλοποιήσει έναν generator ο οποίος παίρνει σαν παράμετρο ένα αρχείο το οποίο έχει τις ασκήσεις ενός φοιτητή. Ο generator κάνει generate ένα tuple το οποίο περιέχει 2 στοιχεία. Το πρώτο είναι ο αριθμός της άσκησης και το 2ο είναι η υλοποίησή της. Τα tuples γίνονται generate ταξινομημένα ανάλογα με τον αριθμό της άσκησης. Δίνεται ένα παράδειγμα:
+
+
+Έστω ένα αρχείο  με το όνομα `mitsos_exercises.txt` το οποίο περιέχει:
+
+```text
+My name is Mitsos. Here are my fabulous exercises:
+
+# exercise 3
+def f():
+   print ('hello world')
+
+# exercise 1 
+def f():
+   print (1+2)
+
+# exercise 2
+def f():
+   print ('1' + '2')
+```
+
+Τότε θα πρέπει:
+
+```python
+g = gen_93('mitsos_exercises.txt')
+a,b = next(g)
+print (a) # Τυπώνει 1
+print (b) # Τυπώνει 
+'''
+def f():
+   print (1+2)
+'''
+
+a,b = next(g)
+print (a) # Τυπώνει 2
+print (b) # Τυπώνει 
+'''
+def f():
+   print ('1' + '2')
+'''
+```
+
+### Άσκηση 94
+
+Έστω ο παρακάτω generator:
+```python
+def line_generator(fn):
+    with open(fn) as f:
+        for l in f:
+            yield l.strip()
+```
+
+Φτιάξτε έναν generator ο οποίος θα παίρνει σαν παράμετρο ένα [FASTA](https://en.wikipedia.org/wiki/FASTA_format) αρχείο. Ο generator θα πρέπει να κάνει generate tuples τα οποία να περιέχουν 2 στοιχεία. Το πρώτο θα είναι ένα string με τον κωδικό της αλληλουχίας και το 2ο θα είναι όλη η αλληλουχία. Μπορείτε να πάρετε ένα FASTA file από [εδώ](https://zenodo.org/record/3736457) για να δοκιμάσετε την υλοποίησή σας. Προσοχή υπάρχουν κάποιοι περιορισμοί:
+
+* Απαγορεύεται να κάνετε 'read' όλο το αρχείο στη μνήμη (π.χ. f.read() ή f.readlines())
+* Πρέπει να χρησιμοποιήσετε μονο generator comprehensions και τον generator `line_generator`.
+
+Για παράδειγμα έστω ότι αρχείο `example.fasta` περιέχει τα εξής δεδομένα ([πηγή](https://www.bioinformatics.nl/tools/crab_fasta.html)):
+```
+>crab_anapl ALPHA CRYSTALLIN B CHAIN (ALPHA(B)-CRYSTALLIN).             
+MDITIHNPLIRRPLFSWLAPSRIFDQIFGEHLQESELLPASPSLSPFLMR
+SPIFRMPSWLETGLSEMRLEKDKFSVNLDVKHFSPEELKVKVLGDMVEIH
+GKHEERQDEHGFIAREFNRKYRIPADVDPLTITSSLSLDGVLTVSAPRKQ
+SDVPERSIPITREEKPAIAGAQRK
+>crab_bovin ALPHA CRYSTALLIN B CHAIN (ALPHA(B)-CRYSTALLIN).             
+MDIAIHHPWIRRPFFPFHSPSRLFDQFFGEHLLESDLFPASTSLSPFYLR
+PPSFLRAPSWIDTGLSEMRLEKDRFSVNLDVKHFSPEELKVKVLGDVIEV
+HGKHEERQDEHGFISREFHRKYRIPADVDPLAITSSLSSDGVLTVNGPRK
+QASGPERTIPITREEKPAVTAAPKK
+>crab_chick ALPHA CRYSTALLIN B CHAIN (ALPHA(B)-CRYSTALLIN).             
+MDITIHNPLVRRPLFSWLTPSRIFDQIFGEHLQESELLPTSPSLSPFLMR
+SPFFRMPSWLETGLSEMRLEKDKFSVNLDVKHFSPEELKVKVLGDMIEIH
+GKHEERQDEHGFIAREFSRKYRIPADVDPLTITSSLSLDGVLTVSAPRKQ
+SDVPERSIPITREEKPAIAGSQRK
+>crab_human ALPHA CRYSTALLIN B CHAIN (ALPHA(B)-CRYSTALLIN).
+MDIAIHHPWIRRPFFPFHSPSRLFDQFFGEHLLESDLFPTSTSLSPFYLR
+PPSFLRAPSWFDTGLSEMRLEKDRFSVNLDVKHFSPEELKVKVLGDVIEV
+HGKHEERQDEHGFISREFHRKYRIPADVDPLTITSSLSSDGVLTVNGPRK
+QVSGPERTIPITREEKPAVTAAPKK
+>crab_mesau ALPHA CRYSTALLIN B CHAIN (ALPHA(B)-CRYSTALLIN).             
+MDIAIHHPWIRRPFFPFHSPSRLFDQFFGEHLLESDLFSTATSLSPFYLR
+PPSFLRAPSWIDTGLSEMRMEKDRFSVNLDVKHFSPEELKVKVLGDVVEV
+HGKHEERQDEHGFISREFHRKYRIPADVDPLTITSSLSSDGVLTVNGPRK
+QASGPERTIPITREEKPAVTAAPKK
+>crab_mouse ALPHA CRYSTALLIN B CHAIN (ALPHA(B)-CRYSTALLIN) (P23).       
+MDIAIHHPWIRRPFFPFHSPSRLFDQFFGEHLLESDLFSTATSLSPFYLR
+PPSFLRAPSWIDTGLSEMRLEKDRFSVNLDVKHFSPEELKVKVLGDVIEV
+HGKHEERQDEHGFISREFHRKYRIPADVDPLAITSSLSSDGVLTVNGPRK
+QVSGPERTIPITREEKPAVAAAPKK
+>crab_rabit ALPHA CRYSTALLIN B CHAIN (ALPHA(B)-CRYSTALLIN).             
+MDIAIHHPWIRRPFFPFHSPSRLFDQFFGEHLLESDLFPTSTSLSPFYLR
+PPSFLRAPSWIDTGLSEMRLEKDRFSVNLDVKHFSPEELKVKVLGDVIEV
+HGKHEERQDEHGFISREFHRKYRIPADVDPLTITSSLSSDGVLTVNGPRK
+QAPGPERTIPITREEKPAVTAAPKK
+>crab_rat ALPHA CRYSTALLIN B CHAIN (ALPHA(B)-CRYSTALLIN).             
+MDIAIHHPWIRRPFFPFHSPSRLFDQFFGEHLLESDLFSTATSLSPFYLR
+PPSFLRAPSWIDTGLSEMRMEKDRFSVNLDVKHFSPEELKVKVLGDVIEV
+HGKHEERQDEHGFISREFHRKYRIPADVDPLTITSSLSSDGVLTVNGPRK
+QASGPERTIPITREEKPAVTAAPKK
+>crab_squac ALPHA CRYSTALLIN B CHAIN (ALPHA(B)-CRYSTALLIN).             
+MDIAIQHPWLRRPLFPSSIFPSRIFDQNFGEHFDPDLFPSFSSMLSPFYW
+RMGAPMARMPSWAQTGLSELRLDKDKFAIHLDVKHFTPEELRVKILGDFI
+EVQAQHEERQDEHGYVSREFHRKYKVPAGVDPLVITCSLSADGVLTITGP
+RKVADVPERSVPISRDEKPAVAGPQQK
+```
+
+Τότε θα πρέπει:
+```python
+g = gen_94('example.fasta')
+
+a,b = next(g)
+print(a) # Τυπώνει: 'rab_anapl ALPHA CRYSTALLIN B CHAIN (ALPHA(B)-CRYSTALLIN).'
+print(b) # Τυπώνει: 'MDITIHNPLIRRPLFSWLAPSRIFDQIFGEHLQESELLPASPSLSPFLMRSPIFRMPSWLETGLSEMRLEKDKFSVNLDVKHFSPEELKVKVLGDMVEIHGKHEERQDEHGFIAREFNRKYRIPADVDPLTITSSLSLDGVLTVSAPRKQSDVPERSIPITREEKPAIAGAQRK'
+
+a,b = next(g)
+print (a) # Τυπώνει:'crab_bovin ALPHA CRYSTALLIN B CHAIN (ALPHA(B)-CRYSTALLIN)'
+print (b) # Τυπώνει: 'MDIAIHHPWIRRPFFPFHSPSRLFDQFFGEHLLESDLFPASTSLSPFYLRPPSFLRAPSWIDTGLSEMRLEKDRFSVNLDVKHFSPEELKVKVLGDVIEVHGKHEERQDEHGFISREFHRKYRIPADVDPLAITSSLSSDGVLTVNGPRKQASGPERTIPITREEKPAVTAAPKK'
+```
+
+Hint: [itertools.groupby](https://docs.python.org/3/library/itertools.html#itertools.groupby) 
 
 
