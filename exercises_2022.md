@@ -3226,8 +3226,8 @@ y=2*x + 52 is parallel to y=2*x + 85
 ### Άσκηση 99
 Υλοποιήστε την άσκηση 4 με τις παρακάτω διαφορές:
 
-* Αν τα Α και Β δεν είναι και τα 2 tuples με 2 αριθμούς το κάθε ένα (`int` ή `float`)  τότε θα πετάει το exceptio [TypeError](https://docs.python.org/3/library/exceptions.html#TypeError) με το μήνυμα: "λάθος τύπος"
-)
+* Αν τα Α και Β δεν είναι και τα 2 tuples με 2 αριθμούς το κάθε ένα (`int` ή `float`)  τότε θα πετάει το exception [TypeError](https://docs.python.org/3/library/exceptions.html#TypeError) με το μήνυμα: "λάθος τύπος"
+
 * Αν τα 2 σημεία Α,Β ταυτίζονται στον 2-διάστατο χώρο, τότε η συνάρτηση θα πρέπει να πετάει το exception [ValueError](https://docs.python.org/3/library/exceptions.html#ValueError) με το μήνυμα: `δεν υπάρχει ευθεία`
 * Αν τα Α και Β ανήκουν σε μία ευθεία παράλληλη στον άξονα Χ, τότε η συνάρτηση θα πρέπει να πετάει το exception [ValueError](https://docs.python.org/3/library/exceptions.html#ValueError) με το μήμυμα: `οριζόντια ευθεία`. 
 
@@ -3254,7 +3254,7 @@ def test_f_100():
 
 ```
 
-Συμπληρώστε τον κώδικα της συνάρτησης `f_100`  πό εκεί που λέει `ΔΙΚΟ ΣΑΣ` και κάτω, έτσι ώστε ο παράκατω κώδικας:
+Συμπληρώστε τον κώδικα της συνάρτησης `f_100`  από εκεί που λέει `ΔΙΚΟ ΣΑΣ!` και κάτω, έτσι ώστε ο παράκατω κώδικας:
 
 ```python
 test_f_100()
