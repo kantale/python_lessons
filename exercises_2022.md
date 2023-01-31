@@ -3090,4 +3090,182 @@ print (b) # Τυπώνει: 'MDIAIHHPWIRRPFFPFHSPSRLFDQFFGEHLLESDLFPASTSLSPFYLRP
 
 Hint: [itertools.groupby](https://docs.python.org/3/library/itertools.html#itertools.groupby) 
 
+### Άσκηση 95 
+Φτιάξτε μία κλάση με το όνομα Line η οποία να αναπαριστάει μία γραμμή. Θα πρέπει να μπορώ να γράφω:
+
+```python
+l = Line(3,5)
+print (l) # Τυπώνει: y = 3*x + 5
+```
+
+### Άσκηση 96
+Στη κλάση Line της άσκησης 95 προσθέστε τη μέθοδο: `is_parallel` η οποία θα παίρνει σαν παράμετο ένα αντικείμενο της κλάσης Line και θα επιστρέφει `True` αν η self είναι παράλληλη με τη παράμετρο αυτή. Για παράδειγμα θα πρέπει:
+
+```python
+l_1 = Line(3,5)
+l_2 = Line(3,7)
+l_3 = Line(4,5)
+
+print (l_1.is_parallel(l_2)) # Τυπώνει True
+print (l_1.is_parallel(l_3)) # Τυπώνει False
+
+```
+
+### Άσκηση 97
+Κάντε το ίδιο με την άσκηση 96 αλλά χρησιμοποιήστε τον τελεστή `|`. Δηλαδή θα πρέπει:
+
+```python
+l_1 = Line(3,5)
+l_2 = Line(3,7)
+l_3 = Line(4,5)
+
+print (l_1 | l_2) # Τυπώνει Τrue
+print (l_1 | l_3) # Τυπώνει False
+```
+
+Σημείωση: Ο τελεστής `|` υλοποιείται στη συνάρτηση `__or__`
+
+### Άσκηση 98
+Υλοποιήστε τη κλάση `LineCollection` η οποία διαχερίζεται μία συλλογή από γραμμές. Η κλάση αυτή θα μπορεί να αρχικοποιηθεί με μία λίστα από αντικείμενα τύπου Line (όπως αυτό της άσκησης 96). Η κλάση αυτη θα μπορεί να γίνει iterate (υλοποιήστε της μεθόδους `__iter__ ` και `__next__`). Σε κάθε iteration θα επιστρέφει ένα ζευγάρι από της γραμμές που περιέχει οι οποίες θα είναι παράλληλες. Αυτό το iteration θα τερματίζει όταν θα έχει κάνει generate όλα τα ζευγάρια από παράλληλες γραμμές (Hint: Άσκηση 44). Για παράδειγμα θα πρέπει να μπορώ να γράφω:
+
+```python
+l = [
+ (1, 96),
+ (2, 92),
+ (1, 11),
+ (1, 25),
+ (1, 90),
+ (3, 41),
+ (3, 75),
+ (2, 37),
+ (1, 43),
+ (3, 68),
+ (1, 32),
+ (2, 4),
+ (3, 25),
+ (2, 2),
+ (2, 70),
+ (1, 98),
+ (3, 51),
+ (3, 65),
+ (2, 52),
+ (2, 85),
+]
+
+lines = [Line(x[0], x[1]) for x in l]
+lc = LineCollection(lines)
+
+
+for a,b in lc:
+    print (f'{a} is parallel to {b}')
+
+```  
+
+Αυτό τυπώνει
+
+```
+y=1*x + 96 is parallel to y=1*x + 11
+y=1*x + 96 is parallel to y=1*x + 25
+y=1*x + 96 is parallel to y=1*x + 90
+y=1*x + 96 is parallel to y=1*x + 43
+y=1*x + 96 is parallel to y=1*x + 32
+y=1*x + 96 is parallel to y=1*x + 98
+y=2*x + 92 is parallel to y=2*x + 37
+y=2*x + 92 is parallel to y=2*x + 4
+y=2*x + 92 is parallel to y=2*x + 2
+y=2*x + 92 is parallel to y=2*x + 70
+y=2*x + 92 is parallel to y=2*x + 52
+y=2*x + 92 is parallel to y=2*x + 85
+y=1*x + 11 is parallel to y=1*x + 25
+y=1*x + 11 is parallel to y=1*x + 90
+y=1*x + 11 is parallel to y=1*x + 43
+y=1*x + 11 is parallel to y=1*x + 32
+y=1*x + 11 is parallel to y=1*x + 98
+y=1*x + 25 is parallel to y=1*x + 90
+y=1*x + 25 is parallel to y=1*x + 43
+y=1*x + 25 is parallel to y=1*x + 32
+y=1*x + 25 is parallel to y=1*x + 98
+y=1*x + 90 is parallel to y=1*x + 43
+y=1*x + 90 is parallel to y=1*x + 32
+y=1*x + 90 is parallel to y=1*x + 98
+y=3*x + 41 is parallel to y=3*x + 75
+y=3*x + 41 is parallel to y=3*x + 68
+y=3*x + 41 is parallel to y=3*x + 25
+y=3*x + 41 is parallel to y=3*x + 51
+y=3*x + 41 is parallel to y=3*x + 65
+y=3*x + 75 is parallel to y=3*x + 68
+y=3*x + 75 is parallel to y=3*x + 25
+y=3*x + 75 is parallel to y=3*x + 51
+y=3*x + 75 is parallel to y=3*x + 65
+y=2*x + 37 is parallel to y=2*x + 4
+y=2*x + 37 is parallel to y=2*x + 2
+y=2*x + 37 is parallel to y=2*x + 70
+y=2*x + 37 is parallel to y=2*x + 52
+y=2*x + 37 is parallel to y=2*x + 85
+y=1*x + 43 is parallel to y=1*x + 32
+y=1*x + 43 is parallel to y=1*x + 98
+y=3*x + 68 is parallel to y=3*x + 25
+y=3*x + 68 is parallel to y=3*x + 51
+y=3*x + 68 is parallel to y=3*x + 65
+y=1*x + 32 is parallel to y=1*x + 98
+y=2*x + 4 is parallel to y=2*x + 2
+y=2*x + 4 is parallel to y=2*x + 70
+y=2*x + 4 is parallel to y=2*x + 52
+y=2*x + 4 is parallel to y=2*x + 85
+y=3*x + 25 is parallel to y=3*x + 51
+y=3*x + 25 is parallel to y=3*x + 65
+y=2*x + 2 is parallel to y=2*x + 70
+y=2*x + 2 is parallel to y=2*x + 52
+y=2*x + 2 is parallel to y=2*x + 85
+y=2*x + 70 is parallel to y=2*x + 52
+y=2*x + 70 is parallel to y=2*x + 85
+y=3*x + 51 is parallel to y=3*x + 65
+y=2*x + 52 is parallel to y=2*x + 85
+```
+
+### Άσκηση 99
+Υλοποιήστε την άσκηση 4 με τις παρακάτω διαφορές:
+
+* Αν τα Α και Β δεν είναι και τα 2 tuples με 2 αριθμούς το κάθε ένα (`int` ή `float`)  τότε θα πετάει το exceptio [TypeError](https://docs.python.org/3/library/exceptions.html#TypeError) με το μήνυμα: "λάθος τύπος"
+)
+* Αν τα 2 σημεία Α,Β ταυτίζονται στον 2-διάστατο χώρο, τότε η συνάρτηση θα πρέπει να πετάει το exception [ValueError](https://docs.python.org/3/library/exceptions.html#ValueError) με το μήνυμα: `δεν υπάρχει ευθεία`
+* Αν τα Α και Β ανήκουν σε μία ευθεία παράλληλη στον άξονα Χ, τότε η συνάρτηση θα πρέπει να πετάει το exception [ValueError](https://docs.python.org/3/library/exceptions.html#ValueError) με το μήμυμα: `οριζόντια ευθεία`. 
+
+
+### Άσκηση 100
+Έστω `f_99` η υλοποίηση της άσκησης 99. Δίνεται ο παρακάτω κώδικας:
+
+```python
+
+def f_100(a,b):
+
+    try:
+        f_99(a,b)
+    # ΔΙΚΟ ΣΑΣ!
+
+def test_f_100():
+
+    f_100( 5, 7.8) 
+    f_100( ('mitsos', 2), (3, 'maria'), )
+    f_100( (2,3), (2,3) )
+    f_100( (2,3), (5,3) )
+    f_100( (3,7), (2,5) )
+
+
+```
+
+Συμπληρώστε τον κώδικα της συνάρτησης `f_100`  πό εκεί που λέει `ΔΙΚΟ ΣΑΣ` και κάτω, έτσι ώστε ο παράκατω κώδικας:
+
+```python
+test_f_100()
+```
+
+Να τυπώνει:
+```
+TypeError: Λάθος τύπος
+TypeError: Λάθος τύπος
+ValueError: Δεν υπάρχει ευθεία
+ValueError: οριζόντια ευθεία
+Η απάντηση είναι: -0.5
+```
 
