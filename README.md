@@ -84,6 +84,12 @@
 * Διάλεξη 12η, 9 Ιανουαρίου 2023 
    * οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/f7cf4dbdc56d80ec5cf68368df20023a). 
    * Pandas [jupyter notebook](notes/python_pandas.ipynb), [html](notes/python_pandas.html), [pdf](notes/python_pandas.pdf)
+* Διάλεξη 13η
+   * Classes : [jupyter notebook](notes/lesson_7.ipynb), [html](notes/lesson_7.html), [pdf](notes/lesson_7.pdf)
+* Διάλεξη 14η, 30 Ιανουαρίου 2023
+   * Exceptions, Generators, imports: [jupyter notebook](notes/python_gen_imp_cons_exc.ipynb)
+   * οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/3162658b502c179dddce1ed4a90e18b2). 
+
 
 ### Παλιές διαλέξεις
 * 12 Οκτωβρίου 2020 . Σημειώσεις σε [jupyter notebook](notes/lesson_1.ipynb), [html](notes/lesson_1.html), [pdf](notes/lesson_1.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_1_2020.ipynb), [html](2020_2021/lesson_1_2020.html), [pdf](2020_2021/lesson_1_2020.pdf)
