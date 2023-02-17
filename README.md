@@ -46,6 +46,7 @@
 * Pandas:
    * [Introduction to Pandas](https://realpython.com/pandas-dataframe/) . [plotting with pandas](https://realpython.com/pandas-plot-python/)
    * [100 pandas puzzles](https://github.com/ajcr/100-pandas-puzzles)
+   * [Pandas Illustrated: The Definitive Visual Guide to Pandas, by Lev Maximov](https://betterprogramming.pub/pandas-illustrated-the-definitive-visual-guide-to-pandas-c31fa921a43)
 
 ### About Data Science 
 * [Data falacies to avoid](https://www.geckoboard.com/uploads/data-fallacies-to-avoid.pdf) [source](https://www.geckoboard.com/best-practice/statistical-fallacies/) [twitter link](https://twitter.com/simongerman600/status/1294764565406855170?s=11)
