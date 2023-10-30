@@ -2,6 +2,9 @@
 * [Αλέξανδρος Καντεράκης](https://www.ics.forth.gr/cbml/index_main.php?l=e&c=730). [kantale@ics.forth.gr](kantale@ics.forth.gr)
 * [Slack channel](pythoncrete2020.slack.com)
 
+### Σύντομη περιγραφή
+Το μάθημα είναι μία εισαγωγή στον προγραμματισμό μεέσω της γλώσσας python. Επικεντρώνεται στη διδασκαλία της γλώσσας, στην υιοθέτηση σωστών προγραμματιστικών πρακτικών και εισάγει στη ανάλυση μεγάλων δεδομένων.  
+
 ### Πρόγραμμα (ενδεικτικό)
 * Week 1: Εισαγωγή στη python, γιατί python; anaconda installation, περιβάλλον ανάπτυξης jupyter, markdown, social coding, primitive data types and operations, strings, boolean logic, slicing
 * Week 2: Lists, tuples, for, while, if_then_else, continue, break. Whitespaces for indentation
