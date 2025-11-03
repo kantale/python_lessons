@@ -5,7 +5,7 @@
 * [Περισσότερες πληροφορίες για το μεταπτυχιακό](http://www.med.uoc.gr/?q=metaptyxiaka/programmata/viopliroforiki)
 
 * **[ΑΣΚΗΣΕΙΣ 2025-2026](2025_2026.md)**
-* **[Projects 2025-2026](projects_2025_2026/README.md)]**
+* **[Projects 2025-2026](projects_2025_2026/README.md)**
 
 
 ### Επικοινωνία
