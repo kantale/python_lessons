@@ -5,6 +5,8 @@
 * [Περισσότερες πληροφορίες για το μεταπτυχιακό](http://www.med.uoc.gr/?q=metaptyxiaka/programmata/viopliroforiki)
 
 * **[ΑΣΚΗΣΕΙΣ 2025-2026](2025_2026.md)**
+* **[Projects 2025-2026](projects_2025_2026/README.md)]**
+
 
 ### Επικοινωνία
 * [Αλέξανδρος Καντεράκης](https://www.ics.forth.gr/cbml/index_main.php?l=e&c=730). [kantale@ics.forth.gr](kantale@ics.forth.gr)
