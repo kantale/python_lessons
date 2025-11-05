@@ -44,15 +44,15 @@ For example:
 The graph that these nodes and edges contain is a tree.
 
 
-Create a function named `ch_2_1` that will take as input parameter a path to this json file. The file should
+Create a function named `part_1` that will take as input parameter a path to this json file. The file should
 * Create and return a python object that will hold the tree. Feel free to use anything (Class, dictionary, ...). Use only standard python libraries (no `pip instal ...`).
 
-* Create a function `ch_2_2` that will take as input the object returned from `ch_2_1` and a MONDO ID without the URL part (for example `MONDO_0013166`). The function should return a list with the labels that exist in the 3rd level of the tree. Here are some real examples:
+* Create a function `part_2` that will take as input the object returned from `part_1` and a MONDO ID without the URL part (for example `MONDO_0013166`). The function should return a list with the labels that exist in the 3rd level of the tree. Here are some real examples:
 
 ```python
-mondo_tree = ch_2_1('./data/mondo.json')
+mondo_tree = part_1('./data/mondo.json')
 
-mondo_categories = ch_2_2(mondo_tree, 'MONDO_0011719')
+mondo_categories = part_2(mondo_tree, 'MONDO_0011719')
 prints(mondo_categories)
 
 # prints
