@@ -1,6 +1,6 @@
 
 
-# Poypharmacy side-effect association network
+# Polypharmacy side-effect association network
 The [Polypharmacy side-effect association network](https://snap.stanford.edu/biodata/datasets/10017/10017-ChChSe-Decagon.html) is part of the [SNAP](https://snap.stanford.edu/index.html) (Stanford Network Analysis Project) project. 
 
 The dataset contains a graph where each node connects two drugs. Each edge denotes that these drugs are likely to develop a side effect when prescribed together (a phenomenon called polypharmacy, or [concomitant drugs](https://en.wikipedia.org/wiki/Concomitant_drug)).
