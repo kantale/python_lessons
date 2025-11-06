@@ -84,6 +84,5 @@ V = SUM(The number of "Apoptosis" nodes that are ON) - SUM(the number of "Prolif
    * Synchronous: all nodes update at once.
    * Asynchronous: update one random node per iteration.
 
-They can run the model from random initial states until a steady state (no change) or attractor is reached.
  
  
