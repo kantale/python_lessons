@@ -61,7 +61,7 @@ CID000002907,CID000003345,C0004144,atelectasis
 CID000000838,CID000002617,C0004144,atelectasis
 ```
 
-If we use all atelectasis edges (and not just the first 5) we can generate the graph of the atelectasis disease. This graph will have it's own sets of connected components. There is another graph for alkalosis, another for hypermagnesemia, and so on.
+If we use all atelectasis edges (and not just the first 5) we can generate the graph of the atelectasis disease. This graph will have its own sets of connected components. There is another graph for alkalosis, another for hypermagnesemia, and so on.
 
 In this project you will have to write code to answer the following simple question:
 
