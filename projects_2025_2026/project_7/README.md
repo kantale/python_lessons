@@ -149,7 +149,7 @@ Run Part 3 for different combinations of:
 
 For each combination, compute and report the average tokenized sequence length (as described in Part 3).
 
-resent results in a table of the form:
+Present results in a table of the form:
 
 | K   | M     | Average # of Tokens |
 | --- | ----- | ------------------- |
