@@ -18,7 +18,7 @@ These nodes contain a label under the `lbl` key. For example:
 }
 ```
 
-We also the edges that have the following properties:
+We also care about the edges that have the following properties:
 
 * the `sub` key contains a MONDO id
 * the `obj` key contains a MONDO id
@@ -39,10 +39,12 @@ For example:
 }
 ```
 * Note: Ignore the `meta` key
-
+* Note: Ignore all edges that:
+   * `sub` are not MONDO IDs
+   * `obj` are not MONDO IDs
+   * `pred` does not have the value: `is_a`
 
 The graph that these nodes and edges contain is a tree.
-
 
 Create a function named `part_1` that will take as input parameter a path to this json file. The file should
 * Create and return a python object that will hold the tree. Feel free to use anything (Class, dictionary, ...). Use only standard python libraries (no `pip instal ...`).
