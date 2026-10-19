@@ -4,8 +4,6 @@
 * ΕΠΙΠΕΔΟ ΣΠΟΥΔΩΝ: ΜΕΤΑΠΤΥΧΙΑΚΟ
 * [Περισσότερες πληροφορίες για το μεταπτυχιακό](http://www.med.uoc.gr/?q=metaptyxiaka/programmata/viopliroforiki)
 
-* **[ΑΣΚΗΣΕΙΣ 2025-2026](2025_2026.md)**
-* **[Projects 2025-2026](projects_2025_2026/README.md)**
 
 
 ### Επικοινωνία
@@ -73,6 +71,12 @@
 * [Data falacies to avoid](https://www.geckoboard.com/uploads/data-fallacies-to-avoid.pdf) [source](https://www.geckoboard.com/best-practice/statistical-fallacies/) [twitter link](https://twitter.com/simongerman600/status/1294764565406855170?s=11)
 
 ### Προηγούμενες χρονιές
+* **[ΑΣΚΗΣΕΙΣ 2025-2026](2025_2026.md)**
+* **[Projects 2025-2026](projects_2025_2026/README.md)**
+* **[Ασκήσεις 2022](exercises_2022.md)**
+* **[Project 2022](2022_projects.ipynb)**
+
+
 * [Διαλέξεις 2020-2021](2020_2021/README.md)
 * [Διαλέξεις 2019-2020](2019_2020/README.md)
 * [Διαλέξεις 2018-2019](https://gist.github.com/kantale/b726b3ac17fbb00eb21fec8e262967ec)
@@ -80,13 +84,8 @@
 * [Διαλέξεις 2016-2017](https://gist.github.com/kantale/c94e9559cc408a986638794ede47f9d5)
 
 ### Βαθμολογία
-Η βαθμολογία του μαθήματος θα αποτελείται από το 50% των projects και το 50% του τελικού
+Η βαθμολογία του μαθήματος θα αποτελείται από το 50% των projects και το 50% του τελικού.
 
-
-* Παλιά βαθμολογία
-Η βαθμολογία του μαθήματος θα αποτελείται από το 50% των ασκήσεων και το 50% των projects
-   * Θα δωθούν 5 σειρές ασκήσεων, μία κάθε 2 εβδομάδες περίπου. Θα δοδούν δηλαδή συνολικά 100 ασκήσεις.
-   * Θα δωθούν 10 projects στο μέσο του εξαμήνου περίπου. Κάθε φοιτητής θα πρέπει να υλοποιήσει και τα 10. 
 
 ### Διαλέξεις 
 * Διάλεξη 1η. 10 Οκτωβρίου 2022.  Σημειώσεις σε [jupyter notebook](notes/lesson_1.ipynb), [html](notes/lesson_1.html), [pdf](notes/lesson_1.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2022_2023/lesson_1_2022.ipynb), [html](2022_2023/lesson_1_2022.html), [pdf](2022_2023/lesson_1_2022.pdf) 
@@ -117,41 +116,6 @@
    * οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](https://gist.github.com/kantale/3162658b502c179dddce1ed4a90e18b2). 
 
 
-### Παλιές διαλέξεις
-* 12 Οκτωβρίου 2020 . Σημειώσεις σε [jupyter notebook](notes/lesson_1.ipynb), [html](notes/lesson_1.html), [pdf](notes/lesson_1.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_1_2020.ipynb), [html](2020_2021/lesson_1_2020.html), [pdf](2020_2021/lesson_1_2020.pdf)
-* 20 Οκτωβρίου 2020 . Σημειώσεις σε [jupyter notebook](notes/lesson_2.ipynb), [html](notes/lesson_2.html), [pdf](notes/lesson_2.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_2_2020.ipynb), [html](2020_2021/lesson_2_2020.html), [pdf](2020_2021/lesson_2_2020.pdf)
-* 26 Οκτωβρίου 2020 . Σημειώσεις σε [jupyter notebook](notes/lesson_3.ipynb), [html](notes/lesson_3.html), [pdf](notes/lesson_3.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_3_2020.ipynb), [html](2020_2021/lesson_3_2020.html), [pdf](2020_2021/lesson_3_2020.pdf)
-* 2 Νοεμβρίου 2020 . Οι Σημειώσεις είναι ίδιες με του προηγούμενου μαθήματος. Οι **πρόχειρες** σημειώσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_4_2020.ipynb), [html](2020_2021/lesson_4_2020.html), [pdf](2020_2021/lesson_4_2020.pdf)
-* 9 Νοεμβρίου 2020 . Σημειώσεις σε [jupyter notebook](notes/lesson_4.ipynb), [html](notes/lesson_4.html), [pdf](notes/lesson_4.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_5_2020.ipynb), [html](2020_2021/lesson_5_2020.html), [pdf](2020_2021/lesson_5_2020.pdf)
-* 16 Νοεμβρίου 2020. Σημειώσεις σε [jupyter notebook](notes/lesson_5.ipynb), [html](notes/lesson_5.html), [pdf](notes/lesson_5.pdf). Επίσης  οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_6_2020.ipynb), [html](2020_2021/lesson_6_2020.html), [pdf](2020_2021/lesson_6_2020.pdf)
-* 23 Νοεμβρίου 2020. Σε αυτό το μάθημα λύσαμε κάποιες από τις ασκήσεις της [2ης σειράς τους 2019](2019_2020/assignment_2.md). Οι λύσεις βρίσκονται εδώ σε [jupyter notebook](2020_2021/lesson_7_2020.ipynb), [html](2020_2021/lesson_7_2020.html), [pdf](2020_2021/lesson_7_2020.pdf)
-* 30 Νοεμβρίου 2020. Διαβάζουμε:
-   * Άνοιγμα, διαβασμα και σώσιμο αρχείων: [jupyter notebook](notes/lesson_5.ipynb), [html](notes/lesson_5.html), [pdf](notes/lesson_5.pdf)
-   * Import & Regular Expressions : [jupyter notebook](notes/lesson_6.ipynb), [html](notes/lesson_6.html), [pdf](notes/lesson_6.pdf)
-   * οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_8_2020.ipynb), [html](2020_2021/lesson_8_2020.html), [pdf](2020_2021/lesson_8_2020.pdf)
-* 7 Δεκεμβρίου 2020. Διαβάζουμε:
-   * Exceptions [jupyter notebook](notes/lesson_7.ipynb), [html](notes/lesson_7.html), [pdf](notes/lesson_7.pdf)
-   * Generators [jupyter notebook](notes/lesson_5.ipynb), [html](notes/lesson_5.html), [pdf](notes/lesson_5.pdf)
-      * Προσοχή! Δεν είπαμε τα generator comprehensions! Θα τα πούμε την επόμενη φορά
-   * Numpy [jupyter notebook](notes/lesson_8.ipynb), [html](notes/lesson_8.html), [pdf](notes/lesson_8.pdf)
-   * οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_9_2020.ipynb), [html](2020_2021/lesson_9_2020.html), [pdf](2020_2021/lesson_9_2020.pdf)
-* 14 Δεκεμβρίου 2020/. Διαβάζουμε:
-   * Γραφικές παραστάσεις [jupyter notebook](notes/lesson_10_matplotlib.html), [html](notes/lesson_10_matplotlib.html), [pdf](notes/lesson_10_matplotlib.html)
-   * pandas [jupyter notebook](notes/lesson_9.ipynb), [html](notes/lesson_9.html), [pdf](notes/lesson_9.pdf)
-	* οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_10_2020.ipynb), [html](2020_2021/lesson_10_2020.html), [pdf](2020_2021/lesson_10_2020.pdf)
-* 11 Ιανουαρίου 2021 . Διαβάζουμε:
-   * Classes : [jupyter notebook](notes/lesson_7.ipynb), [html](notes/lesson_7.html), [pdf](notes/lesson_7.pdf)
-   * Serialization (JSON): [jupyter notebook](notes/lesson_7.ipynb), [html](notes/lesson_7.html), [pdf](notes/lesson_7.pdf)
-   * API : [jupyter notebook](notes/lesson_11_API.ipynb), [html](notes/lesson_11_API.html), [pdf](notes/lesson_11_API.pdf) 
-   * οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_11_2020.ipynb), [html](2020_2021/lesson_11_2020.html), [pdf](2020_2021/lesson_11_2020.pdf)
-* 18 Ιανουαρίου 2021. Διαβάζουμε:
-   * Hypothesis Testing: [jupyter notebook](notes/lesson_hypothesis_testing.ipynb), [html](notes/lesson_hypothesis_testing.html), [pdf](notes/lesson_hypothesis_testing.pdf)
-   * BioPython: [jupyter notebook](notes/lesson_12_biopython.ipynb), [html](notes/lesson_12_biopython.html), [pdf](notes/lesson_12_biopython.pdf)
-   * Decorators : https://realpython.com/primer-on-python-decorators/ (+ παράδειγμα στις πρόχειρες σημειώσεις)
-   * Interactive Plots with:
-      * bokeh : https://docs.bokeh.org/en/latest/docs/user_guide/quickstart.html 
-      * plot.ly : https://plotly.com/python/plotly-fundamentals/ 
-   * οι **πρόχειρες** σημείωσεις του μαθήματος βρίσκονται σε [jupyter notebook](2020_2021/lesson_12_2020.ipynb), [html](2020_2021/lesson_12_2020.html), [pdf](2020_2021/lesson_12_2020.pdf)
 
 
 ### Πως βαθμολογείται μία άσκηση
@@ -187,22 +151,12 @@ def f():
 **Μη στείλετε ασκήσεις σε φορμάτ: pdf / word / google docs / screenshots(!)**
 
 ### Λίστα με τις ασκήσεις
-**[Οι ασκήσεις βρίσκονται εδώ](exercises_2022.md)**
 
 * **ΠΡΟΣΟΧΗ!** Πριν κάνετε κάποια άσκηση (και πριν τη παραδόσετε), διαβάστε λίγο [αυτή τη λίστα με κοινά λάθη που κάνουν οι νέοι προγραμματιστές κυρίως στη python](common_errors.md). 
 * Επίσης καλό θα ήταν να ρίξετε μια ματιά στις [λύσεις των ασκήσεων 2018, σειρά 1η, 2η, 3η και 4η](solutions_2018.ipynb) και στις [λύσεις των ασκήσεων 2019](2019_2020/solutions_2019.ipynb)
 
-* H ημερομηνία παράδοσης των ασκήσεων 1-20 είναι: 14 Νοεμβρίου 2022, 23:59 [Anywhere on Earth](https://time.is/Anywhere_on_Earth)
-* H ημερομηνία παράδοσης των ασκήσεων 21-40 είναι: 28 Νοεμβρίου 2022, 23:59 [Anywhere on Earth](https://time.is/Anywhere_on_Earth)
-* H ημερομηνία παράδοσης των ασκήσεων 41-60 είναι: 12 Δεκεμβρίου 2022, 23:59 [Anywhere on Earth](https://time.is/Anywhere_on_Earth)
-* H ημερομηνία παράδοσης των ασκήσεων 61-80 είναι: 26 Δεκεμβρίου 2022, 23:59 [Anywhere on Earth](https://time.is/Anywhere_on_Earth)
-* H ημερομηνία παράδοσης των ασκήσεων 81-100 είναι: 31 Ιανουαρίου 2023, 23:59 [Anywhere on Earth](https://time.is/Anywhere_on_Earth)
-
 
 ### projects 
-[Το jupyter noteboook με τα projects βρίσκεται εδώ](2022_projects.ipynb)
-
-Η ημερομηνία παράδοσης είναι 28 Φεβρουαρίου 2023.
 
 
 
