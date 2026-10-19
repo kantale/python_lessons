@@ -157,6 +157,39 @@ def f():
 * Επίσης καλό θα ήταν να ρίξετε μια ματιά στις [λύσεις των ασκήσεων 2018, σειρά 1η, 2η, 3η και 4η](solutions_2018.ipynb) και στις [λύσεις των ασκήσεων 2019](2019_2020/solutions_2019.ipynb)
 
 
+#### Πως δημιουργήθηκαν οι ασκήσεις
+Οι ασκήσεις είναι ΑΙ generated. Δημιουργήθηκαν με το παρακάτω prompt:
+```
+Below are the exercise instructions:
+* Exercise description should be in Greek exept:
+    * python keywords, technical words, code 
+* Every exercise should have a L3 header with the exercise number: `### Άσκηση <number>`
+* Every exercise should ask for a function. Describe what the function arguments are (if not arguments mention this), and what is the expected output.
+
+Example: `Γράψτε μία συνάρτηση η οποία θα παίρνει σαν παράμετρο έναν ακέραιο αριθμός και θα επιστρέφει ένα string`
+* Describe what the function should do
+* Describe how the function will be tested. Write 2 test, unless you are instructed otherwise. Every test should be wrapped in a print command.
+* Every test should have the text: `Η συνάρτηση θα πρέπει: ...`. Followed by the tests.
+* Each test should have the format: `print(<function_call>) # Τυπώνει <Expected output>`
+* Output should be in markdown
+
+For example:
+
+### Άσκηση 5
+
+Γράψτε μία συνάρτηση η οποία θα παίρνει σαν παράμετρο έναν ακέραιο αριθμός και θα επιστρέφει ένα string. Η συνάρτηση θα επιστρέφει `πρώτος` αν ο αιρθμός είναι πρώτος ή `μη πρώτος` διαφορετικα. 
+
+Η συνάρτηση θα πρέπει:
+\`\`\`python
+print(f(19)) # Τυπώνει "πρώτος"
+print(f(20)) # Τυπώνει: "μη πρώτος"
+\`\`\`
+
+Now create a real set of exercises in file: `exercise_2.md` that will contain 20 exercises and will cover first two lessons. Remember this is for a master class so it should target students that have above average IT knowledge. Exercises 15-19 should be more challenging. Make exercise 20 particularly difficult. Do not deviate from teached material.
+
+```
+
+
 ### projects 
 TBA
 
