@@ -1,5 +1,7 @@
 # Project 1
 
+Το θέμα αυτού του project το πρότεινε ο φοιτητής **Argyris Dallis**.
+
 Η ιδέα για αυτό το project προέρχεται από δύο εργασίες για το πώς η αρχική DNA ακολουθία επηρεάζει το abort και το escape στην αρχή της βακτηριακής μεταγραφής:
 
 * **[Heyduk & Heyduk, NAR 2018](https://doi.org/10.1093/nar/gky217)** - enrichment βιβλιοθηκών ITS και επίδραση μοτίβων (π.χ. TG) στο promoter escape
