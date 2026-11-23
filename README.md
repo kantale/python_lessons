@@ -197,7 +197,7 @@ Now create a real set of exercises in file: `exercise_2.md` that will contain 20
 
 
 ### projects 
-* [Projet 1](2026_2027/projects/project_1/README.md)
+* [Project 1](2026_2027/projects/project_1/README.md)
 
 
 
